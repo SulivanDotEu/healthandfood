@@ -1,0 +1,80 @@
+{% extends 'WalvaHafBundle:Livre:admin.html.twig' %}
+
+
+{% block breadcrumb %}
+{{ parent() }}
+<li class="active">Show</li>
+{% endblock %}
+
+
+
+{% block body -%}
+<h1>Livre</h1>
+
+<table class="table table-striped">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Titre</th>
+            <td>{{ entity.titre }}</td>
+        </tr>
+        <tr>
+            <th>Auteur</th>
+            <td>{{ entity.auteur }}</td>
+        </tr>
+        <tr>
+            <th>Nombrepages</th>
+            <td>{{ entity.nombrePages }}</td>
+        </tr>
+        <tr>
+            <th>ISBN</th>
+            <td>{{ entity.ISBN }}</td>
+        </tr>
+        <tr>
+            <th>Edition</th>
+            <td>{{ entity.edition }}</td>
+        </tr>
+        <tr>
+            <th>Prix</th>
+            <td>{{ entity.prix }}</td>
+        </tr>
+        <tr>
+            <th>Contenu</th>
+            <td>{{ entity.contenu }}</td>
+        </tr>
+        <tr>
+            <th>Image</th>
+            <td>
+                        {% if entity.image is not null %}
+                    <div style="max-width: 500px;">
+
+                        <img src="{{ asset(entity.image.webPath) }}"
+                             alt="{{ entity.image.alt }}" />
+
+                    </div>
+        {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
+
+
+
+
+{% block container_header_right %}
+
+    <div class="btn-group">
+        <a class="btn " href="{{ path('livre') }}">
+            <i class="icon-chevron-left"></i> 
+            Back to the list
+        </a>
+        <a class="btn " href="{{ path('livre_edit', { 'id': entity.id }) }}">
+            <i class="icon-pencil"></i> Edit</a>
+    </a>
+
+</div>
+{% endblock %}

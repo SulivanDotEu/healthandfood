@@ -1,0 +1,41 @@
+{% extends 'WalvaHafBundle:Article:public/layout.html.twig' %}
+
+
+
+{% block breadcrumb %}
+{{ parent() }}
+<li class="active">Article list</li>
+{% endblock %}
+
+
+
+
+{% block main_content -%}
+<h1{{'>Nos articles et nouvelles'|trans}}</h1>
+<hr/>
+
+
+
+<ul class="pager">
+  <li class="previous {% if page == 1%} disabled {% endif%}">
+      {% if page == 1%}
+{% else %}
+<a href="{{ path('article_public_list', { 'page': page - 1 }) }}">&larr; {{'Précédent'|trans}}</a>
+{% endif %}
+  </li>
+  
+  <li class="next {% if not next %}disabled {% endif%}">
+      {% if next  %}
+    <a href="{{ path('article_public_list', { 'page': page + 1 }) }}">{{'Suivant'|trans}} &rarr;</a>
+    {% else %}
+    
+    {% endif %}
+  </li>
+</ul>
+
+
+
+
+{% endblock %}
+
+

@@ -1,0 +1,54 @@
+{% extends 'WalvaHafBundle:Reference:admin.html.twig' %}
+
+{% block breadcrumb %}
+{{ parent() }}
+<li class="active">Reference list</li>
+{% endblock %}
+
+
+{% block body -%}
+<h1>Reference list</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Titre</th>
+            <th>Url</th>
+            <th>Doi</th>
+            <th>creation</th>
+            <th>modification</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('reference_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.titre }}</td>
+                <td>{{ entity.url }}</td>
+                <td>{{ entity.doi }}</td>
+                <td>{% if entity.dateCreate %}{{ entity.dateCreate|date('d/m/Y H:i') }}{% endif %}</td>
+                <td>{% if entity.dateModification %}{{ entity.dateModification|date('d/m/Y H:i') }}{% endif %}</td>
+                <td>
+                    <div class="btn-group">
+                        <a class="btn" href="{{ path('reference_show', { 'id': entity.id }) }} ">
+                            <i class="icon-eye-open"></i> Show</a>
+                        <a class="btn" href="{{ path('reference_edit', { 'id': entity.id }) }}">
+                            <i class="icon-pencil"></i> Edit</a>
+                    </div>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('reference_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

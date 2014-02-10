@@ -1,0 +1,34 @@
+
+{% if app.request.locale == 'fr' %}
+{# SI LANGUE == FRANCAIS #}
+<li id="menu-item-11" class="right menu-item menu-item-type-custom menu-item-object-custom menu-item-11">
+    <a title="" href="{{ path('switchlocale', {'locale':'fr'} )}}">
+        FR</a>
+
+    <ul class="sub-menu">
+
+        <li id="menu-item-69" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-69">
+            <a href="{{ path('switchlocale', {'locale':'nl'} )}}">
+                NL</a>
+        </li>
+    </ul>
+</li>
+
+{% elseif app.request.locale == 'nl' %}
+{# SI LANGUE == NL #}
+
+<li id="menu-item-11" class="right menu-item menu-item-type-custom menu-item-object-custom menu-item-11">
+    <a title="" href="{{ path('switchlocale', {'locale':'nl'} )}}">
+        NL</a>
+
+    <ul class="sub-menu">
+
+        <li id="menu-item-69" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-69">
+            <a href="{{ path('switchlocale', {'locale':'fr'} )}}">
+                FR</a>
+        </li>
+    </ul>
+</li>
+
+
+{% endif %}

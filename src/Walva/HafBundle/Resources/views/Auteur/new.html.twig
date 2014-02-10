@@ -1,0 +1,28 @@
+{% extends 'WalvaHafBundle:Auteur:admin.html.twig' %}
+
+
+{% block breadcrumb %}
+{{ parent() }}
+<li class="active">Auteur creation</li>
+{% endblock %}
+
+
+
+{% block body -%}
+<h1>Auteur creation</h1>
+
+    {{ form(form) }}
+
+
+{% endblock %}
+
+
+
+    {% block container_header_right %}
+<div class="btn-group">
+    <a class="btn " href="{{ path('auteur') }}">
+        <i class="icon-chevron-left"></i> 
+        Back to the list
+    </a>
+</div>
+{% endblock %}

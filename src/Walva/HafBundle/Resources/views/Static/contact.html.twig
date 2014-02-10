@@ -1,0 +1,52 @@
+{% set current_page_name = 'contact' %}
+{% extends 'WalvaHafBundle:Article:public/layout.html.twig' %}
+
+
+
+
+{% block main_content -%}
+<h1>{{'Contact'|trans}}</h1>
+<hr>
+
+<h2>{{'Rédaction/Maquette'|trans}}</h2>
+<p>Diffu-Sciences - Rue de Rixensart, 18/17, 1332 GENVAL
+</p>
+<dl class="dl-horizontal">
+    <dt>{{'Rédacteur en chef'|trans}}</dt>
+    <dd>Dr Jean Andris</dd>
+    <dt>{{'Webmaster'|trans}}</dt>
+    <dd>Benjamin Ellis</dd>
+</dl>
+
+
+<h2> {{'Health and Food est une publication de Sciences Today'|trans}}</h2>
+<p>Rue Rixensart, 18/17 - 1332 GENVAL - Tél./Fax 02 / 653.21.58
+</p>
+<dl class="dl-horizontal">
+    <dt>{{'Editeur responsable'|trans}}</dt>
+    <dd>Danièle Degossely <br>
+        Rue de Rixensart, 18/17 <br>
+        1332 Genval - BELGIUM <br>
+        Tél./Fax 02/653.21.58
+    </dd>
+    <dt>{{'Tirage'|trans}}</dt>
+    <dd>{{'20.000 exemplaires'|trans}}  <br>
+        {{'Bimestriel destiné au corps médical - 8e année'|trans}}
+    </dd>
+</dl>
+
+<h2>{{'Régie Publicitaire'|trans}} </h2>
+<dl class="dl-horizontal">
+    <dt>{{'Medial'|trans}} </dt>
+    <dd>Alain Mathieu
+    </dd>
+    <dt>{{'Tél'|trans}}</dt>
+    <dd>010/88.94.48</dd>
+    <dt>{{'Email'|trans}}</dt>
+    <dd>media@swing.be</dd>
+</dl>
+
+
+{% endblock %}
+
+

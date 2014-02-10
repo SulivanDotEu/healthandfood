@@ -1,0 +1,70 @@
+{% extends 'WalvaHafBundle:Article:public/layout.html.twig' %}
+
+
+
+{% block breadcrumb %}
+{{ parent() }}
+<li class="active" style="font-size: 30px;">Article list</li>
+{% endblock %}
+
+
+
+
+{% block main_content -%}
+<h1 style="font-size: 30px;">{{ entity.titre }}</h1>
+<hr>
+<div  class="alignleft" style="max-width: 200px; margin-right: 20px"/>
+<img src="{{ asset(entity.image.webPath) }}"
+     alt="{{ entity.image.alt }}" />
+</div>
+<div id="cat-11" class="post-91 type-post status-publish format-standard hentry category-gastrologie ui-tabs-hide entry ui-tabs-panel ui-widget-content ui-corner-bottom"
+     aria-labelledby="ui-id-1" role="tabpanel" aria-expanded="true" aria-hidden="false" 
+     style="display: block;">
+
+   <span class="date published " title="">{{'Article publié le' | trans}} {{ entity.dateCreation|date("d/m/Y", "Europe/Paris") }}</span><br>
+   <span class="author vcard">
+      <span class="fn" >{{'Ecrit par' | trans}} <span style="color: #00D222">{{ entity.auteur }}</span>
+      </span>
+   </span>
+   <br>
+
+
+</div>
+<hr/>
+
+{{ entity.contenu | raw }}
+
+<hr/>
+
+
+<h3 style="font-size: 16px">{{'Informations supplémentaires' | trans}} :</h3>
+<dl class="dl-horizontal">
+   <dt>{{'Nombre de pages' | trans}}</dt>
+   <dd>{{entity.nombrePages}} </dd>
+   <dt>ISBN</dt>
+   <dd>{{entity.ISBN}} </dd>
+   <dt>{{'Edition' | trans}}</dt>
+   <dd>{{entity.edition}} </dd>
+   <dt>{{'Auteurs' | trans}}</dt>
+   <dd>{{entity.auteur}} </dd>
+   <dt>{{'Prix' | trans}}</dt>
+   <dd>{{entity.prix}} </dd>
+</dl>
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+{% block container_header_right %}
+<a class="btn btn-primary" href="{{ path('article_new') }}">
+   <i class="icon-plus icon-white"></i> 
+   Create a new entry
+</a>
+{% endblock %}

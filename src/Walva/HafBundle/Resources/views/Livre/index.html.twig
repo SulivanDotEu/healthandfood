@@ -1,0 +1,59 @@
+{% extends 'WalvaHafBundle:Livre:admin.html.twig' %}
+
+
+{% block breadcrumb %}
+{{ parent() }}
+<li class="active">Livre list</li>
+{% endblock %}
+
+
+{% block body -%}
+    <h1>Livre list</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>Nombrepages</th>
+                <th>ISBN</th>
+                <th>Edition</th>
+                <th>Prix</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('livre_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.titre }}</td>
+                <td>{{ entity.auteur }}</td>
+                <td>{{ entity.nombrePages }}</td>
+                <td>{{ entity.ISBN }}</td>
+                <td>{{ entity.edition }}</td>
+                <td>{{ entity.prix }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('livre_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('livre_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% endblock %}
+
+    
+    {% block container_header_right %}
+    <a class="btn btn-primary" href="{{ path('livre_new') }}">
+        <i class="icon-plus icon-white"></i> 
+        Create a new entry
+    </a>
+{% endblock %}

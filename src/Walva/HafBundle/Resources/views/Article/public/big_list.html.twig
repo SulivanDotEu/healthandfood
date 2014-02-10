@@ -1,0 +1,61 @@
+{% set current_page_name = 'article' %}
+{% extends 'WalvaHafBundle:Article:public/layout.html.twig' %}
+
+
+
+{% block breadcrumb %}
+{{ parent() }}
+<li class="active">Article list</li>
+{% endblock %}
+
+
+
+
+{% block main_content -%}
+<h1>{{'Nos articles et nouvelles'|trans}}</h1>
+<ul class="bigList">
+
+        <li>
+            <a href="{{path('article_public')}}">
+{{'Toutes nos publications'|trans}}</a>
+            </li>
+
+            
+</ul>
+<hr/>
+<h2>{{'La liste de nos catégories'|trans}}</h2>
+
+<ul class="bigList">
+{% for categorie in categories %}
+        <li>
+            <a href="{{path('article_public_list_categorie',
+{'id':categorie.id})}}">
+                {% if app.request.locale == "nl" %}
+                    {{categorie.nomNl}}
+                {% else %}
+                    {{categorie.nomFr}}
+                {% endif %}
+  </a>
+            </li>
+
+{% endfor %}
+            
+</ul>
+<hr/>
+<h2>{{'La liste de nos tags'|trans}}</h2>
+
+<ul class="bigList">
+{% for tag in tags %}
+    <li>
+        {{tag.contenuFr}}
+    </li>
+
+{% endfor %}
+</ul>
+<br><br>
+
+
+
+{% endblock %}
+
+

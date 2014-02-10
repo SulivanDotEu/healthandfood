@@ -1,0 +1,32 @@
+{% extends 'WalvaHafBundle:Livre:admin.html.twig' %}
+
+
+{% block breadcrumb %}
+{{ parent() }}
+<li class="active">Livre creation</li>
+{% endblock %}
+
+
+{% block body -%}
+<h1>Livre creation</h1>
+
+    {{ form(form) }}
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('livre') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}
+
+
+{% block container_header_right %}
+<div class="btn-group">
+    <a class="btn " href="{{ path('livre') }}">
+        <i class="icon-chevron-left"></i> 
+        Back to the list
+    </a>
+</div>
+{% endblock %}

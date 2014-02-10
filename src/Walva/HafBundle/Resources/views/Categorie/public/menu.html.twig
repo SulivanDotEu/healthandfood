@@ -1,0 +1,18 @@
+
+
+{% for entity in entities %}
+<li id="menu-item-69" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-69">
+    <a href="{{path('article_public_list_categorie',
+{'id':entity.id}) }}">
+        
+            {% if app.request.locale == "nl" %}
+                    {{entity.nomNl}}
+                {% else %}
+                    {{entity.nomFr}}
+                {% endif %}
+            </a>
+        </li>
+
+
+
+{% endfor %}

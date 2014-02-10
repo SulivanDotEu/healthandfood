@@ -1,0 +1,72 @@
+{% extends 'WalvaHafBundle:Reference:admin.html.twig' %}
+
+{% block breadcrumb %}
+{{ parent() }}
+<li class="active">Show</li>
+{% endblock %}
+
+{% block body -%}
+    <h1>Reference</h1>
+
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ entity.titre }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ entity.url }}</td>
+            </tr>
+            <tr>
+                <th>Doi</th>
+                <td>{{ entity.doi }}</td>
+            </tr>
+            <tr>
+                <th>Contenu</th>
+                <td>{{ entity.contenu }}</td>
+            </tr>
+            <tr>
+                <th>Datecreate</th>
+                <td>{{ entity.dateCreate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Datemodification</th>
+                <td>{{ entity.dateModification|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('reference') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('reference_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}
+
+    
+    
+{% block container_header_right %}
+<div class="btn-group">
+    <a class="btn " href="{{ path('reference') }}">
+        <i class="icon-chevron-left"></i> 
+        Back to the list
+    </a>
+    <a class="btn " href="{{ path('reference_edit', { 'id': entity.id }) }}">
+         <i class="icon-pencil"></i> Edit</a>
+    </a>
+   
+</div>
+{% endblock %}

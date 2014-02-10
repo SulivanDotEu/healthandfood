@@ -1,0 +1,15 @@
+walva_haf_homepage:
+    pattern:  /
+    defaults: { _controller: WalvaHafBundle:PublicArticle:index }
+
+walva_haf_admin:
+    pattern:  /admin
+    defaults: { _controller: "WalvaHafBundle:Article:index" }
+    
+static_articles_et_nouvelles:
+    pattern:  /contact
+    defaults: { _controller: "WalvaHafBundle:StaticContent:contact" }
+    
+switchlocale:
+   pattern: /locale/{locale}
+   defaults: { _controller: WalvaHafBundle:PublicArticle:switchlocale }

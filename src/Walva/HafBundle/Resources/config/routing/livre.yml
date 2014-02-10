@@ -1,0 +1,30 @@
+livre:
+    pattern:  /
+    defaults: { _controller: "WalvaHafBundle:Livre:index" }
+
+livre_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "WalvaHafBundle:Livre:show" }
+
+livre_new:
+    pattern:  /new
+    defaults: { _controller: "WalvaHafBundle:Livre:new" }
+
+livre_create:
+    pattern:  /create
+    defaults: { _controller: "WalvaHafBundle:Livre:create" }
+    requirements: { _method: post }
+
+livre_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "WalvaHafBundle:Livre:edit" }
+
+livre_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "WalvaHafBundle:Livre:update" }
+    requirements: { _method: post|put }
+
+livre_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "WalvaHafBundle:Livre:delete" }
+    requirements: { _method: post|delete }

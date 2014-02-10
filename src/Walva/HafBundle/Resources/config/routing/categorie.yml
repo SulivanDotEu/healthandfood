@@ -1,0 +1,30 @@
+categorie:
+    pattern:  /
+    defaults: { _controller: "WalvaHafBundle:Categorie:index" }
+
+categorie_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "WalvaHafBundle:Categorie:show" }
+
+categorie_new:
+    pattern:  /new
+    defaults: { _controller: "WalvaHafBundle:Categorie:new" }
+
+categorie_create:
+    pattern:  /create
+    defaults: { _controller: "WalvaHafBundle:Categorie:create" }
+    requirements: { _method: post }
+
+categorie_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "WalvaHafBundle:Categorie:edit" }
+
+categorie_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "WalvaHafBundle:Categorie:update" }
+    requirements: { _method: post|put }
+
+categorie_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "WalvaHafBundle:Categorie:delete" }
+    requirements: { _method: post|delete }

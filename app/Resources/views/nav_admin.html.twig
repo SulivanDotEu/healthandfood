@@ -1,0 +1,131 @@
+<div class="nav-collapse">
+    <ul class="nav">
+        <li class=""><a href="#"><i class="icon-home"></i> Accueil</a></li>
+
+        <ul class="nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+                    <i class="icon-wrench">
+                    </i> Tools 
+                    <b class="caret"></b>
+                </a>
+
+                <ul class="dropdown-menu">
+
+                    <li class="dropdown-submenu">
+                        <a href="{{ path("image") }}"><i class="icon-picture"></i> Image</a>
+                        <ul class="dropdown-menu">
+                            <li class=""><a href="{{ path("image") }}" class="disabled" ><i class="icon-list"></i> List</a></li>
+                            <li class=""><a href="{{ path("image_new") }}" class="disabled"><i class="icon-plus"></i> Article</a></li>
+                           
+                        </ul>
+                    </li>
+                     <li class=""><a href="#" class="disabled"><i class="icon-th-large"></i> Dashboard</a></li>
+
+
+                </ul>
+            </li>
+
+
+        </ul>
+
+
+
+
+        <!-- Article -->
+
+        <ul class="nav">
+            <li class="dropdown">
+
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-file"></i> Article <b class="caret"></b>
+
+                </a>
+                <ul class="dropdown-menu">
+                    <li class=""><a href="{{ path('article') }}"><i class="icon-list"></i> List</a></li>
+                    <li class=""><a href="{{ path('article_new') }}"><i class="icon-plus"></i> Create</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-submenu">
+                        <a href="{{ path('tag') }}"><i class="icon-tags"></i> Tag</a>
+                        <ul class="dropdown-menu">
+                            <li class=""><a href="{{ path('tag') }}"><i class="icon-list"></i> List</a></li>
+                            <li class=""><a href="{{ path('tag_new') }}"><i class="icon-plus"></i> Create</a></li>
+
+                        </ul>
+                    </li>
+
+
+                    <li class="dropdown-submenu">
+                        <a href="{{ path('reference') }}"><i class="icon-bookmark"></i> Reference</a>
+                        <ul class="dropdown-menu">
+                            <li class=""><a href="{{ path('reference') }}"><i class="icon-list"></i> List</a></li>
+                            <li class=""><a href="{{ path('reference_new') }}"><i class="icon-plus"></i> Create</a></li>
+
+                        </ul>
+                    </li>
+
+                    <li class="dropdown-submenu">
+                        <a href="{{ path('auteur') }}"><i class="icon-user"></i> Auteur</a>
+                        <ul class="dropdown-menu">
+                            <li class=""><a href="{{ path('auteur') }}"><i class="icon-list"></i> List</a></li>
+                            <li class=""><a href="{{ path('auteur_new') }}"><i class="icon-plus"></i> Create</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a href="{{ path('categorie') }}"><i class="icon-folder-open"></i> Categorie</a>
+                        <ul class="dropdown-menu">
+                            <li class=""><a href="{{ path('categorie') }}"><i class="icon-list"></i> List</a></li>
+                            <li class=""><a href="{{ path('categorie_new') }}"><i class="icon-plus"></i> Create</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- Livre -->
+
+        <ul class="nav">
+            <li class="dropdown">
+
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book"></i> Livre <b class="caret"></b>
+
+                </a>
+                <ul class="dropdown-menu">
+                    <li class=""><a href="{{ path('livre') }}"><i class="icon-list"></i> List</a></li>
+                    <li class=""><a href="{{ path('livre_new') }}"><i class="icon-plus"></i> Create</a></li>
+
+                </ul>
+            </li>
+        </ul>
+
+        <!-- EVENEMENT -->
+        <ul class="nav">
+            <li class="dropdown">
+
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-calendar"></i> Evenement <b class="caret"></b>
+
+                </a>
+                <ul class="dropdown-menu">
+                    <li class=""><a href="{{ path('livre') }}"><i class="icon-list"></i> List</a></li>
+                    <li class=""><a href="{{ path('livre_new') }}"><i class="icon-plus"></i> Create</a></li>
+
+                </ul>
+            </li>
+        </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+    </ul>
+
+</div><!--/.nav-collapse -->

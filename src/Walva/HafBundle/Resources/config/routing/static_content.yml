@@ -1,0 +1,7 @@
+static_articles_et_nouvelles:
+    pattern:  /article_et_nouvelles
+    defaults: { _controller: "WalvaHafBundle:StaticContent:ArticleEtNouvelles" }
+
+haf_contact:
+    pattern:  /contact
+    defaults: { _controller: "WalvaHafBundle:StaticContent:Contact" }

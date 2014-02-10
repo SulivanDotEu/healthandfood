@@ -1,0 +1,47 @@
+w_haf:
+    resource: "@WalvaHafBundle/Resources/config/routing.yml"
+    prefix:   /
+
+w_haf_static:
+    resource: "@WalvaHafBundle/Resources/config/routing/static_content.yml"
+    prefix:   /{langue}
+
+w_haf_article:
+        resource: "@WalvaHafBundle/Resources/config/routing/article.yml"
+        prefix:   /admin/article
+        
+w_haf_article_public:
+        resource: "@WalvaHafBundle/Resources/config/routing/article_public.yml"
+        prefix:   /article
+
+w_haf_reference:
+        resource: "@WalvaHafBundle/Resources/config/routing/reference.yml"
+        prefix:   /admin/reference
+        
+w_haf_tag:
+        resource: "@WalvaHafBundle/Resources/config/routing/tag.yml"
+        prefix:   /admin/tag
+
+w_haf_auteur:
+        resource: "@WalvaHafBundle/Resources/config/routing/auteur.yml"
+        prefix:   /admin/auteur
+        
+w_haf_image:
+        resource: "@WalvaHafBundle/Resources/config/routing/image.yml"
+        prefix:   /admin/image
+        
+w_haf_categorie:
+        resource: "@WalvaHafBundle/Resources/config/routing/categorie.yml"
+        prefix:   /admin/categorie
+        
+w_haf_categorie_public:
+        resource: "@WalvaHafBundle/Resources/config/routing/categorie_public.yml"
+        prefix:   /categorie
+        
+w_haf_livre:
+        resource: "@WalvaHafBundle/Resources/config/routing/livre.yml"
+        prefix:   /admin/livre
+        
+w_haf_livre_public:
+        resource: "@WalvaHafBundle/Resources/config/routing/livre_public.yml"
+        prefix:   /livre

@@ -1,0 +1,26 @@
+{% extends 'WalvaHafBundle:Tag:admin.html.twig' %}
+
+
+{% block breadcrumb %}
+{{ parent() }}
+<li class="active">Tag list</li>
+{% endblock %}
+
+
+
+{% block body -%}
+<h1>Tag creation</h1>
+
+    {{ form(form) }}   
+
+{% endblock %}
+
+
+    {% block container_header_right %}
+<div class="btn-group">
+    <a class="btn " href="{{ path('tag') }}">
+        <i class="icon-chevron-left"></i> 
+        Back to the list
+    </a>
+</div>
+{% endblock %}

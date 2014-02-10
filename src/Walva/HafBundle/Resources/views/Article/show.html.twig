@@ -1,0 +1,79 @@
+{% extends 'WalvaHafBundle:Article:admin.html.twig' %}
+
+
+{% block breadcrumb %}
+{{ parent() }}
+<li class="active">Show</li>
+{% endblock %}
+
+{% block body -%}
+<h1>Article</h1>
+
+<table class="table table-striped">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Langue</th>
+            <td>{{ entity.langue }}</td>
+        </tr>
+        <tr>
+            <th>Titre</th>
+            <td>{{ entity.titre }}</td>
+        </tr>
+        <tr>
+            <th>Resume</th>
+            <td>{{ entity.Resume}}</td>
+        </tr>
+        <tr>
+            <th>Contenu</th>
+            <td>{{ entity.contenu | raw }}</td>
+        </tr>
+        <tr>
+            <th>Auteur</th>
+            <td>{{ entity.auteur }}</td>
+        </tr>
+        <tr>
+            <th>Tags</th>
+            <td>
+{% if entity.tag is not null %}
+            {% for tag in entity.tag %}
+                    <span class="label label-success">{{ tag }}</span>
+            {% endfor %}
+
+            {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>
+                        {% if entity.image is not null %}
+                        <div style="max-width: 500px;">
+
+                            <img src="{{ asset(entity.image.webPath) }}"
+                                 alt="{{ entity.image.alt }}" />
+
+                        </div>
+        {% endif %}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+{% endblock %}
+
+{% block container_header_right %}
+
+        <div class="btn-group">
+            <a class="btn " href="{{ path('article') }}">
+                <i class="icon-chevron-left"></i> 
+                Back to the list
+            </a>
+            <a class="btn " href="{{ path('article_edit', { 'id': entity.id }) }}">
+                <i class="icon-pencil"></i> Edit</a>
+        </a>
+
+    </div>
+{% endblock %}

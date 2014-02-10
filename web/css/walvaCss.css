@@ -1,0 +1,54 @@
+/* 
+    Document   : walvaCss
+    Created on : 27-août-2013, 14:01:20
+    Author     : Benjamin
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+.myContent{
+    border-left: 1px solid #d5d5d5;
+    border-right: 1px solid #d5d5d5;
+    border-bottom: 1px solid #d5d5d5;
+    overflow: hidden;
+    margin: 0 auto;
+    background-color: white;
+}
+
+#header { background: url(../img/haf_logo.png) no-repeat;
+          height: 140px;
+}
+
+.sousMenuDroite{
+    border-bottom: 1px solid #eee;
+    list-style-type: none;
+    margin: 0 0 7px;
+    padding: 0 0 5px 15px;
+    word-wrap: break-word;
+}
+
+.bigList li:hover {
+    background-color: #00D222;
+    color: white;
+}
+
+.bigList li a:hover{
+    text-decoration: none;
+    color: white;
+}
+
+.bigList li a{
+    text-decoration: none;
+    color: black;
+}
+    
+.bigList li {
+    list-style: none;
+    display: inline;
+    padding: 6px;
+    margin: 6px;
+    color: black;
+    background-color: rgb(218, 218, 218);
+    font-weight: bold;
+}

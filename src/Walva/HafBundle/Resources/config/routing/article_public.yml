@@ -1,0 +1,45 @@
+article_public:
+    pattern:  /
+    defaults: { _controller: "WalvaHafBundle:PublicArticle:index" }
+
+article_big_list:
+    pattern:  /articles_et_nouvelles
+    defaults: { _controller: "WalvaHafBundle:PublicArticle:bigList" }
+
+    
+article_public_list:
+    pattern:  /page/{page}
+    defaults: { _controller: "WalvaHafBundle:PublicArticle:index" }
+
+
+
+article_public_list_tag:
+    pattern:  /tag/{id}
+    defaults: { _controller: "WalvaHafBundle:PublicArticle:listByTag" }
+
+article_public_list_tag_and_page:
+    pattern:  /tag/{id}/page/{page}
+    defaults: { _controller: "WalvaHafBundle:PublicArticle:listByTag" }
+
+article_public_list_categorie:
+    pattern:  /cat/{id}
+    defaults: { _controller: "WalvaHafBundle:PublicArticle:listByCategorie" }
+
+article_public_list_categorie_and_page:
+    pattern:  /cat/{id}/page/{page}
+    defaults: { _controller: "WalvaHafBundle:PublicArticle:listByCategorie" }
+
+article_public_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "WalvaHafBundle:PublicArticle:show" }
+
+
+    
+    
+####ROUTE LIST
+
+
+
+article_public_list_search:
+    pattern: /search/{value}/{page}
+    defaults: { _controller: "WalvaHafBundle:ArticleList:search", 'page':1, 'value':null }

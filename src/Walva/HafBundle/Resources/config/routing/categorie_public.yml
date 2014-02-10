@@ -1,0 +1,11 @@
+categorie_public:
+    pattern:  /
+    defaults: { _controller: "WalvaHafBundle:Categorie:index" }
+
+categorie_public_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "WalvaHafBundle:Categorie:show" }
+
+categorie_public_menu:
+    pattern:  /submenu
+    defaults: { _controller: "WalvaHafBundle:Categorie:menu" }

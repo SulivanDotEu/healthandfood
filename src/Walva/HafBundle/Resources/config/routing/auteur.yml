@@ -1,0 +1,30 @@
+auteur:
+    pattern:  /
+    defaults: { _controller: "WalvaHafBundle:Auteur:index" }
+
+auteur_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "WalvaHafBundle:Auteur:show" }
+
+auteur_new:
+    pattern:  /new
+    defaults: { _controller: "WalvaHafBundle:Auteur:new" }
+
+auteur_create:
+    pattern:  /create
+    defaults: { _controller: "WalvaHafBundle:Auteur:create" }
+    requirements: { _method: post }
+
+auteur_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "WalvaHafBundle:Auteur:edit" }
+
+auteur_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "WalvaHafBundle:Auteur:update" }
+    requirements: { _method: post|put }
+
+auteur_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "WalvaHafBundle:Auteur:delete" }
+    requirements: { _method: post|delete }

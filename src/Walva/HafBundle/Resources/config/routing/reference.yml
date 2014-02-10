@@ -1,0 +1,30 @@
+reference:
+    pattern:  /
+    defaults: { _controller: "WalvaHafBundle:Reference:index" }
+
+reference_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "WalvaHafBundle:Reference:show" }
+
+reference_new:
+    pattern:  /new
+    defaults: { _controller: "WalvaHafBundle:Reference:new" }
+
+reference_create:
+    pattern:  /create
+    defaults: { _controller: "WalvaHafBundle:Reference:create" }
+    requirements: { _method: post }
+
+reference_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "WalvaHafBundle:Reference:edit" }
+
+reference_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "WalvaHafBundle:Reference:update" }
+    requirements: { _method: post|put }
+
+reference_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "WalvaHafBundle:Reference:delete" }
+    requirements: { _method: post|delete }

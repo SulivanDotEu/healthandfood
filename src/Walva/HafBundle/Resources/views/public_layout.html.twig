@@ -6,10 +6,11 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fr-FR" xml:lang="fr-FR" >
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ app.request.locale }}" xml:lang="{{ app.request.locale }}" >
     <head >
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Language" content="{{ app.request.locale }}" /> 
 
         <title>{% block title %}Health And Food : {% block title_supp %}Votre magazine Nutrition, Diététique et Santé{% endblock %}{% endblock %}</title>        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" />
@@ -64,7 +65,8 @@
                 <div class="span12" style="">
 
                     <div  id="header" style=" background-color: white; height: auto;">
-                        <div class="span7 offset5" style="width: 100%">
+                        <div class="row">
+                        <div class="span8 offset4">
                             {% if app.request.locale == 'fr' %}
                             <a href="http://www.idsymposium2014.be/">
                                 <img src="{{ asset('img/danone_fev.jpg') }}" alt="DANONE Congrès de Boston 2013: un premier sommet scientifique consacré au yaourt"></img>
@@ -83,6 +85,7 @@
                             </a>
 {% endif %}
 
+                        </div>
                         </div>
                         <!--
                     <div id="title-area">
@@ -215,6 +218,7 @@
 {% endif %}
 
                                     <br>
+                                        <div class="hidden-phone">
                                         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                                         <!-- HAF FR droite -->
                                         <ins class="adsbygoogle"
@@ -224,7 +228,7 @@
                                         <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
                                         </script>
-
+                                        </div>
 
 
                                 </div>

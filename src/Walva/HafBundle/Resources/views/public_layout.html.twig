@@ -31,7 +31,7 @@
     </head>
 
     <body class="page page-id-111 page-template-default  header-image full-width-content" style="min-height: 100%">
-        <div class="container" > 
+        <div class="container header" > 
             <div class="row" style="">
                 <div id="subnav">
                     <!--
@@ -64,14 +64,22 @@
                 <div class="span12" style="">
 
                     <div  id="header" style=" background-color: white; height: auto;">
-                        <div class="span8 offset4" style="">
+                        <div class="span7 offset5" style="width: 100%">
                             {% if app.request.locale == 'fr' %}
-                            <a href="http://www.danonehealth.be/befr/visiteur/?ref=1305">
-                                <img src="{{ asset('img/danone.jpg') }}" alt="DANONE Congrès de Boston 2013: un premier sommet scientifique consacré au yaourt"></img>
+                            <a href="http://www.idsymposium2014.be/">
+                                <img src="{{ asset('img/danone_fev.jpg') }}" alt="DANONE Congrès de Boston 2013: un premier sommet scientifique consacré au yaourt"></img>
+                                <br>
+                                    <div>
+                                        <a class="btn btn-success" href="http://www.idsymposium2014.be/">Register now !</a>
+                                    </div>
                             </a>
 {% elseif app.request.locale == 'nl' %}
-                            <a href="http://www.danonehealth.be/benl/bezoeker/?ref=1118">
-                                <img src="{{ asset('img/danone_nl.jpg') }}" alt="DANONE Congrès de Boston 2013: un premier sommet scientifique consacré au yaourt"></img>
+                            <a href="http://www.idsymposium2014.be/">
+                                <img src="{{ asset('img/danone_fev.jpg') }}" alt="DANONE Congrès de Boston 2013: un premier sommet scientifique consacré au yaourt"></img>
+                                <br>
+                                    <div>
+                                        <a class="btn btn-success" href="http://www.idsymposium2014.be/">Register now !</a>
+                                    </div>
                             </a>
 {% endif %}
 
@@ -186,7 +194,7 @@
                                 <div style="">
                                     <h4>Recherche</h4>
 {{ render(controller("WalvaHafBundle:PublicArticle:searchForm")) }}
-                                    
+
 {{ render(controller("WalvaHafBundle:PublicArticle:menu", {nombre :3})) }}
                                     <br/>
 {{ render(controller("WalvaHafBundle:PublicLivre:menu", {nombre :3})) }}
@@ -207,6 +215,15 @@
 {% endif %}
 
                                     <br>
+                                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                        <!-- HAF FR droite -->
+                                        <ins class="adsbygoogle"
+                                             style="display:inline-block;width:160px;height:600px"
+                                             data-ad-client="ca-pub-7964103522268425"
+                                             data-ad-slot="5219023170"></ins>
+                                        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+                                        </script>
 
 
 

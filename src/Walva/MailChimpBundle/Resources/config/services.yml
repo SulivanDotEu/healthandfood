@@ -1,0 +1,7 @@
+parameters:
+#    walva_mail_chimp.example.class: Walva\MailChimpBundle\Example
+
+services:
+#    walva_mail_chimp.example:
+#        class: %walva_mail_chimp.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

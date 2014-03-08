@@ -17,6 +17,9 @@ class AppKernel extends Kernel {
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Walva\HafBundle\WalvaHafBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Walva\MailChimpBundle\WalvaMailChimpBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new Walva\UserBundle\WalvaUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

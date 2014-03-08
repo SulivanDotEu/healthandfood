@@ -21,7 +21,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         
         "stof/doctrine-extensions-bundle": "~1.1@dev",
-        "winzou/console-bundle": "1.*"
+        "winzou/console-bundle": "1.*",
+        "friendsofsymfony/user-bundle": "~2.0@dev"
     },
     "scripts": {
         "post-install-cmd": [

@@ -53,6 +53,6 @@
     font-weight: bold;
 }
 
-.header .btn,.header .btn:visited{
+.header > .btn,.header .btn:visited{
     color: white;
 } 

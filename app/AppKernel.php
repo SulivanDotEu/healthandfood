@@ -20,6 +20,9 @@ class AppKernel extends Kernel {
             new Walva\MailChimpBundle\WalvaMailChimpBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Walva\UserBundle\WalvaUserBundle(),
+            new Walva\VideoBundle\WalvaVideoBundle(),
+            new Walva\CrudAdminBundle\WalvaCrudAdminBundle(),
+            new Walva\CrudGeneratorBundle\WalvaCrudGeneratorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

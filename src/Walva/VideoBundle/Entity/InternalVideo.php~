@@ -1,0 +1,62 @@
+<?php
+
+namespace Walva\VideoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * InternalVideo
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Walva\VideoBundle\Entity\InternalVideoRepository")
+ */
+class InternalVideo extends AbstractVideo
+{
+
+    /**
+     * @var \stdClass
+     *
+     * @ORM\OneToMany(
+     *      targetEntity="Walva\VideoBundle\Entity\Source",
+     *      cascade={"all"},
+     *      mappedBy="video"
+     *      )
+     */
+    private $sources;
+
+
+
+    
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return parent::getId();
+    }
+
+    /**
+     * Set sources
+     *
+     * @param \stdClass $sources
+     * @return InternalVideo
+     */
+    public function setSources($sources)
+    {
+        $this->sources = $sources;
+    
+        return $this;
+    }
+
+    /**
+     * Get sources
+     *
+     * @return \stdClass 
+     */
+    public function getSources()
+    {
+        return $this->sources;
+    }
+}

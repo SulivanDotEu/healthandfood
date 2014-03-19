@@ -12,18 +12,19 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/healthandfood/app/config/config.yml</file>
-            <file>file:/C:/wamp/www/healthandfood/src/Walva/MailChimpBundle/Controller/FormController.php</file>
-            <file>file:/C:/wamp/www/healthandfood/app/config/parameters.yml</file>
-            <file>file:/C:/wamp/www/healthandfood/src/Walva/HafBundle/Resources/config/services.yml</file>
-            <file>file:/C:/wamp/www/healthandfood/src/Walva/HafBundle/Resources/translations/messages.nl.yml</file>
-            <file>file:/C:/wamp/www/healthandfood/app/config/parameters_3.yml</file>
-            <file>file:/C:/wamp/www/healthandfood/src/Walva/HafBundle/Controller/PublicArticleController.php</file>
-            <file>file:/C:/wamp/www/healthandfood/src/Walva/HafBundle/Resources/views/public_layout.html.twig</file>
-            <file>file:/C:/wamp/www/healthandfood/src/Walva/HafBundle/Resources/translations/messages.fr.yml</file>
-            <file>file:/C:/wamp/www/healthandfood/src/Walva/HafBundle/EventListener/LocaleListener.php</file>
-            <file>file:/C:/wamp/www/healthandfood/app/config/parameters.yml.dist</file>
-            <file>file:/C:/wamp/www/healthandfood/src/Walva/HafBundle/Entity/Article.php</file>
+            <file>file:/C:/wamp/www/healthandfood/src/Walva/VideoBundle/Controller/InternalVideoController.php</file>
+            <file>file:/C:/wamp/www/healthandfood/src/Walva/VideoBundle/Resources/views/InternalVideo/index.html.twig</file>
+            <file>file:/C:/wamp/www/healthandfood/src/Walva/VideoBundle/Resources/views/InternalVideo/layout.html.twig</file>
+            <file>file:/C:/wamp/www/healthandfood/src/Walva/CrudAdminBundle/Resources/views/Crud/edit.html.twig</file>
+            <file>file:/C:/wamp/www/healthandfood/src/Walva/VideoBundle/Resources/views/InternalVideo/show.html.twig</file>
+            <file>file:/C:/wamp/www/healthandfood/src/Walva/CrudAdminBundle/Resources/views/Crud/layout.html2.twig</file>
+            <file>file:/C:/wamp/www/healthandfood/src/Walva/CrudAdminBundle/Resources/views/Crud/index.html.twig</file>
+            <file>file:/C:/wamp/www/healthandfood/app/Resources/views/crud_admin.html.twig</file>
+            <file>file:/C:/wamp/www/healthandfood/src/Walva/VideoBundle/Resources/views/layout.html.twig</file>
+            <file>file:/C:/wamp/www/healthandfood/src/Walva/CrudAdminBundle/Controller/CrudController.php</file>
+            <file>file:/C:/wamp/www/healthandfood/src/Walva/CrudAdminBundle/Resources/views/Crud/show.html.twig</file>
+            <file>file:/C:/wamp/www/healthandfood/src/Walva/VideoBundle/Resources/views/InternalVideo/edit.html.twig</file>
+            <file>file:/C:/wamp/www/healthandfood/web/css/admin.css</file>
         </group>
     </open-files>
 </project-private>

@@ -1,0 +1,8 @@
+WalvaVideoBundle_internalvideo:
+    resource: "@WalvaVideoBundle/Resources/config/routing/internalvideo.yml"
+    prefix:   /admin/internalvideo
+
+WalvaVideoBundle_description:
+    resource: "@WalvaVideoBundle/Resources/config/routing/description.yml"
+    prefix:   /admin/video/description
+

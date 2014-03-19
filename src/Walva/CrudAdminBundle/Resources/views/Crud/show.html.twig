@@ -1,0 +1,40 @@
+{% extends layoutPath %}
+
+
+{% block breadcrumb %}
+{{ parent() }}
+<li class="active">show</li>
+{% endblock %}
+
+{% block body %}
+
+{% block crud_top_button %}
+<div  style="padding-bottom: 10px;">
+    <div class="pull-left" style="padding-bottom: 10px;">
+        <a href="{{ path(routeIndex) }}" class="btn btn-default btn">
+            <span class="glyphicon glyphicon-chevron-left"></span> 
+            Back to the list
+        </a>
+    </div>
+
+    <div class="pull-right" style="padding-bottom: 10px;">
+
+        <div class="btn-group">
+            <a href="{{ path(routeEdit, { 'id': entity.id }) }}" class="btn btn-default btn"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+            <a href="{{ path(routeEdit, { 'id': entity.id }) }}" class="btn btn-default btn"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+        </div>
+
+    </div>
+
+
+</div>
+{% endblock %}
+
+<table class="table table-stripped">
+    <tbody>
+            {% block crud_table_body %}
+            {% endblock %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends layoutPath %}
+
+{% block body %}
+
+{% block crud_top_button %}
+<div style="padding-bottom: 44px;"> 
+    <div class="pull-left" style="padding-bottom: 10px;">
+        <a href="{{ path(routeIndex) }}" class="btn btn-default">
+            <span class="glyphicon glyphicon-chevron-left"></span> 
+            Back to the list
+        </a>
+    </div>
+
+</div>
+{% endblock %}
+
+<div>
+
+    {{ form(form) }}
+
+   
+</div>
+{% endblock %}

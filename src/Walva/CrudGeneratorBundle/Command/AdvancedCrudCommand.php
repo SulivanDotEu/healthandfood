@@ -16,36 +16,42 @@ use Sensio\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator;
  *
  * @author Benjamin Ellis
  */
-class AdvancedCrudCommand extends GenerateDoctrineCrudCommand{
-    
-    protected $generator;
- 
-    protected function configure()
-    {
+class AdvancedCrudCommand extends GenerateDoctrineCrudCommand {
+
+    //protected $generator;
+
+    protected function configure() {
         parent::configure();
- 
+
         $this->setName('walva:generate:crud');
         $this->setDescription('Advanced crud generator!');
     }
-    
+
     /*
-    protected function getGenerator(Symfony\Component\HttpKernel\Bundle\BundleInterface $bundle = NULL)
-    {
+    protected function getGenerator(\Symfony\Component\HttpKernel\Bundle\BundleInterface $bundle = null) {
         if (null === $this->generator) {
-            $this->generator = new DoctrineCrudGenerator($this->getContainer()->get('filesystem'), __DIR__.'/../Resources/skeleton/crud');
+            $this->generator =
+                    new DoctrineCrudGenerator($this->getContainer()->get('filesystem'), __DIR__ . '/../Resources/skeleton/crud');
         }
- 
+
         return $this->generator;
     }
-    
+
     /*
-    protected function createGenerator($bundle = null)
-    {
-        return new \Walva\CrudGeneratorBundle\Generator\DoctrineCrudGenerator($this->getContainer()->get('filesystem'));
-    }
+      protected function getGenerator(Symfony\Component\HttpKernel\Bundle\BundleInterface $bundle = NULL)
+      {
+      if (null === $this->generator) {
+      $this->generator = new DoctrineCrudGenerator($this->getContainer()->get('filesystem'), __DIR__.'/../Resources/skeleton/crud');
+      }
+
+      return $this->generator;
+      }
+
+      /*
+      protected function createGenerator($bundle = null)
+      {
+      return new \Walva\CrudGeneratorBundle\Generator\DoctrineCrudGenerator($this->getContainer()->get('filesystem'));
+      }
      * 
      */
-    
-
-    
 }

@@ -1,30 +1,30 @@
-abstractvideo:
+abstract_video:
     pattern:  /
     defaults: { _controller: "WalvaVideoBundle:AbstractVideo:index" }
 
-abstractvideo_show:
+abstract_video_show:
     pattern:  /{id}/show
     defaults: { _controller: "WalvaVideoBundle:AbstractVideo:show" }
 
-abstractvideo_new:
+abstract_video_new:
     pattern:  /new
     defaults: { _controller: "WalvaVideoBundle:AbstractVideo:new" }
 
-abstractvideo_create:
+abstract_video_create:
     pattern:  /create
     defaults: { _controller: "WalvaVideoBundle:AbstractVideo:create" }
     requirements: { _method: post }
 
-abstractvideo_edit:
+abstract_video_edit:
     pattern:  /{id}/edit
     defaults: { _controller: "WalvaVideoBundle:AbstractVideo:edit" }
 
-abstractvideo_update:
+abstract_video_update:
     pattern:  /{id}/update
     defaults: { _controller: "WalvaVideoBundle:AbstractVideo:update" }
     requirements: { _method: post|put }
 
-abstractvideo_delete:
+abstract_video_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "WalvaVideoBundle:AbstractVideo:delete" }
     requirements: { _method: post|delete }

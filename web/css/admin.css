@@ -97,3 +97,12 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
     background-color: #468847;
     border-color: #468847;
 }
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
+    color: #fff;
+    background-color: #325833;
+}
+
+.bepark-nav .navbar-toggle {
+    border-color: #2F6430;
+}

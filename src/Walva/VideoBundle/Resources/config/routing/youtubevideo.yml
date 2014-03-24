@@ -1,0 +1,30 @@
+video_youtube:
+    pattern:  /
+    defaults: { _controller: "WalvaVideoBundle:YoutubeVideo:index" }
+
+video_youtube_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "WalvaVideoBundle:YoutubeVideo:show" }
+
+video_youtube_new:
+    pattern:  /new
+    defaults: { _controller: "WalvaVideoBundle:YoutubeVideo:new" }
+
+video_youtube_create:
+    pattern:  /create
+    defaults: { _controller: "WalvaVideoBundle:YoutubeVideo:create" }
+    requirements: { _method: post }
+
+video_youtube_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "WalvaVideoBundle:YoutubeVideo:edit" }
+
+video_youtube_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "WalvaVideoBundle:YoutubeVideo:update" }
+    requirements: { _method: post|put }
+
+video_youtube_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "WalvaVideoBundle:YoutubeVideo:delete" }
+    requirements: { _method: post|delete }

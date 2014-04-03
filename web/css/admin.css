@@ -15,7 +15,7 @@ and open the template in the editor.
     box-shadow: 0 1px 0 rgba(255,255,255,.1);
 }
 .bepark-nav .navbar-collapse {
-    border-color: #2B632C;
+    border-color: #357536;
 }
 .bepark-nav .navbar-brand {
     color: #fff;
@@ -32,7 +32,7 @@ and open the template in the editor.
     background-color: #386B39;
 }
 .bepark-nav .navbar-toggle {
-    border-color: #563d7c;
+    border-color: #FFFFFF;
 }
 .bepark-nav .navbar-toggle:hover {
     background-color: #2B632C;
@@ -96,4 +96,12 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
     color: #fff;
     background-color: #468847;
     border-color: #468847;
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+    color: white;
+}
+
+.navbar-inverse .navbar-nav>.open>a {
+    background-color: #386B39;
 }

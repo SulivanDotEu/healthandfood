@@ -13,7 +13,7 @@ use \Walva\CrudAdminBundle\Controller\CrudController;
  * InternalVideo controller.
  *
  */
-class InternalVideoController extends \Walva\CrudAdminBundle\Controller\CrudController
+class InternalVideoController extends CrudController
 {
     function __construct() {
         $this->setRoutes(array(

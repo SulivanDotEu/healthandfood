@@ -10,6 +10,7 @@ namespace Walva\CrudGeneratorBundle\Command;
 
 use Sensio\Bundle\GeneratorBundle\Command\GenerateDoctrineCrudCommand;
 use Sensio\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator;
+use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 
 /**
  * Description of AdvancedCrudCommand
@@ -25,6 +26,27 @@ class AdvancedCrudCommand extends GenerateDoctrineCrudCommand {
 
         $this->setName('walva:generate:crud');
         $this->setDescription('Advanced crud generator!');
+    }
+    
+    protected function getSkeletonDirs(BundleInterface $bundle = null)
+    {
+        $skeletonDirs = array();
+
+        var_dump($bundle->getPath().'/Resources/SensioGeneratorBundle/skeleton');
+        if (isset($bundle) && is_dir($dir = $bundle->getPath().'/Resources/SensioGeneratorBundle/skeleton')) {
+            $skeletonDirs[] = $dir;
+        }
+
+        if (is_dir($dir = $this->getContainer()->get('kernel')->getRootdir().'/Resources/SensioGeneratorBundle/skeleton')) {
+            $skeletonDirs[] = $dir;
+        }
+
+        $skeletonDirs[] = __DIR__.'/../Resources/skeleton';
+        $skeletonDirs[] = __DIR__.'/../Resources';
+
+        var_dump($skeletonDirs);
+        
+        return $skeletonDirs;
     }
 
     /*

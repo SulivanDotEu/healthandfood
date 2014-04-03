@@ -99,7 +99,7 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
 }
 
 .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
-    color: white;
+    //color: white;
 }
 
 .navbar-inverse .navbar-nav>.open>a {

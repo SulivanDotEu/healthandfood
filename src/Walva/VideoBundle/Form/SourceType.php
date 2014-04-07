@@ -16,7 +16,7 @@ class SourceType extends AbstractType
     {
         $builder
             ->add('type')
-            ->add('path')
+            ->add('file', 'file')
             ->add('audioLanguage')
             ->add('subtitlesLanguage')
             ->add('video')

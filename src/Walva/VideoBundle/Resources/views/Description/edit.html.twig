@@ -1,16 +1,13 @@
-{% extends '::base.html.twig' %}
+{% extends  'WalvaCrudAdminBundle:Crud:edit.html.twig' %}
 
-{% block body -%}
-    <h1>Description edit</h1>
+{% block javascripts %}
+{{ parent() }}
 
-    {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('description') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+<script type="text/javascript" src="{{ asset('js/tinymce/tinymce.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
+<script type="text/javascript">
+    window.onload = function() {
+        CKEDITOR.replace('walva_videobundle_description[description]');
+    };
+</script>
 {% endblock %}

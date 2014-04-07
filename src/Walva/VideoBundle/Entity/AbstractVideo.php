@@ -39,6 +39,34 @@ class AbstractVideo {
      *      fetch="EAGER")
      */
     private $descriptions;
+    
+    public function getTitleIn($language){
+        $description = $this->getDescriptionByLanguage($language);
+        return $description->getName();
+    }
+    
+    public function getDescriptionIn($language){
+        $description = $this->getDescriptionByLanguage($language);
+        return $description->getDescription();
+    }
+    
+    
+    /**
+     * 
+     * @param type $language
+     * @return Description
+     */
+    public function getDescriptionByLanguage($language){
+        static $response = null;
+        if($response != null) return $response;
+        foreach ($this->getDescriptions() as $description) {
+            /* @var $description Description */
+            if($description->getLanguage() == $language){
+                $response= $description;
+                return $description;
+            }
+        }
+    }
 
     /**
      * Constructor

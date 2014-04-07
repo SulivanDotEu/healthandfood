@@ -23,10 +23,10 @@ class InternalVideo extends AbstractVideo
      *      )
      */
     private $sources;
-
-
-
     
+    
+    
+
     /**
      * Get id
      *
@@ -89,4 +89,6 @@ class InternalVideo extends AbstractVideo
     {
         $this->sources->removeElement($sources);
     }
+    
+    
 }

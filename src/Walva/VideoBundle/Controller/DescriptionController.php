@@ -3,7 +3,7 @@
 namespace Walva\VideoBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use \Walva\CrudAdminBundle\Controller\CrudController as Controller;
 
 use Walva\VideoBundle\Entity\Description;
 use Walva\VideoBundle\Form\DescriptionType;
@@ -15,19 +15,46 @@ use Walva\VideoBundle\Form\DescriptionType;
 class DescriptionController extends Controller
 {
 
+function __construct() {
+    $this->setRoutes(array(
+        self::$ROUTE_INDEX_ADD => 'video_description_new',
+        self::$ROUTE_INDEX_INDEX => 'video_description',
+        self::$ROUTE_INDEX_DELETE => 'video_description_show',
+        self::$ROUTE_INDEX_EDIT => 'video_description_edit',
+        self::$ROUTE_INDEX_SHOW => 'video_description_show',
+    ));
+
+    $this->setLayoutPath('WalvaVideoBundle:Description:layout.html.twig');
+    $this->setIndexPath("WalvaVideoBundle:Description:index.html.twig");
+    $this->setShowPath("WalvaVideoBundle:Description:show.html.twig");
+    $this->setEditPath("WalvaVideoBundle:Description:edit.html.twig");
+    $this->setNewPath("WalvaVideoBundle:Description:new.html.twig");
+
+    $this->setColumnsHeader(array(
+        "Id",
+        "Langue",
+        "Name",
+        "Video",
+        ));
+}
+
+public function createEntity() {
+        return new Description();
+    }
+
+public function getRepository() {
+        $em = $this->getDoctrine()->getManager();
+        return $em->getRepository('WalvaVideoBundle:Description');
+    }
+
     /**
      * Lists all Description entities.
      *
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        return parent::indexAction();
 
-        $entities = $em->getRepository('WalvaVideoBundle:Description')->findAll();
-
-        return $this->render('WalvaVideoBundle:Description:index.html.twig', array(
-            'entities' => $entities,
-        ));
     }
     /**
      * Creates a new Description entity.
@@ -35,22 +62,8 @@ class DescriptionController extends Controller
      */
     public function createAction(Request $request)
     {
-        $entity = new Description();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
+        return parent::createAction($request);
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('description_show', array('id' => $entity->getId())));
-        }
-
-        return $this->render('WalvaVideoBundle:Description:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
     }
 
     /**
@@ -60,10 +73,10 @@ class DescriptionController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(Description $entity)
+    public function createCreateForm(Description $entity)
     {
         $form = $this->createForm(new DescriptionType(), $entity, array(
-            'action' => $this->generateUrl('description_create'),
+            'action' => $this->generateUrl('video_description_create'),
             'method' => 'POST',
         ));
 
@@ -78,13 +91,8 @@ class DescriptionController extends Controller
      */
     public function newAction()
     {
-        $entity = new Description();
-        $form   = $this->createCreateForm($entity);
+        return parent::newAction();
 
-        return $this->render('WalvaVideoBundle:Description:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
     }
 
     /**
@@ -93,19 +101,8 @@ class DescriptionController extends Controller
      */
     public function showAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
+        return parent::showAction($id);
 
-        $entity = $em->getRepository('WalvaVideoBundle:Description')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Description entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('WalvaVideoBundle:Description:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
     }
 
     /**
@@ -114,22 +111,8 @@ class DescriptionController extends Controller
      */
     public function editAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
+        return parent::editAction($id);
 
-        $entity = $em->getRepository('WalvaVideoBundle:Description')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Description entity.');
-        }
-
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('WalvaVideoBundle:Description:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
     }
 
     /**
@@ -139,10 +122,10 @@ class DescriptionController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Description $entity)
+    public function createEditForm(Description $entity)
     {
         $form = $this->createForm(new DescriptionType(), $entity, array(
-            'action' => $this->generateUrl('description_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('video_description_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -156,29 +139,8 @@ class DescriptionController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
-        $em = $this->getDoctrine()->getManager();
+        return parent::updateAction($request, $id);
 
-        $entity = $em->getRepository('WalvaVideoBundle:Description')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Description entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isValid()) {
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('description_edit', array('id' => $id)));
-        }
-
-        return $this->render('WalvaVideoBundle:Description:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
     }
     /**
      * Deletes a Description entity.
@@ -186,22 +148,8 @@ class DescriptionController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+return parent::deleteAction($request, $id);
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('WalvaVideoBundle:Description')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Description entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
-        }
-
-        return $this->redirect($this->generateUrl('description'));
     }
 
     /**
@@ -211,10 +159,10 @@ class DescriptionController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
+    public function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('description_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('video_description_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

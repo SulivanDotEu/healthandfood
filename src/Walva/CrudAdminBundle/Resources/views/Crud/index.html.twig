@@ -1,0 +1,56 @@
+{% extends layoutPath %}
+
+{% block body %}
+
+{% block crud_add_button %}
+<div class="pull-right">
+    <a href="{{ path(routeAdd) }}" class="btn btn-default">
+        <span class="glyphicon glyphicon-plus"></span> Create a new entry
+    </a>
+</div>
+{% endblock %}
+
+<table class="table table-list">
+    <thead>
+        <tr>
+                {% block crud_table_header %}
+                    {% for column in columns %}
+            <th>{{column}}</th>
+                    {% endfor %}
+            <th>Action</th>
+                {% endblock %}
+
+        </tr>
+    </thead>
+    <tbody>
+     {% block crud_table_body %}
+        {% for entity in entities %}
+            {% block crud_table_row %}
+        <tr>
+            {% block crud_table_row_content %}
+                {% for column in columns %}
+            <td>{{column}}</td>
+                {% endfor %}
+            {% endblock %}
+            <td>
+            {% block actions %}
+                <div class="btn-group">
+                    <a href="{{ path(routeShow, { 'id': entity.id }) }}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-new-window"></span> Show</a>
+                    <a href="{{ path(routeEdit, { 'id': entity.id }) }}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+                    <a href="{{ path(routeEdit, { 'id': entity.id }) }}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                </div>
+        {% endblock %}
+
+            </td>
+        </tr>
+            {% endblock %}
+
+
+
+        {% endfor %}
+      {% endblock %}
+    </tbody>
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,30 @@
+video_description:
+    pattern:  /
+    defaults: { _controller: "WalvaVideoBundle:Description:index" }
+
+video_description_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "WalvaVideoBundle:Description:show" }
+
+video_description_new:
+    pattern:  /new
+    defaults: { _controller: "WalvaVideoBundle:Description:new" }
+
+video_description_create:
+    pattern:  /create
+    defaults: { _controller: "WalvaVideoBundle:Description:create" }
+    requirements: { _method: post }
+
+video_description_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "WalvaVideoBundle:Description:edit" }
+
+video_description_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "WalvaVideoBundle:Description:update" }
+    requirements: { _method: post|put }
+
+video_description_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "WalvaVideoBundle:Description:delete" }
+    requirements: { _method: post|delete }

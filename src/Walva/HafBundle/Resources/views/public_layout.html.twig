@@ -70,18 +70,15 @@
                             {% if app.request.locale == 'fr' %}
                                 <a href="http://www.idsymposium2014.be/">
                                     <img src="{{ asset('img/danone_fev.jpg') }}" alt="DANONE Congrès de Boston 2013: un premier sommet scientifique consacré au yaourt"></img>
-                                    <br>
-                                        <div>
-                                            <a class="btn btn-success" href="http://www.idsymposium2014.be/">Register now !</a>
-                                        </div>
+                                    
                                 </a>
 {% elseif app.request.locale == 'nl' %}
                                 <a href="http://www.idsymposium2014.be/">
                                     <img src="{{ asset('img/danone_fev.jpg') }}" alt="DANONE Congrès de Boston 2013: un premier sommet scientifique consacré au yaourt"></img>
-                                    <br>
+                                    <!--<br>
                                         <div>
                                             <a class="btn btn-success" href="http://www.idsymposium2014.be/">Register now !</a>
-                                        </div>
+                                        </div>-->
                                 </a>
 {% endif %}
 
@@ -196,7 +193,7 @@
 
                             <div class="span4 " style="padding-top: 20px; padding-right: 0px;" >
                                 <div style="">
-                                    <h4>Recherche</h4>
+                                    <h4>{{'Recherche'|trans}}</h4>
 {{ render(controller("WalvaHafBundle:PublicArticle:searchForm")) }}
 
 {{ render(controller("WalvaHafBundle:PublicArticle:menu", {nombre :3})) }}

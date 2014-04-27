@@ -1,0 +1,73 @@
+<div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+        <li class="active">
+            <a href="#"><i class="glyphicon glyphicon-home"></i> Home</a>
+        </li>
+
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="glyphicon glyphicon-wrench"></i> Tools <b class="caret"></b>
+            </a>
+
+            <ul class="dropdown-menu">
+                <li><a href="{{ path("image") }}">
+                        <i class="glyphicon glyphicon-picture"></i>
+                        Image</a>
+                </li>
+                <li class="divider"></li>
+                <li><a href="{{ path("abstract_video") }}">
+                        <i class="glyphicon glyphicon-film"></i>
+                        Video</a></li>
+                <li><a href="{{ path("video_source") }}">
+                        <i class="glyphicon glyphicon-link"></i>
+                        Source</a></li>
+                <li><a href="{{ path("video_description") }}">
+                        <i class="glyphicon glyphicon-info-sign"></i>
+                        Description</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="glyphicon glyphicon-file"></i> Article <b class="caret"></b>
+            </a>
+
+            <ul class="dropdown-menu">
+                <li><a href="{{ path("article") }}">
+                        <i class="glyphicon glyphicon-th-list"></i>
+                         Article</a>
+                </li>
+                <li class="divider"></li>
+                <li><a href="{{ path("tag") }}">
+                        <i class="glyphicon glyphicon-tags"></i>
+                        Tag</a>
+                </li>
+                <li><a href="{{ path("reference") }}">
+                        <i class="glyphicon glyphicon-bookmark"></i>
+                        Reference</a>
+                </li>
+                <li><a href="{{ path("auteur") }}">
+                        <i class="glyphicon glyphicon-user"></i>
+                        Auteur</a>
+                </li>
+                <li><a href="{{ path("categorie") }}">
+                        <i class="glyphicon glyphicon-folder-open"></i>
+                        Categorie</a>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="{{ path("livre") }}">
+                <i class="glyphicon glyphicon-book"></i> Tools
+            </a>
+        </li>
+
+
+
+
+
+
+
+
+
+    </ul>
+</div><!--/.nav-collapse -->

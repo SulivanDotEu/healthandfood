@@ -1,0 +1,14 @@
+{% extends  'WalvaCrudAdminBundle:Crud:index.html.twig' %}
+
+{% block crud_table_row_content %}
+    <td><a href="{{ path('internalvideo_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+    <td>{{ entity.internalName }}</td>
+{% endblock %}
+    
+{% block actions %}
+<div class="btn-group">
+    <a href="{{ path(routeShow, { 'id': entity.id }) }}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-new-window"></span> Show</a>
+    <a href="{{ path(routeEdit, { 'id': entity.id }) }}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+</div>
+{% endblock %}
+

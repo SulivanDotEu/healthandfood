@@ -1,0 +1,30 @@
+internalvideo:
+    pattern:  /
+    defaults: { _controller: "WalvaVideoBundle:InternalVideo:index" }
+
+internalvideo_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "WalvaVideoBundle:InternalVideo:show" }
+
+internalvideo_new:
+    pattern:  /new
+    defaults: { _controller: "WalvaVideoBundle:InternalVideo:new" }
+
+internalvideo_create:
+    pattern:  /create
+    defaults: { _controller: "WalvaVideoBundle:InternalVideo:create" }
+    requirements: { _method: post }
+
+internalvideo_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "WalvaVideoBundle:InternalVideo:edit" }
+
+internalvideo_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "WalvaVideoBundle:InternalVideo:update" }
+    requirements: { _method: post|put }
+
+internalvideo_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "WalvaVideoBundle:InternalVideo:delete" }
+    requirements: { _method: post|delete }

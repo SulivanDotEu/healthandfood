@@ -109,6 +109,11 @@ class Article {
      * @ORM\Column(length=128, unique=false)
      */
     private $slug;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Walva\VideoBundle\Entity\AbstractVideo")
+     */
+    private $videos;
 
     /**
      * Get id
@@ -423,4 +428,37 @@ class Article {
     }
 
 
+
+    /**
+     * Add videos
+     *
+     * @param \Walva\VideoBundle\Entity\AbstractVideo $videos
+     * @return Article
+     */
+    public function addVideo(\Walva\VideoBundle\Entity\AbstractVideo $videos)
+    {
+        $this->videos[] = $videos;
+    
+        return $this;
+    }
+
+    /**
+     * Remove videos
+     *
+     * @param \Walva\VideoBundle\Entity\AbstractVideo $videos
+     */
+    public function removeVideo(\Walva\VideoBundle\Entity\AbstractVideo $videos)
+    {
+        $this->videos->removeElement($videos);
+    }
+
+    /**
+     * Get videos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVideos()
+    {
+        return $this->videos;
+    }
 }

@@ -1,3 +1,15 @@
+walva_crud_generator:
+    resource: "@WalvaCrudGeneratorBundle/Resources/config/routing.php"
+    prefix:   /
+
+walva_crud_admin:
+    resource: "@WalvaCrudAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
+walva_video:
+    resource: "@WalvaVideoBundle/Resources/config/routing.yml"
+    prefix:   /
+
 walva_user:
     resource: "@WalvaUserBundle/Resources/config/routing.yml"
     prefix:   /

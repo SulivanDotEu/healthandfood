@@ -12,7 +12,7 @@ Livres: Livres
 Contact: Contact
 'Haut de page': 'Haut de page'
 'Développé par': 'Développé par'
-'Nos dernières publications': 'Sernières publications'
+'Nos dernières publications': 'Dernières publications'
 'Les livres que nous avons lu pour vous': 'Les livres que nous avons lu pour vous'
 'Nos conseils en matière de livre': Livres
 'Article publié le': 'Article publié le'
@@ -25,12 +25,12 @@ Prix: Prix
 Rédaction/Maquette: Rédaction/Maquette
 'Rédacteur en chef': 'Rédacteur en chef'
 Webmaster: Webmaster
-'': __
+'': 
 'Editeur responsable': 'Editeur responsable'
 'Danièle Degossely': 'Danièle Degossely'
 Tirage: Tirage
 '20.000 exemplaires': '20.000 exemplaires'
-'Bimestriel destiné au corps médical - 8e année': 'Bimestriel destiné au corps médical - 8e année'
+'Bimestriel destiné ua corps médical - 8e année': 'Bimestriel destiné au corps médical - 8e année'
 'Régie Publicitaire': 'Régie Publicitaire'
 Medial: Medial
 Tél: Tél
@@ -45,3 +45,5 @@ Précédent: Précédent
 'email address': 'email address'
 Subscribe: Subscribe
 'Health and Food est une publication de Sciences Today': 'Health and Food est une publication de Sciences Today'
+Search!: Search!
+Recherche: Recherche

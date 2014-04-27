@@ -1,0 +1,20 @@
+WalvaVideoBundle_abstractvideo:
+    resource: "@WalvaVideoBundle/Resources/config/routing/abstractvideo.yml"
+    prefix:   /admin/video
+
+WalvaVideoBundle_internalvideo:
+    resource: "@WalvaVideoBundle/Resources/config/routing/internalvideo.yml"
+    prefix:   /admin/video/internal
+
+WalvaVideoBundle_description:
+    resource: "@WalvaVideoBundle/Resources/config/routing/description.yml"
+    prefix:   /admin/video/description
+
+WalvaVideoBundle_video_source:
+    resource: "@WalvaVideoBundle/Resources/config/routing/source.yml"
+    prefix:   /admin/video/source
+    
+WalvaVideoBundle_video_youtube:
+        resource: "@WalvaVideoBundle/Resources/config/routing/youtubevideo.yml"
+        prefix:   /admin/video/youtube
+        

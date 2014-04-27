@@ -1,0 +1,7 @@
+parameters:
+#    walva_crud_admin.example.class: Walva\CrudAdminBundle\Example
+
+services:
+#    walva_crud_admin.example:
+#        class: %walva_crud_admin.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

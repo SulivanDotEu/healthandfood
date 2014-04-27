@@ -124,6 +124,7 @@ abstract class CrudController extends Controller {
         $entity = $this->createEntity();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
+        /* @var $form \Symfony\Component\Form\Form */
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -133,10 +134,9 @@ abstract class CrudController extends Controller {
                   $this->getRouteShow(), array('id' => $entity->getId())));
         }
 
-        return array(
-            'entity' => $entity,
-            'form' => $form->createView(),
-        );
+        return $this->redirect($this->generateUrl(
+                  $this->getRouteAdd(), array('id' => $entity->getId())));
+        
     }
 
 /*
@@ -203,14 +203,14 @@ abstract class CrudController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getRepository()->find($id);
+            $entity = $this->getRepository()->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find entity.');
             }
 
-            $em->remove($entity);
-            $em->flush();
+            $this->getDoctrine()->getManager()->remove($entity);
+            $this->getDoctrine()->getManager()->flush();
         }
 
         return $this->redirect($this->generateUrl($this->getRouteIndex()));

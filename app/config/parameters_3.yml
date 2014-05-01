@@ -7,8 +7,8 @@ parameters:
     database_user: healthanzs2
     database_password: XPnDmq9D
     mailer_transport: smtp
-    mailer_host: 127.0.0.1
-    mailer_user: null
-    mailer_password: null
+    mailer_host: smtp-mail.outlook.com
+    mailer_user: ellis.benjamin@outlook.com
+    mailer_password: x9b5723rls
     locale: fr
     secret: hcalolol

@@ -1,6 +1,3 @@
-walva_crud_generator:
-    resource: "@WalvaCrudGeneratorBundle/Resources/config/routing.php"
-    prefix:   /
 
 walva_crud_admin:
     resource: "@WalvaCrudAdminBundle/Resources/config/routing.yml"

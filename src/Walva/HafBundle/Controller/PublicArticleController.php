@@ -18,9 +18,6 @@ class PublicArticleController extends Controller {
 
     public $nombreArticleParPage = 10;
 
-
-
-    
     public function searchFormAction($value = null) {
         $form = $this->createFormBuilder();
         $form->add('value', 'text');
@@ -28,8 +25,9 @@ class PublicArticleController extends Controller {
         $form = $form->getForm();
 
         if ($form->isValid()) {
-            // fait quelque chose comme sauvegarder la tâche dans la bdd
-            var_dump("DIE"); die();
+// fait quelque chose comme sauvegarder la tâche dans la bdd
+            var_dump("DIE");
+            die();
             return $this->redirect($this->generateUrl('task_success'));
         }
 
@@ -40,9 +38,9 @@ class PublicArticleController extends Controller {
     }
 
     public function switchLocaleAction($locale = "fr") {
-        //$request = $this->getRequest();
+//$request = $this->getRequest();
         $this->getRequest()->getSession()->set('_locale', $locale);
-        //var_dump($request->getLocale());
+//var_dump($request->getLocale());
         return $this->redirect($this->generateUrl('article_public'));
     }
 
@@ -77,6 +75,7 @@ class PublicArticleController extends Controller {
      *
      */
     public function indexAction($page = 1, $nombre = 0, Categorie $categorie = null, $search = null) {
+
         if ($nombre == 0)
             $nombre = $this->nombreArticleParPage;
 
@@ -86,11 +85,11 @@ class PublicArticleController extends Controller {
         $request = $this->getRequest();
         $locale = $request->getLocale();
         $entities = $em->getRepository('WalvaHafBundle:Article')->findByLangue($locale, array('dateCreation' => 'DESC'), $nombre, $nombre * ($page - 1 ));
-        //$entities = $em->getRepository('WalvaHafBundle:Article')->findBy(array(), array('dateCreation' => 'DESC'), $nombre, $nombre * ($page - 1 ));
+//$entities = $em->getRepository('WalvaHafBundle:Article')->findBy(array(), array('dateCreation' => 'DESC'), $nombre, $nombre * ($page - 1 ));
 
         $qb = $repository->createQueryBuilder('a');
         $qb->select('count(a.id)');
-        //$qb->from('WalvaHafBundle:Article', 'a');
+//$qb->from('WalvaHafBundle:Article', 'a');
         $qb->where($qb->expr()->eq('a.langue', "'" . $locale . "'"));
 
         $pageCount = ceil($qb->getQuery()->getSingleScalarResult() / $nombre);
@@ -114,7 +113,7 @@ class PublicArticleController extends Controller {
         if ($nombre == 0)
             $nombre = $this->nombreArticleParPage;
         $em = $this->getDoctrine()->getManager();
-        //$lm = $this->container->get('walva_haf.langue');
+//$lm = $this->container->get('walva_haf.langue');
         $request = $this->getRequest();
         $locale = $request->getLocale();
         $entities = $em->getRepository('WalvaHafBundle:Article')->findBy(
@@ -148,12 +147,12 @@ class PublicArticleController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository('WalvaHafBundle:Article');
-        //$lm = $this->container->get('walva_haf.langue');
+//$lm = $this->container->get('walva_haf.langue');
 
         $entities = $repository->findBy(
                 array('tag' => $tag), array('dateCreation' => 'DESC'), $nombre, $nombre * ($page - 1 ));
 
-        //$em=$this->getDoctrine()->getEntityManager()->getR
+//$em=$this->getDoctrine()->getEntityManager()->getR
 
         $count = count($em->getRepository('WalvaHafBundle:Article')->findBy(array('tag' => $tag)));
 

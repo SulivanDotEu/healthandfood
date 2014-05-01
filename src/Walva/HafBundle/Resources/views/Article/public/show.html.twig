@@ -39,10 +39,12 @@
 
 {{ entity.contenu | raw }}
 
-<hr/>
+
 
  {% if entity.reference is not null %}
+
             {% for ref in entity.reference %}
+<hr/>
 <h3 style="font-size: 16px">Référence : <a href="{{ ref.url }}"> {{ ref.titre }}</a></h3>
 <dl class="dl-horizontal">
     {% if ref.contenu is not null %} 
@@ -61,12 +63,12 @@
    {% endif %}
 </dl>
 
-<hr/>
             {% endfor %}
             {% endif %}
 
  {% if entity.videos is not null %}
 {% for video in entity.videos %}
+<hr/>
 <h3 style="font-size: 16px">Video : <a href=""> {{video.getTitleIn(app.request.locale)}}</a></h3>
 <video width="100%" height="100%" controls="controls">
     
@@ -76,24 +78,44 @@
 
     Video du document
 </video>
-<hr/>
+
 
 {% endfor %}
 {% endif %}
 
 
-
-
+<hr/>
+<div class="visible-desktop">
+    <div class="entry-content">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- HAF millieu horizonal -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:728px;height:90px"
+             data-ad-client="ca-pub-7964103522268425"
+             data-ad-slot="6556155577"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    <hr/>
+</div>
+<div class="hidden-desktop">
+    <div class="entry-content">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- HAF millieu horizonal mobile tablet -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:320px;height:50px"
+             data-ad-client="ca-pub-7964103522268425"
+             data-ad-slot="9509621979"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    <hr/>
+</div>
 
 
 
 
 {% endblock %}
 
-
-{% block container_header_right %}
-<a class="btn btn-primary" href="{{ path('article_new') }}">
-    <i class="icon-plus icon-white"></i> 
-    Create a new entry
-</a>
-{% endblock %}

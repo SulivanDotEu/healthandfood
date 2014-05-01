@@ -59,11 +59,13 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: %mailer_transport%
-    host:      %mailer_host%
-    username:  %mailer_user%
-    password:  %mailer_password%
-    spool:     { type: memory }
+    transport: smtp
+    host:      smtp.healthandfood.fr
+    username:  error@healthandfood.fr
+    password:  x9b5723rls
+    encryption: ssl
+    port:   465
+#    spool:     { type: memory }
 
 
 stof_doctrine_extensions:
@@ -75,3 +77,26 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Walva\UserBundle\Entity\User
+    
+monolog:
+    handlers:
+        main:
+            type:         fingers_crossed
+            action_level: critical
+            handler:      grouped
+        grouped:
+            type:    group
+            members: [streamed, buffered]
+        streamed:
+            type:  stream
+            path:  "%kernel.logs_dir%/%kernel.environment%.log"
+            level: debug
+        buffered:
+            type:    buffer
+            handler: swift
+        swift:
+            type:       swift_mailer
+            from_email: error@healthandfood.fr
+            to_email:   ellis.benjamin@outlook.com
+            subject:    "[HAF][LOG] An Error Occurred! env=PROD"
+            level:      debug

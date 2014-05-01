@@ -98,7 +98,15 @@ public function getRepository() {
      */
     public function showAction($id)
     {
-        return parent::showAction($id);
+        $entity = $this->getRepository()->find($id);
+        if (!$entity)
+            throw $this->createNotFoundException('Unable to find Parking entity.');
+        
+        $class = get_class($entity);
+        if($class == 'Walva\\VideoBundle\\Entity\\InternalVideo'){
+            return $this->redirect($this->generateUrl('internalvideo_show', array('id' => $id)));
+        }
+        return $this->renderShowAction($params);
 
     }
 

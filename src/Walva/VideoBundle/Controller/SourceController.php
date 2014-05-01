@@ -115,7 +115,9 @@ class SourceController extends Controller {
      * @return \Symfony\Component\Form\Form The form
      */
     public function createEditForm(Source $entity) {
-        $form = $this->createForm(new SourceType(), $entity, array(
+        $formType = new SourceType();
+        $formType->setVideoFinder(new \Walva\VideoBundle\Util\VideoFinder());
+        $form = $this->createForm($formType, $entity, array(
             'action' => $this->generateUrl('video_source_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));

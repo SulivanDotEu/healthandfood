@@ -70,16 +70,21 @@
 {% for video in entity.videos %}
 <hr/>
 <h3 style="font-size: 16px">Video : <a href=""> {{video.getTitleIn(app.request.locale)}}</a></h3>
+
 <video width="100%" height="100%" controls="controls">
     
-    {% for source in video.sources %}
-    {{ source.toHtml() | raw }}
+    {% for source in video.getSourcesInLanguage(app.request.locale) %}
+    <source src="{{ asset(source.path) }}"
+            type="video/{{source.type}}" />
     {% endfor %}
-
     Video du document
 </video>
 
-
+{% for source in video.getSourcesInLanguage(app.request.locale) %}
+    {{source.id}} - {{source.type}} - {{source.path}} = {{ asset(source.path) }}<br>
+    
+ 
+    {% endfor %}
 {% endfor %}
 {% endif %}
 

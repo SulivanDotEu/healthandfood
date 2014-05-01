@@ -18,15 +18,16 @@ class VideoFinder {
 //put your code here
 
     public function getVideoInDir($dir) {
+        $findIn = realpath('.').'/'.$dir;
         $array = array();
-        if ($handle = opendir($dir)) {
+        if ($handle = opendir($findIn)) {
 
             /* This is the correct way to loop over the directory. */
             while (false !== ($entry = readdir($handle))) {
-                if (is_dir($dir.$entry)){
+                if (is_dir($findIn.$entry)){
                     continue;
                 }
-                $array[$entry]= $entry;
+                $array[$dir.'/'.$entry]= $entry;
             }
         }
         return $array;
@@ -34,7 +35,7 @@ class VideoFinder {
 
     public function getAllVideosHosted() {
 //die(realpath('.').'/video');
-        return $this->getVideoInDir(realpath('.') . '/video');
+        return $this->getVideoInDir('video');
     }
 
 }

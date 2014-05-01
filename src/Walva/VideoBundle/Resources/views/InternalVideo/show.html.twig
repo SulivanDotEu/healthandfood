@@ -10,4 +10,17 @@
     <th>Internal Name</th>
     <td>{{ entity.internalName }}</td>
 </tr>
+<tr>
+    <th>Source</th>
+    <td>
+    {% for source in entity.sources %}
+        <a class="" href="{{ path('video_source_show', {'id':source.id }) }}">
+{{ source }} ({{source.id}})
+        </a>
+        {% if loop.last == false %}
+        , 
+     {% endif %}
+     {% endfor %}
+    </td>
+</tr>
 {% endblock %}

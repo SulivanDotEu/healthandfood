@@ -78,25 +78,3 @@ fos_user:
     firewall_name: main
     user_class: Walva\UserBundle\Entity\User
     
-monolog:
-    handlers:
-        main:
-            type:         fingers_crossed
-            action_level: critical
-            handler:      grouped
-        grouped:
-            type:    group
-            members: [streamed, buffered]
-        streamed:
-            type:  stream
-            path:  "%kernel.logs_dir%/%kernel.environment%.log"
-            level: debug
-        buffered:
-            type:    buffer
-            handler: swift
-        swift:
-            type:       swift_mailer
-            from_email: error@healthandfood.fr
-            to_email:   ellis.benjamin@outlook.com
-            subject:    "[HAF][LOG] An Error Occurred! env=PROD"
-            level:      debug

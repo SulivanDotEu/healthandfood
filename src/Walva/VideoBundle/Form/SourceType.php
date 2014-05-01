@@ -29,13 +29,16 @@ class SourceType extends AbstractType {
                 ->add('audioLanguage', 'choice', array(
                     'choices' => array(
                         'fr' => 'français',
-                        'nl' => 'néerlandais'
+                        'nl' => 'néerlandais',
+                        'en' => 'anglais'
                     )
                 ))
                 ->add('subtitlesLanguage', 'choice', array(
+                    'required' => false,
                     'choices' => array(
                         'fr' => 'français',
-                        'nl' => 'néerlandais'
+                        'nl' => 'néerlandais',
+                        'en' => 'anglais'
             )))
                 ->add('video')
         ;

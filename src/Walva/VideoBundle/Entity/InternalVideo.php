@@ -14,7 +14,7 @@ class InternalVideo extends AbstractVideo
 {
 
     /**
-     * @var \stdClass
+     * @var Source
      *
      * @ORM\OneToMany(
      *      targetEntity="Walva\VideoBundle\Entity\Source",
@@ -24,7 +24,15 @@ class InternalVideo extends AbstractVideo
      */
     private $sources;
     
-    
+    public function getSourcesInLanguage($lang){
+        $array = array();
+        foreach ($this->getSources() as $source) {
+            if($source->getAudioLanguage() == $lang){
+                $array[] = $source;
+            }
+        }
+        return $array;
+    }
     
 
     /**
@@ -53,7 +61,7 @@ class InternalVideo extends AbstractVideo
     /**
      * Get sources
      *
-     * @return \stdClass 
+     * @return Source 
      */
     public function getSources()
     {

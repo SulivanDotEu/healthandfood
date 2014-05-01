@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Walva\VideoBundle\Entity\SourceRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Source {
 
@@ -49,7 +50,6 @@ class Source {
      * @ORM\Column(name="subtitlesLanguage", type="string", length=255, nullable=true)
      */
     private $subtitlesLanguage;
-
 //    /**
 //     * @Assert\File(maxSize="800m")
 //     */
@@ -63,7 +63,21 @@ class Source {
      *      inversedBy="sources")
      */
     private $video;
-//
+
+    public function __toString() {
+        return $this->getPath() . '(' . $this->getAudioLanguage() . ')';
+    }
+
+//    /**
+//     * @ORM\PrePersist()
+//     * @ORM\PreUpdate()
+//     */
+//    public function preUpdate(){
+//        $path = $this->getPath();
+//        $path = 'video/'.$path;
+//        $this->setPath($path);
+//    }
+////
 //    /**
 //     * @ORM\PrePersist()
 //     * @ORM\PreUpdate()
@@ -100,7 +114,7 @@ class Source {
 //                $this->getUploadRootDir(), // Le rÃ©pertoire de destination
 //                $this->id . '.' . $this->path // Le nom du fichier Ã  crÃ©er, ici "id.extension"
 //        );
-////    }
+//    }
 //
 //    /**
 //     * @ORM\PreRemove()
@@ -134,7 +148,7 @@ class Source {
     public function getWebPath() {
         return $this->getUploadDir() . '/' . $this->getId() . '.' . $this->getUrl();
     }
-    
+
     public function getFile() {
         return $this->file;
     }
@@ -151,7 +165,6 @@ class Source {
         $this->tempFilename = $tempFilename;
     }
 
-    
     public function toHtml() {
         //return '<source src="'.$this->getPath().'" type="'.$this->getType().'" >';
         return sprintf('<source src="%s" type="%s" >', $this->getPath(), $this->getType());

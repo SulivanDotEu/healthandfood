@@ -1,0 +1,3 @@
+[submodule "src/Walva/adminGenerator"]
+	path = src/Walva/adminGenerator
+	url = https://github.com/SulivanDotEu/adminGenerator.git

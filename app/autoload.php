@@ -3,6 +3,9 @@
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Composer\Autoload\ClassLoader;
 
+
+require_once(__DIR__ . '/../vendor/symfony/symfony/src/Symfony/Component/ClassLoader/UniversalClassLoader.php');
+
 /**
  * @var ClassLoader $loader
  */

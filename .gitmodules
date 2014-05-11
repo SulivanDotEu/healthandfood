@@ -1,6 +1,6 @@
-[submodule "vendor/walva"]
-	path = vendor/walva
-	url = https://github.com/SulivanDotEu/adminGenerator.git
-[submodule "src/vendor/walva"]
-	path = src/vendor/walva
+[submodule "src/vendor/Walva/AdSiteBundle"]
+	path = src/vendor/Walva/AdSiteBundle
+	url = https://github.com/SulivanDotEu/AdSiteBundle
+[submodule "src/vendor/Walva/CrudGeneratorBundle"]
+	path = src/vendor/Walva/CrudGeneratorBundle
 	url = https://github.com/SulivanDotEu/adminGenerator.git

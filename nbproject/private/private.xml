@@ -12,16 +12,27 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/healthandfood/src/Walva/HafBundle/Resources/views/Article/public/index.html.twig</file>
-            <file>file:/C:/wamp/www/healthandfood/app/config/config.yml</file>
+            <file>file:/C:/wamp/www/healthandfood/composer.json</file>
             <file>file:/C:/wamp/www/healthandfood/app/config/parameters.yml</file>
-            <file>file:/C:/wamp/www/healthandfood/app/logs/dev.log</file>
+            <file>file:/C:/wamp/www/healthandfood/src/Walva/VideoBundle/Controller/SourceController.php</file>
+            <file>file:/C:/wamp/www/healthandfood/vendor/autoload.php</file>
+            <file>file:/C:/wamp/www/healthandfood/app/autoload.php</file>
+            <file>file:/C:/wamp/www/healthandfood/vendor/composer/autoload_namespaces.php</file>
+            <file>file:/C:/wamp/www/healthandfood/src/vendor/walva/CrudGeneratorBundle/Entity/Lol.php</file>
+            <file>file:/C:/wamp/www/healthandfood/src/Walva/HafBundle/Controller/ArticleListController.php</file>
+            <file>file:/C:/wamp/www/healthandfood/src/Walva/VideoBundle/Util/VideoFinder.php</file>
+            <file>file:/C:/wamp/www/healthandfood/src/Walva/VideoBundle/Controller/AbstractVideoController.php</file>
+            <file>file:/C:/wamp/www/healthandfood/app/AppKernel.php</file>
+            <file>file:/C:/wamp/www/healthandfood/src/Walva/HafBundle/Resources/views/Article/index.html.twig</file>
             <file>file:/C:/wamp/www/healthandfood/src/Walva/HafBundle/Controller/PublicArticleController.php</file>
-            <file>file:/C:/wamp/www/healthandfood/app/config/config_prod.yml</file>
-            <file>file:/C:/wamp/www/healthandfood/app/logs/prod.log</file>
-            <file>file:/C:/wamp/www/healthandfood/app/config/config_test.yml</file>
-            <file>file:/C:/wamp/www/healthandfood/src/Walva/HafBundle/Resources/views/Article/public/show.html.twig</file>
-            <file>file:/C:/wamp/www/healthandfood/app/config/config_dev.yml</file>
+            <file>file:/C:/wamp/www/healthandfood/src/Walva/HafBundle/Resources/views/public_layout.html.twig</file>
+            <file>file:/C:/wamp/www/healthandfood/src/Walva/VideoBundle/Entity/InternalVideo.php</file>
+            <file>file:/C:/wamp/www/healthandfood/src/Walva/VideoBundle/Form/SourceType.php</file>
+            <file>file:/C:/wamp/www/healthandfood/vendor/composer/autoload_real.php</file>
+            <file>file:/C:/wamp/www/healthandfood/src/Walva/HafBundle/Resources/views/Article/show.html.twig</file>
+            <file>file:/C:/wamp/www/healthandfood/src/vendor/walva/CrudGeneratorBundle/Command/AdvancedCrudCommand.php</file>
+            <file>file:/C:/wamp/www/healthandfood/web/app.php</file>
+            <file>file:/C:/wamp/www/healthandfood/src/Walva/VideoBundle/Entity/Source.php</file>
         </group>
     </open-files>
 </project-private>

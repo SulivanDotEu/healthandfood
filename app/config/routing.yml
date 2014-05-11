@@ -1,3 +1,7 @@
+walva_ad_site:
+    resource: "@WalvaAdSiteBundle/Resources/config/routing.yml"
+    prefix:   /
+
 
 walva_crud_admin:
     resource: "@WalvaCrudAdminBundle/Resources/config/routing.yml"

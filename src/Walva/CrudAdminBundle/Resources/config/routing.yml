@@ -1,3 +1,0 @@
-walva_crud_admin_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: WalvaCrudAdminBundle:Default:index }

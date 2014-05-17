@@ -105,3 +105,19 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
 .navbar-inverse .navbar-nav>.open>a {
     background-color: #386B39;
 }
+
+.haf.list-group{
+    border: #ffffff;
+    color: #ffffff;
+    background-color: transparent;
+}
+
+.haf > .list-group-item{
+    background-color: transparent;
+    border-color: #ffffff;
+}
+
+.haf > .list-group-item:hover{
+    background-color: #ffffff;
+    color: #386B39;
+}

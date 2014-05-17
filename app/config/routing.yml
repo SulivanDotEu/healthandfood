@@ -1,7 +1,6 @@
 walva_ad_site:
     resource: "@WalvaAdSiteBundle/Resources/config/routing.yml"
-    prefix:   /
-
+    prefix:   /admin/adsite
 
 walva_crud_admin:
     resource: "@WalvaCrudAdminBundle/Resources/config/routing.yml"
@@ -66,6 +65,7 @@ w_haf_livre:
 w_haf_livre_public:
         resource: "@WalvaHafBundle/Resources/config/routing/livre_public.yml"
         prefix:   /livre
+
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

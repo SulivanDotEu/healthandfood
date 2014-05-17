@@ -34,7 +34,6 @@ class Article {
 
     /**
      * @var \DateTime
-     *
      * @ORM\Column(name="dateCreate", type="datetime")
      */
     private $dateCreation;

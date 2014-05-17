@@ -66,21 +66,22 @@
             </div><!-- /.container -->
         </div><!-- /.navbar -->
 
-        <div class="bepark-header" id="content" 
-             style="">
+        <div class="bepark-header" id="content" style="">
+            {% block header %}
             <div class="container">
+
                 <h1>{% block header_title %}Getting started{% endblock %}</h1>
                 <p>{% block header_subtitle %}An overview of Bootstrap, how to download and use, basic templates and examples, and more.{% endblock %}</p>
 
-
             </div>
+            {% endblock %}
         </div>
 
         <div class="bs-old-docs">
             <div class="container">
                 <ol class="breadcrumb bepark-breadcrumb">
                     {% block breadcrumb %}
-                        <li><a href="#">BePark</a></li>
+                        <li><a href="#">Health And Food</a></li>
 
                     {% endblock %}
                 </ol>

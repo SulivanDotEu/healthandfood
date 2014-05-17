@@ -106,3 +106,7 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
 .bepark-nav .navbar-toggle {
     border-color: #2F6430;
 }
+
+@-ms-viewport{
+	width: device-width;
+}

@@ -1,4 +1,4 @@
-{% extends 'WalvaHafBundle:Tag:admin.html.twig' %}
+{% extends 'WalvaHafBundle:Article:admin.html.twig' %}
 
 
 {% block breadcrumb %}
@@ -24,4 +24,13 @@
         Back to the list
     </a>
 </div>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript">
+                        window.onload = function() {
+         CKEDITOR.replace( 'walva_hafbundle_article[contenu]' );
+     };
+                        </script>
 {% endblock %}

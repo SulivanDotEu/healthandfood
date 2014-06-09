@@ -16,8 +16,8 @@ class ArticleType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
                 ->add('dateCreation', 'date', array(
-    'years' => range(1990,2030)
-   ))
+                    'years' => range(1990, 2030)
+                ))
                 ->add('langue', 'choice', array(
                     'choices' => array(
                         'fr' => 'français',
@@ -40,6 +40,11 @@ class ArticleType extends AbstractType {
                     'required' => false
                 ))
                 ->add('image', new ImageType(), array('required' => false))
+                ->add('videos', 'entity', array(
+                    'class' => 'WalvaVideoBundle:AbstractVideo',
+                    'multiple' => 'true',
+                    'required' => false
+                ))
         ;
     }
 

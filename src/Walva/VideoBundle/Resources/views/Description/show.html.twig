@@ -1,10 +1,6 @@
-{% extends '::base.html.twig' %}
+{% extends  'WalvaCrudAdminBundle:Crud:show.html.twig' %}
 
-{% block body -%}
-    <h1>Description</h1>
-
-    <table class="record_properties">
-        <tbody>
+{% block crud_table_body -%}
             <tr>
                 <th>Id</th>
                 <td>{{ entity.id }}</td>
@@ -21,20 +17,4 @@
                 <th>Description</th>
                 <td>{{ entity.description }}</td>
             </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('description') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('description_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
 {% endblock %}

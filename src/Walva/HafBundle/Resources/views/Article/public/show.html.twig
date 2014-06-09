@@ -65,6 +65,22 @@
             {% endfor %}
             {% endif %}
 
+ {% if entity.videos is not null %}
+{% for video in entity.videos %}
+<h3 style="font-size: 16px">Video : <a href=""> {{video.getTitleIn(app.request.locale)}}</a></h3>
+<video width="100%" height="100%" controls="controls">
+    
+    {% for source in video.sources %}
+    {{ source.toHtml() | raw }}
+    {% endfor %}
+
+    Video du document
+</video>
+<hr/>
+
+{% endfor %}
+{% endif %}
+
 
 
 

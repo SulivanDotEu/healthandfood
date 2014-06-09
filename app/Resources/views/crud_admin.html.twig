@@ -22,7 +22,7 @@
     <body style="margin-top: 40px;">
 
         <div class="navbar navbar-fixed-top navbar-inverse active bepark-nav" role="navigation"
-             style="border-color: #2F6430;
+             style="border-color: #357536;
              background-color: #468847;
              box-shadow: 0 1px 0 rgba(255,255,255,.1);
              ">
@@ -168,8 +168,11 @@
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
+        {% block javascripts %}
         <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        
+        {% endblock %}
 
     </body>
 </html>

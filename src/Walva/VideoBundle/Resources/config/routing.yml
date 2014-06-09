@@ -17,3 +17,4 @@ WalvaVideoBundle_video_source:
 WalvaVideoBundle_video_youtube:
         resource: "@WalvaVideoBundle/Resources/config/routing/youtubevideo.yml"
         prefix:   /admin/video/youtube
+        

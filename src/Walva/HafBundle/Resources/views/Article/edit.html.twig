@@ -29,3 +29,13 @@
     </a>
 
 {% endblock %}
+
+
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript">
+                        window.onload = function() {
+         CKEDITOR.replace( 'walva_hafbundle_article[contenu]' );
+     };
+                        </script>
+{% endblock %}

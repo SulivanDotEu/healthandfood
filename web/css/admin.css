@@ -115,6 +115,7 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
 .haf > .list-group-item{
     background-color: transparent;
     border-color: #ffffff;
+    color: white;
 }
 
 .haf > .list-group-item:hover{

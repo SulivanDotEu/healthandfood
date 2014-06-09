@@ -1,4 +1,8 @@
-walva_ad_site:
+walva_adsite_advertiser:
+    resource: "@WalvaAdSiteBundle/Resources/config/routing/advertiser.yml"
+    prefix:   /advertiser/
+
+walva_adsite:
     resource: "@WalvaAdSiteBundle/Resources/config/routing.yml"
     prefix:   /admin/adsite
 

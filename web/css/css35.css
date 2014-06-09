@@ -458,13 +458,13 @@ li a .sf-sub-indicator {
 }
 
 #nav li.rss a {
-   background: url(images/rss.png) no-repeat center left;
+   /*background: url(images/rss.png) no-repeat center left;*/
    margin: 0 0 0 20px;
    padding: 7px 0 5px 18px;
 }
 
 #nav li.twitter a {
-   background: url(images/twitter-nav.png) no-repeat center left;
+   /*background: url(images/twitter-nav.png) no-repeat center left;*/
    padding: 7px 0 5px 20px;
 }
 
@@ -510,7 +510,7 @@ li a .sf-sub-indicator {
 #subnav li li a,
 #subnav li li a:link,
 #subnav li li a:visited {
-   background: url(images/bg-light.png);
+   /*background: url(images/bg-light.png);*/
    border: 1px solid #ccc;
    border-top-width: 0;
    color: #333;
@@ -576,7 +576,7 @@ li a .sf-sub-indicator {
 #subnav li.social-rss a:hover,
 #subnav li.social-twitter a,
 #subnav li.social-twitter a:hover {
-   background: url(images/social-icons.png);
+   /*background: url(images/social-icons.png);*/
    margin: 10px 10px 0 0;
 }
 
@@ -636,25 +636,25 @@ li a .sf-sub-indicator {
    visibility: hidden;
 }
 
-.content-sidebar #inner {
-   background: url(images/inner-cs.png);
-}
+/*.content-sidebar #inner {*/
+   /*background: url(images/inner-cs.png);*/
+/*}*/
 
-.sidebar-content #inner {
-   background: url(images/inner-sc.png);
-}
+/*.sidebar-content #inner {*/
+   /*background: url(images/inner-sc.png);*/
+/*}*/
 
-.content-sidebar-sidebar #inner {
-   background: url(images/inner-css.png);
-}
+/*.content-sidebar-sidebar #inner {*/
+   /*background: url(images/inner-css.png);*/
+/*}*/
 
-.sidebar-sidebar-content #inner {
-   background: url(images/inner-ssc.png);
-}
+/*.sidebar-sidebar-content #inner {*/
+   /*background: url(images/inner-ssc.png);*/
+/*}*/
 
-.sidebar-content-sidebar #inner {
-   background: url(images/inner-scs.png);
-}
+/*.sidebar-content-sidebar #inner {*/
+   /*background: url(images/inner-scs.png);*/
+/*}*/
 
 .full-width-content #inner {
    background: #fff;
@@ -881,7 +881,7 @@ p.subscribe-to-comments {
 }
 
 .more-from-category {
-   background: url(images/list.png) no-repeat top left;
+   /*background: url(images/list.png) no-repeat top left;*/
    list-style-type: none;
    padding: 0 0 0 15px;
 }
@@ -1192,27 +1192,27 @@ h6 {
 /* Post Icons
 ------------------------------------------------------------ */
 
-.categories {
-   background: url(images/icon-categories.png) no-repeat top left;
-   padding: 3px 0 3px 22px;
-}
+/*.categories {*/
+   /*background: url(images/icon-categories.png) no-repeat top left;*/
+   /*padding: 3px 0 3px 22px;*/
+/*}*/
 
-.post-comments {
-   background: url(images/icon-comments.png) no-repeat top left;
-   margin: 0 0 0 10px;
-   padding: 2px 0 2px 22px;
-}
+/*.post-comments {*/
+   /*background: url(images/icon-comments.png) no-repeat top left;*/
+   /*margin: 0 0 0 10px;*/
+   /*padding: 2px 0 2px 22px;*/
+/*}*/
 
-.tags {
-   background: url(images/icon-tags.png) no-repeat top left;
-   margin: 0 0 0 10px;
-   padding: 3px 0 3px 20px;
-}
+/*.tags {*/
+   /*background: url(images/icon-tags.png) no-repeat top left;*/
+   /*margin: 0 0 0 10px;*/
+   /*padding: 3px 0 3px 20px;*/
+/*}*/
 
-.time {
-   background: url(images/icon-time.png) no-repeat top left;
-   padding: 2px 0 2px 21px;
-}
+/*.time {*/
+   /*background: url(images/icon-time.png) no-repeat top left;*/
+   /*padding: 2px 0 2px 21px;*/
+/*}*/
 
 .featuredpost .post-comments,
 .featuredpost  .time {
@@ -1411,7 +1411,7 @@ p.wp-caption-text {
 
 .sidebar .widget ul li,
 .sidebar .widget-area ul li {
-   background: url(images/list.png) no-repeat top left;
+   /*background: url(images/list.png) no-repeat top left;*/
    border-bottom: 1px solid #eee;
    list-style-type: none;
    margin: 0 0 7px;
@@ -1466,7 +1466,7 @@ p.wp-caption-text {
 /* Buttons
 ------------------------------------------------------------ */
 
-//input[type="button"],
+/*//input[type="button"],*/
 /*input[type="submit"] {
    background-color: #00a7ed;
    border: 1px solid #00D222;
@@ -1514,7 +1514,7 @@ input:hover[type="submit"] {
 ------------------------------------------------------------ */
 
 .enews {
-   background: url(images/enews.png) no-repeat top right;
+   /*background: url(images/enews.png) no-repeat top right;*/
 }
 
 .enews #subbox {
@@ -1597,7 +1597,7 @@ input:hover[type="submit"] {
 
 #footer-widgets .widget ul li,
 #footer-widgets .widget-area ul li {
-   background: url(images/list.png) no-repeat top left;
+   /*background: url(images/list.png) no-repeat top left;*/
    border-bottom: 1px dotted #ddd;
    list-style-type: none;
    margin: 0 0 7px;
@@ -1631,7 +1631,7 @@ input:hover[type="submit"] {
 ------------------------------------------------------------ */
 
 #footer {
-   background: url(images/footer.png) no-repeat top;
+   /*background: url(images/footer.png) no-repeat top;*/
    clear: both;
    font-size: 11px;
    margin: 0 auto;

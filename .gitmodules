@@ -1,3 +1,9 @@
 [submodule "src/vendor/Walva/CrudGeneratorBundle"]
 	path = src/vendor/Walva/CrudGeneratorBundle
 	url = https://github.com/SulivanDotEu/adminGenerator.git
+[submodule "src/vendor/Walva/AdSiteBundle"]
+	path = src/vendor/Walva/AdSiteBundle
+	url = https://github.com/SulivanDotEu/AdSiteBundle.git
+[submodule "src/vendor/Walva/CrudAdminBundle"]
+	path = src/vendor/Walva/CrudAdminBundle
+	url = https://github.com/SulivanDotEu/CrudAdminBundle.git

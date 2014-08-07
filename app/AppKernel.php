@@ -23,6 +23,7 @@ class AppKernel extends Kernel {
             new Walva\VideoBundle\WalvaVideoBundle(),
             new Walva\CrudAdminBundle\WalvaCrudAdminBundle(),
             new Walva\AdSiteBundle\WalvaAdSiteBundle(),
+            new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

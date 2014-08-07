@@ -1,0 +1,18 @@
+/* 
+    Document   : supportkot
+    Created on : 07-août-2013, 15:39:05
+    Author     : Benjamin
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+.bootstrap-datetime select{
+    display: inline;
+    width: auto;
+    margin-right: 5px;
+}
+
+.bootstrap-datetime div {
+    display: inline;
+}

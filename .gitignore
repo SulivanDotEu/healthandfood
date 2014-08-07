@@ -8,3 +8,5 @@
 /build/
 /bin/
 /nbproject/*
+.idea/
+app/logs/*

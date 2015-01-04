@@ -1,0 +1,384 @@
+{% if current_page_name is not defined %}
+    {% set current_page_name = 'null' %}
+
+{% endif %}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ app.request.locale }}" xml:lang="{{ app.request.locale }}" >
+<head >
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Language" content="{{ app.request.locale }}" />
+
+    <title>{% block title %}Health And Food : {% block title_supp %}Votre magazine Nutrition, Diététique et Santé{% endblock %}{% endblock %}</title>        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-responsive.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('css/css35.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('css/walvaCss.css') }}" type="text/css" />
+    <meta name="abstract" content="diététique, nutrition, santé, alimentation saine, régime, information, amaigrissement, amaigrissant, information nutrition, informations nutritionnelles, pyramide alimentaire, éducation nutritionnelle, health food, health and food, actualité; nutrition, lipides, antioxydants, cholestérol, Voeding gezondheid, Voeding, Gezondheid, Voedingsmiddelen, Voedingsmiddel" />
+    <meta name="keywords" content="nutrition santé, aliments, diététique, régime, amaigrissement, amaigrissant, maigrir, information, information nutrition, informations nutritionnelles, pyramide alimentaire, éducation nutritionnelle, health food, health and food, actualité; nutrition, lipides, antioxydants, cholestérol, Voeding gezondheid, Voeding, Gezondheid, Voedingsmiddelen, Voedingsmiddel" />
+    <meta name="description" content="{% block meta_title %}Health and Food, magazine d'information en nutrition, L'actualité diététique, nutrition et santé. Le point sur l'actualité nutritionnelle, de l'étude la plus pointue aux régimes les plus populaires. {% endblock %}" />
+
+
+    <link rel="Shortcut Icon" href="http://physiciansfolia.com/wp-content/themes/newse/news/images/favicon.ico" type="image/x-icon" />
+
+
+    <script type='text/javascript' src='http://physiciansfolia.com/wp-includes/js/jquery/jquery.js?ver=1.8.3'>
+    </script>
+
+
+</head>
+
+<body class="page page-id-111 page-template-default  header-image full-width-content" style="min-height: 100%">
+<div class="container header" >
+<div class="row" style="">
+    <div id="subnav">
+        <!--
+                          <ul id="menu-navigation-supperieure" class="menu genesis-nav-menu menu-secondary superfish">
+
+                             <li id="menu-item-25" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25">
+                                <a href="http://a">
+                                   Contact</a>
+                             </li>
+
+                             <li id="menu-item-26" class="social-facebook menu-item menu-item-type-custom menu-item-object-custom menu-item-26">
+
+                                <a target="_blank" href="http://a">
+                                   Facebook</a>
+                             </li>
+
+                             <li id="menu-item-101" class="social-rss menu-item menu-item-type-custom menu-item-object-custom menu-item-101">
+
+                                <a target="_blank" href="http://a">
+                                   social-rss</a>
+                             </li>
+
+                          </ul>
+
+        <!-- end .wrap -->
+    </div>
+</div>
+<div class="row" style="">
+
+    <div class="span12" style="">
+
+        <div  id="header" style=" background-color: white; ">
+            <div class="row">
+                <div class="span8 offset4">
+                    {% if app.request.locale == 'fr' %}
+                        <a href="http://scientificsessions.nutrition.org/satellitesessions/2nd-global-summit-on-the-health-effects-of-yogurt/">
+                            <img src="{{ asset('img/san_diego.gif') }}" alt="DANONE Congrès de Boston 2013: un premier sommet scientifique consacré au yaourt" />
+
+                        </a>
+                    {% elseif app.request.locale == 'nl' %}
+                        <a href="http://scientificsessions.nutrition.org/satellitesessions/2nd-global-summit-on-the-health-effects-of-yogurt/">
+                            <img src="{{ asset('img/san_diego.gif') }}" alt="DANONE Congrès de Boston 2013: un premier sommet scientifique consacré au yaourt" />
+                            <!--<br>
+                                <div>
+                                    <a class="btn btn-success" href="http://www.idsymposium2014.be/">Register now !</a>
+                                </div>-->
+                        </a>
+                    {% endif %}
+
+                </div>
+            </div>
+            <!--
+                    <div id="title-area">
+                        <div class="span4" style="">
+                            <p id="title">
+                                <a href="{{ path('walva_haf_homepage') }}" title="Health And Food">
+                                    Health And Food</a>
+
+                            </p>
+
+                            <p id="description">
+                                Le magazine de la santé et la nourriture</p>
+                        </div>
+                    </div>
+                        <!-- end #title-area -->
+
+            <div class="widget-area">
+            </div>
+            <!-- end .widget-area -->
+
+            <!-- end .wrap -->
+        </div>
+    </div>
+</div>
+<div class="row" style="">
+
+    <div class="span12">
+        <!--end #header-->
+        <div id="nav">
+            <ul id="menu-menu-principal" class="menu genesis-nav-menu menu-primary superfish">
+                <li id="menu-item-61" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-61">
+                    <a href="{{ path('article_public')}}">
+                        {{'Acceuil' | trans}}</a>
+                </li>
+
+                <li id="menu-item-10" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10 {% if current_page_name == 'article' %} current-menu-item {% endif %}">
+                    <a href="{{ path('tags_and_categories')}}">
+                        {{'Articles et nouvelles' | trans}}</a>
+                    <ul class="sub-menu">
+                        {{ render(controller("WalvaHafBundle:PublicCategorie:menu")) }}
+                    </ul>
+                </li>
+
+
+                <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11">
+                    <a title="Les articles de la rédaction" href="{{ path('tags_and_categories')}}">
+                        {{'Dossiers' | trans}}</a>
+                    {# empty Twig template #}
+                    {% if app.request.locale == 'fr' %}
+                        {% include 'WalvaHafBundle:Static:menu/submenu_dossiers_fr.html.twig'%}
+                    {% elseif app.request.locale == 'nl' %}
+                        {% include 'WalvaHafBundle:Static:menu/submenu_dossiers_nl.html.twig'%}
+                    {% endif %}
+
+
+                </li>
+
+                <li id="menu-item-14" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14 {% if current_page_name == 'livre' %} current-menu-item {% endif %}">
+                    <a href="{{ path('livre_public')}}">
+                        {{'Livres' | trans}}</a>
+                </li>
+
+
+                <li id="menu-item-113" class="menu-item menu-item-type-custom menu-item-object-custo {% if current_page_name == 'contact' %} current-menu-item {% endif %} ">
+                    <a href="{{ path('haf_contact', {'langue':'fr'}) }}">
+                        {{'Contact' | trans}}</a>
+                </li>
+
+                <li class="right date">
+                    {{ "now"|date("d/m/Y", "Europe/Paris") }}
+                </li>
+
+
+
+                {% include 'WalvaHafBundle:Static:menu/bouton_langue.html.twig'%}
+
+            </ul>
+
+
+
+            <!-- end .wrap -->
+        </div>
+    </div>
+</div>
+<div class="row" style="min-height: 100%">
+    <div class="span12" style="min-height: 100%">
+        <div class="myContent">
+            <div class="row-fluid">
+
+                <div class="span8" style="padding-left: 20px">
+                    <div style="padding-top : 20px; padding-right: 20px;  border-right: 1px solid #d5d5d5">
+
+                        {% block notifications %}
+                            {% include '@HAFWebsite/Components/notifications.html.twig' %}
+                        {% endblock %}
+
+
+
+                        {% block main_content %}
+
+                        {% endblock %}
+
+
+                        <!-- end .entry-content -->
+
+
+                        <!-- end .postclass -->
+                    </div>
+                </div>
+
+                <div class="span4 " style="padding-top: 20px; padding-right: 0px;" >
+                    <div style="">
+                        <h4>{{'Recherche'|trans}}</h4>
+                        {{ render(controller("WalvaHafBundle:PublicArticle:searchForm")) }}
+
+                        {{ render(controller("WalvaHafBundle:PublicArticle:menu", {nombre :3})) }}
+                        <br/>
+                        {{ render(controller("WalvaHafBundle:PublicLivre:menu", {nombre :3})) }}
+
+
+
+                        <br>
+
+                        {% if app.request.locale == 'fr' %}
+
+                            <!-- Begin MailChimp Signup Form -->
+
+                            <h4>{{ 'Inscription à notre newsletter'|trans }} </h4>
+                            <div id="mc_embed_signup">
+                                <form action="http://diffu-sciences.us1.list-manage.com/subscribe/post?u=d3baa13ca7c36addef32f33e4&amp;id=d583eceafe" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                    <input type="email" value="" name="EMAIL" class="email" style="width: 90%; padding-right: 10px" id="mce-EMAIL"
+                                           placeholder="{{'email address'|trans}}" required>
+                                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                    <div style="position: absolute; left: -5000px;"><input type="text" name="b_d3baa13ca7c36addef32f33e4_d583eceafe" value=""></div>
+                                    <div class="clear"><input type="submit" class="btn" value="{{'Subscribe'|trans}}" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                                </form>
+                            </div>
+
+                            <!--End mc_embed_signup-->
+
+                        {% elseif app.request.locale == 'nl' %}
+
+
+                            <!-- Begin MailChimp Signup Form -->
+
+                            <h4>{{ 'Inscription à notre newsletter'|trans }} </h4>
+                            <div id="mc_embed_signup">
+                                <form action="http://diffu-sciences.us1.list-manage.com/subscribe/post?u=d3baa13ca7c36addef32f33e4&amp;id=e0f6a79da0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                    <input type="email" value="" name="EMAIL" class="email" style="width: 90%; padding-right: 10px" id="mce-EMAIL"
+                                           placeholder="{{'email address'|trans}}" required>
+                                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                    <div style="position: absolute; left: -5000px;"><input type="text" name="b_d3baa13ca7c36addef32f33e4_e0f6a79da0" value=""></div>
+                                    <div class="clear"><input type="submit" class="btn" value="{{'Subscribe'|trans}}" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                                </form>
+                            </div>
+
+                            <!--End mc_embed_signup-->
+                        {% endif %}
+
+
+
+                        {% if app.request.locale == 'fr' %}
+
+                            <div style="width: 100%; height: 250px;">
+                                <object type="application/x-shockwave-flash" data="{{ asset('swf/SEDATIF_PC_300x250_FR.swf') }}" width="100%" height="100%">
+                                    <param name="movie" value="{{ asset('swf/SEDATIF_PC_300x250_FR.swf') }}" />
+                                    <param name="quality" value="high" />
+                                </object>
+                            </div>
+                        {% elseif app.request.locale == 'nl' %}
+                            <div style="width: 100%; height: 250px;">
+                                <object type="application/x-shockwave-flash" data="{{ asset('swf/SEDATIF_PC_300x250_NL.swf') }}" width="100%" height="100%">
+                                    <param name="movie" value="{{ asset('swf/SEDATIF_PC_300x250_NL.swf') }}" />
+                                    <param name="quality" value="high" />
+                                </object>
+                            </div>
+                        {% endif %}
+
+                        <br>
+                        <div class="hidden-phone">
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- HAF FR droite -->
+                            <ins class="adsbygoogle"
+                                 style="display:inline-block;width:160px;height:600px"
+                                 data-ad-client="ca-pub-7964103522268425"
+                                 data-ad-slot="5219023170"></ins>
+                            <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!-- end #content -->
+
+                <!-- end #content-sidebar-wrap -->
+
+                <!-- end .wrap -->
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span12">
+
+                <!-- end #inner -->
+                <div id="footer-widgets" class="footer-widgets" style="">
+                    <!--
+                    <div class="row-fluid" style="">
+                        <ul class="thumbnails">
+                            <li class="span3">
+                                <a href="#" class="thumbnail">
+                                    <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQQAAAC0CAYAAABytVLLAAAIhUlEQVR4Xu3avYsUWxMH4N7AL9DARM1EDNVQBP99IxMxUoxFMJBFEBHBj/ftgbO07cxsrXW99K16TMT1TM2pp7p/0907J6enpz8nfwgQIPB/gROB4DggQGAICATHAgECZwICwcFAgIBAcAwQIPC7gCsERwUBAq4QHAMECLhCcAwQIHBEwC2Dw4MAAbcMjgECBNwyOAYIEHDL4BggQCAi4BlCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgbHDQr1+/nt69e3e2sxs3bkxPnjz5Zaenp6fTy5cvpx8/fux+vm/N27dvpzdv3py97t69e9P9+/f/uOMXL15M8/vevn17evTo0S91xv+NH+5b80/v548b8cKDAgJhYwfH+sQa21ue8Osw2HcSrk++seZPQ2FZb32yrwPs39jPxsZWZjsCYUOj/Pbt2/Ts2bPp+/fv0zhxlyfiw4cPp1u3bk3Pnz+fPn/+/Nuak5OT6enTp9OVK1fO1oyTd5y0V69e3V1tXLp0Kdz5sU//5Z7X7/W39hPeuIUXFhAIFyb7ey8YJ/84ka5duzatQ+Lu3bu70JhvFeaTf16z/rO8gphD5M6dO7tL/fkW4+fPn7vXffny5eyWY4TP+nXL8JnfYw6ar1+//nLLsNxf5L0OrdnXx9+TVvmQgEDY+LGxPkkvX768O5Hnv+dP+48fP+46WF7Gr0/+dbCMk3J88s91Hj9+PM3/nq88Rq05dOarkevXr08PHjz47apjft+xZvm69dXIp0+ffgmjQ/vZ+ChabE8gbHjMy5NtPEM49GxgbmO95tiVxvxwcfnpPl9FvH//flq+Zkmz78Qf/7+sM362rBO58sk87NzwCP9zWxMIGx3Z8gTcd3LN214/ZxjrPnz4sPvtwnmBMNeIPvk/FgjnPcAUCBs9yPZsSyBscFaHwmDeauR2YNxWjOcFxy7Rl5/uh64ODt0azD8/9iB01BvPKyL72eA4Wm1JIGxs3MfC4KKBMNc67yHe+leG+74/cCwQIp/+N2/ePHuAed5+NjaOdtsRCBsb+XjQd5F7+fVJGf214/JqY35o+OrVq91DwnHSRp4hLB96Rn5V+k/8GnRjIyu1HYGwoXEe+sLR2OK+E265/eWn+3n39ZHfDiy/q3DoGcLy52vK5ZepztvPhsbQeisCYUPjP/SNv3UgLG8dxleXL/pV4fFehx48rusde6g472f95aV/46vUGxpdma0IhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvMD/ANbXEGO2tfHZAAAAAElFTkSuQmCC" />
+                                </a>
+                            </li>
+                            <li class="span3">
+                                <a href="#" class="thumbnail">
+                                    <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQQAAAC0CAYAAABytVLLAAAIhUlEQVR4Xu3avYsUWxMH4N7AL9DARM1EDNVQBP99IxMxUoxFMJBFEBHBj/ftgbO07cxsrXW99K16TMT1TM2pp7p/0907J6enpz8nfwgQIPB/gROB4DggQGAICATHAgECZwICwcFAgIBAcAwQIPC7gCsERwUBAq4QHAMECLhCcAwQIHBEwC2Dw4MAAbcMjgECBNwyOAYIEHDL4BggQCAi4BlCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgbHDQr1+/nt69e3e2sxs3bkxPnjz5Zaenp6fTy5cvpx8/fux+vm/N27dvpzdv3py97t69e9P9+/f/uOMXL15M8/vevn17evTo0S91xv+NH+5b80/v548b8cKDAgJhYwfH+sQa21ue8Osw2HcSrk++seZPQ2FZb32yrwPs39jPxsZWZjsCYUOj/Pbt2/Ts2bPp+/fv0zhxlyfiw4cPp1u3bk3Pnz+fPn/+/Nuak5OT6enTp9OVK1fO1oyTd5y0V69e3V1tXLp0Kdz5sU//5Z7X7/W39hPeuIUXFhAIFyb7ey8YJ/84ka5duzatQ+Lu3bu70JhvFeaTf16z/rO8gphD5M6dO7tL/fkW4+fPn7vXffny5eyWY4TP+nXL8JnfYw6ar1+//nLLsNxf5L0OrdnXx9+TVvmQgEDY+LGxPkkvX768O5Hnv+dP+48fP+46WF7Gr0/+dbCMk3J88s91Hj9+PM3/nq88Rq05dOarkevXr08PHjz47apjft+xZvm69dXIp0+ffgmjQ/vZ+ChabE8gbHjMy5NtPEM49GxgbmO95tiVxvxwcfnpPl9FvH//flq+Zkmz78Qf/7+sM362rBO58sk87NzwCP9zWxMIGx3Z8gTcd3LN214/ZxjrPnz4sPvtwnmBMNeIPvk/FgjnPcAUCBs9yPZsSyBscFaHwmDeauR2YNxWjOcFxy7Rl5/uh64ODt0azD8/9iB01BvPKyL72eA4Wm1JIGxs3MfC4KKBMNc67yHe+leG+74/cCwQIp/+N2/ePHuAed5+NjaOdtsRCBsb+XjQd5F7+fVJGf214/JqY35o+OrVq91DwnHSRp4hLB96Rn5V+k/8GnRjIyu1HYGwoXEe+sLR2OK+E265/eWn+3n39ZHfDiy/q3DoGcLy52vK5ZepztvPhsbQeisCYUPjP/SNv3UgLG8dxleXL/pV4fFehx48rusde6g472f95aV/46vUGxpdma0IhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvMD/ANbXEGO2tfHZAAAAAElFTkSuQmCC" />
+                                </a>
+                            </li>
+                            <li class="span3">
+                                <a href="#" class="thumbnail">
+                                    <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQQAAAC0CAYAAABytVLLAAAIhUlEQVR4Xu3avYsUWxMH4N7AL9DARM1EDNVQBP99IxMxUoxFMJBFEBHBj/ftgbO07cxsrXW99K16TMT1TM2pp7p/0907J6enpz8nfwgQIPB/gROB4DggQGAICATHAgECZwICwcFAgIBAcAwQIPC7gCsERwUBAq4QHAMECLhCcAwQIHBEwC2Dw4MAAbcMjgECBNwyOAYIEHDL4BggQCAi4BlCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgbHDQr1+/nt69e3e2sxs3bkxPnjz5Zaenp6fTy5cvpx8/fux+vm/N27dvpzdv3py97t69e9P9+/f/uOMXL15M8/vevn17evTo0S91xv+NH+5b80/v548b8cKDAgJhYwfH+sQa21ue8Osw2HcSrk++seZPQ2FZb32yrwPs39jPxsZWZjsCYUOj/Pbt2/Ts2bPp+/fv0zhxlyfiw4cPp1u3bk3Pnz+fPn/+/Nuak5OT6enTp9OVK1fO1oyTd5y0V69e3V1tXLp0Kdz5sU//5Z7X7/W39hPeuIUXFhAIFyb7ey8YJ/84ka5duzatQ+Lu3bu70JhvFeaTf16z/rO8gphD5M6dO7tL/fkW4+fPn7vXffny5eyWY4TP+nXL8JnfYw6ar1+//nLLsNxf5L0OrdnXx9+TVvmQgEDY+LGxPkkvX768O5Hnv+dP+48fP+46WF7Gr0/+dbCMk3J88s91Hj9+PM3/nq88Rq05dOarkevXr08PHjz47apjft+xZvm69dXIp0+ffgmjQ/vZ+ChabE8gbHjMy5NtPEM49GxgbmO95tiVxvxwcfnpPl9FvH//flq+Zkmz78Qf/7+sM362rBO58sk87NzwCP9zWxMIGx3Z8gTcd3LN214/ZxjrPnz4sPvtwnmBMNeIPvk/FgjnPcAUCBs9yPZsSyBscFaHwmDeauR2YNxWjOcFxy7Rl5/uh64ODt0azD8/9iB01BvPKyL72eA4Wm1JIGxs3MfC4KKBMNc67yHe+leG+74/cCwQIp/+N2/ePHuAed5+NjaOdtsRCBsb+XjQd5F7+fVJGf214/JqY35o+OrVq91DwnHSRp4hLB96Rn5V+k/8GnRjIyu1HYGwoXEe+sLR2OK+E265/eWn+3n39ZHfDiy/q3DoGcLy52vK5ZepztvPhsbQeisCYUPjP/SNv3UgLG8dxleXL/pV4fFehx48rusde6g472f95aV/46vUGxpdma0IhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvMD/ANbXEGO2tfHZAAAAAElFTkSuQmCC" />
+                                </a>
+                            </li>
+                            <li class="span3">
+                                <a href="#" class="thumbnail">
+                                    <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQQAAAC0CAYAAABytVLLAAAIhUlEQVR4Xu3avYsUWxMH4N7AL9DARM1EDNVQBP99IxMxUoxFMJBFEBHBj/ftgbO07cxsrXW99K16TMT1TM2pp7p/0907J6enpz8nfwgQIPB/gROB4DggQGAICATHAgECZwICwcFAgIBAcAwQIPC7gCsERwUBAq4QHAMECLhCcAwQIHBEwC2Dw4MAAbcMjgECBNwyOAYIEHDL4BggQCAi4BlCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgNBm0NglEBARCRMkaAk0EBEKTQWuTQERAIESUrCHQREAgbHDQr1+/nt69e3e2sxs3bkxPnjz5Zaenp6fTy5cvpx8/fux+vm/N27dvpzdv3py97t69e9P9+/f/uOMXL15M8/vevn17evTo0S91xv+NH+5b80/v548b8cKDAgJhYwfH+sQa21ue8Osw2HcSrk++seZPQ2FZb32yrwPs39jPxsZWZjsCYUOj/Pbt2/Ts2bPp+/fv0zhxlyfiw4cPp1u3bk3Pnz+fPn/+/Nuak5OT6enTp9OVK1fO1oyTd5y0V69e3V1tXLp0Kdz5sU//5Z7X7/W39hPeuIUXFhAIFyb7ey8YJ/84ka5duzatQ+Lu3bu70JhvFeaTf16z/rO8gphD5M6dO7tL/fkW4+fPn7vXffny5eyWY4TP+nXL8JnfYw6ar1+//nLLsNxf5L0OrdnXx9+TVvmQgEDY+LGxPkkvX768O5Hnv+dP+48fP+46WF7Gr0/+dbCMk3J88s91Hj9+PM3/nq88Rq05dOarkevXr08PHjz47apjft+xZvm69dXIp0+ffgmjQ/vZ+ChabE8gbHjMy5NtPEM49GxgbmO95tiVxvxwcfnpPl9FvH//flq+Zkmz78Qf/7+sM362rBO58sk87NzwCP9zWxMIGx3Z8gTcd3LN214/ZxjrPnz4sPvtwnmBMNeIPvk/FgjnPcAUCBs9yPZsSyBscFaHwmDeauR2YNxWjOcFxy7Rl5/uh64ODt0azD8/9iB01BvPKyL72eA4Wm1JIGxs3MfC4KKBMNc67yHe+leG+74/cCwQIp/+N2/ePHuAed5+NjaOdtsRCBsb+XjQd5F7+fVJGf214/JqY35o+OrVq91DwnHSRp4hLB96Rn5V+k/8GnRjIyu1HYGwoXEe+sLR2OK+E265/eWn+3n39ZHfDiy/q3DoGcLy52vK5ZepztvPhsbQeisCYUPjP/SNv3UgLG8dxleXL/pV4fFehx48rusde6g472f95aV/46vUGxpdma0IhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvIBAyBuqQKCMgEAoM0qNEMgLCIS8oQoEyggIhDKj1AiBvMD/ANbXEGO2tfHZAAAAAElFTkSuQmCC" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- end .wrap -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <div id="footer" class="footer">
+                <div class="gototop" >
+
+                    <p>
+                        <a href="#" rel="nofollow">
+                            {{'Haut de page' | trans}}</a>
+                    </p>
+
+                </div>
+
+                <div class="creds">
+
+                    <p>
+                        Copyright &copy; 2013 &middot; <a href="http://www.diffu-sciences.com/" title="Diffu Sciences">
+                            Diffu-sciences.com</a> | {{'Développé par' | trans}} <a href="http://www.sulivan.eu">Benjamin Ellis</a>
+
+                    </p>
+
+                </div>
+                <!-- end .wrap -->
+            </div>
+        </div>
+    </div>
+    <!-- end #footer -->
+
+</div>
+</div>
+
+<!-- end #wrap -->
+
+<script type='text/javascript' src='{{ asset('js/jquery.ui.tabs.min.js') }}'>
+</script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(".ui-tabs").tabs();
+    });</script>
+<script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-44846386-1', 'healthandfood.fr');
+    ga('send', 'pageview');
+
+</script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,13 @@
+{# je definis le type bootstrap #}
+{% set cssSufix = type %}
+{% if type == 'info' %}
+    {% set cssSufix = "block" %}
+{% elseif type == 'danger' %}
+    {% set cssSufix = "error" %}
+{% endif %}
+
+<div class="alert alert-{{ cssSufix }}">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <h4>{{ ('notification.'~type)|trans }}!</h4>
+    {{ notification }}
+</div>

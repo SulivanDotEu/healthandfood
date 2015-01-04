@@ -1,14 +1,15 @@
 {% extends 'WalvaHafBundle:Article:admin.html.twig' %}
 
+{% form_theme form ':Form:bootstrap_3_layout.html.twig' %}
 
 {% block breadcrumb %}
-{{ parent() }}
-<li class="active">Article creation</li>
+    {{ parent() }}
+    <li class="active">Article creation</li>
 {% endblock %}
 
 
 {% block body -%}
-<h1>Article creation</h1>
+    <h1>Article creation</h1>
 
     {{ form(form) }}
 
@@ -17,20 +18,22 @@
 
 
 
+
+
 {% block container_header_right %}
-<div class="btn-group">
-    <a class="btn " href="{{ path('article') }}">
-        <i class="icon-chevron-left"></i> 
-        Back to the list
-    </a>
-</div>
+    <div class="btn-group">
+        <a class="btn " href="{{ path('article') }}">
+            <i class="icon-chevron-left"></i>
+            Back to the list
+        </a>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
-{{ parent() }}
-<script type="text/javascript">
-                        window.onload = function() {
-         CKEDITOR.replace( 'walva_hafbundle_article[contenu]' );
-     };
-                        </script>
+    {{ parent() }}
+    <script type="text/javascript">
+        window.onload = function () {
+            CKEDITOR.replace('walva_hafbundle_article[contenu]');
+        };
+    </script>
 {% endblock %}

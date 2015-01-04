@@ -1,0 +1,141 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Explication de la vidéo interne.</div>
+
+    <div class="panel-body">
+
+
+        <div class="row">
+            <div class="col-sm-6">
+                <h4><b>Step 1 : </b> convertir la video</h4>
+
+                <p>
+                    La plupart des GSM ou appareils photos convertissent les videos dans un format inadapté aux site
+                    web.
+                    Il faut donc convertir la video dans un format adapté.
+                </p>
+
+                <p>
+                    Pour ce faire, il existe un logiciel libre et gratuit :
+                    <a href="http://www.mirovideoconverter.com/"><b>Miro Video Converter</b></a>
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <h4>Formats supportés par le système et la plupart des navigateurs</h4>
+                <ul>
+                    <li><b>MP4</b> Ce format conviendra à la majorité des utilisateurs du site.</li>
+                    <li>OGV</li>
+                    <li>WEBM</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+
+
+        <div class="row">
+            <div class="col-sm-6">
+                <h4><b>Step 2 : </b> uploader la video</h4>
+
+                <p>
+                    Ensuite, il faut mettre les vidéos sur le serveur. Pour ce faire, il faut utiliser un protocole
+                    adapté aux fichiers lourds : le protocole <b>FTP</b>.
+                </p>
+
+                <p>
+                    Pour uploadé les vidéos, nous allons utilisé le logiciel libre et gratuit :
+                    <a href="https://filezilla-project.org/"><b>FileZilla</b></a>.
+                </p>
+
+                <p>
+                    Une fois connecté sur le serveur, il suffit de glisser-déposer les fichiers de la video.<br>
+                    Il y aura 1 fichier par format à transférer. Pas besoin d'y mettre la vidéo d'origine. Veuillez
+                    garder
+                    une copie de la video d'origine sur votre disque dur.
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <p>Pour vous connecter sur l'hébergement, il faudra utiliser la configuration suivante:</p>
+                <dl class="dl-horizontal">
+                    <dt>Hôte</dt>
+                    <dd>ftp.healthandfood.fr</dd>
+                    <dt>Protocole</dt>
+                    <dd>FTP - Protocole de Transfert de Fichiers</dd>
+                    <dt>Chiffrement</dt>
+                    <dd>Connexion FTP simple (non sécuriisée)</dd>
+                    <dt>Type d'authentification</dt>
+                    <dd>Normale</dd>
+                    <dt>Identifiant</dt>
+                    <dd>healthanz-video</dd>
+                    <dt>Mot de passe</dt>
+                    <dd><i>non communiqué sur le site web par soucis de sécurité.</i></dd>
+                </dl>
+            </div>
+
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <h4><b>Step 3 : </b> configurer le site pour ajouter la video</h4>
+
+                <p>
+                    La dernière étape consiste à configurer le site pour que la vidéo soit visible sur un article.
+                    Toutes les étapes sont obligatoires.
+                </p>
+                <h5><b>1) Créer l'entité <a href="{{ path('internalvideo_new') }}">vidéo</a> </b></h5>
+
+                <p>
+                    Cette étape ne consiste qu'à donner un nom interne à la video. Ce nom ne sera visible que dans
+                    l'administration.
+                </p>
+                <h5><b>2) Créer les <a href="{{ path('video_source_new') }}">sources</a> de la vidéo</b></h5>
+
+                <p>
+                    Nous allons maintenant lié les fichiers à la video. Il faut créé une source par fichier.<br>
+                    Un <b>source</b> ou fichier vidéo est caractérisé par :
+                </p>
+                <dl class="dl-horizontal">
+                    <dt>Type</dt>
+                    <dd>Appelé aussi format, la valeur peut etre mp4, ogv ou webm</dd>
+                    <dt>Path</dt>
+                    <dd>Path est le chemin vers le fichier.</dd>
+                    <dt>Audio Language et subtitles language</dt>
+                    <dd>Une vidéo possède une seule langue audio ou écrite principale.
+                        Vous pouvez associé autant de source que vous le voulez dans les langues que vous désirez.
+                        Le système identifiera selon la langue de l'utilisateur la source à utiliser.
+                    </dd>
+                    <dt>Video</dt>
+                    <dd>C'est la video que vous venez de créer.</dd>
+                </dl>
+                <h5><b>3) Créer les <a href="{{ path('video_description_new') }}">descriptions</a> de la vidéo</b></h5>
+
+                <p>
+                    La description correspont à ce que les visiteurs vont voir. On va y affiché le nom et la description
+                    de la vidéo.
+                    Il va y avoir donc <i>une description</i> par <i>langue</i>.
+                </p>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Explication supplémentaire</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>Espaces disponibles sur votre hébergement</h4>
+                <p>
+                    Il n'est pas possible de mettre autant de vidéo que l'on souhaite sur le site.
+                    L'espace disque de l'hébergement est limité à <b>100 Go</b>.
+                    A ce jour (<i>22/11/2014</i>), seules 0.2 Go sont utilisés.
+                </p>
+            </div>
+
+
+        </div>
+    </div>
+</div>

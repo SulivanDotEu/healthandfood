@@ -2,122 +2,123 @@
 
 
 {% block meta_title %}
-{{ entity.resume}}
+    {{ entity.resume }}
 {% endblock %}
 
 {% block title_supp %}
-{{ entity.titre}}
+    {{ entity.titre }}
 {% endblock %}
 
 {% block breadcrumb %}
-{{ parent() }}
-<li class="active" style="font-size: 30px;">Article list</li>
+    {{ parent() }}
+    <li class="active" style="font-size: 30px;">Article list</li>
 {% endblock %}
 
 
 
 
 {% block main_content -%}
-<h1 style="font-size: 30px;">{{ entity.titre }}</h1>
-<div id="cat-11" class="post-91 type-post status-publish format-standard hentry category-gastrologie ui-tabs-hide entry ui-tabs-panel ui-widget-content ui-corner-bottom"
-     aria-labelledby="ui-id-1" role="tabpanel" aria-expanded="true" aria-hidden="false" 
-     style="display: block;">
+    <h1 style="font-size: 30px;">{{ entity.titre }}</h1>
+    <div id="cat-11"
+         class="post-91 type-post status-publish format-standard hentry category-gastrologie ui-tabs-hide entry ui-tabs-panel ui-widget-content ui-corner-bottom"
+         aria-labelledby="ui-id-1" role="tabpanel" aria-expanded="true" aria-hidden="false"
+         style="display: block;">
 
-    <span class="date published " title="">{{ entity.dateCreation|date("d/m/Y", "Europe/Paris") }}</span>  
+        <span class="date published " title="">{{ entity.dateCreation|date("d/m/Y", "Europe/Paris") }}</span>
         </span>
-    </span>
-    <br>
-     <span class="label label-inverse">{% if entity.categorie is not null %}{{ entity.categorie.content(app.request.locale) }}{%endif%}</span>
-            {% if entity.tag is not null %}
+        </span>
+        <br>
+        <span class="label label-inverse">{% if entity.categorie is not null %}{{ entity.categorie.content(app.request.locale) }}{% endif %}</span>
+        {% if entity.tag is not null %}
             {% for tag in entity.tag %}
-<span class="label label-success">{{ tag.content(app.request.locale) }}</span>            {% endfor %}
+                <span class="label label-success">{{ tag.content(app.request.locale) }}</span>            {% endfor %}
 
-            {% endif %}
+        {% endif %}
 
-</div>
-<hr/>
+    </div>
+    <hr/>
 
-{{ entity.contenu | raw }}
+    {{ entity.contenu | raw }}
 
 
 
- {% if entity.reference is not null %}
+    {% if entity.reference is not null %}
 
-            {% for ref in entity.reference %}
-<hr/>
-<h3 style="font-size: 16px">Référence : <a href="{{ ref.url }}"> {{ ref.titre }}</a></h3>
-<dl class="dl-horizontal">
-    {% if ref.contenu is not null %} 
-  <dt>Contenu</dt>
-  <dd>{{ref.contenu}}    </dd>
-  {% endif %}
-    {% if ref.url is not null %} 
-  <dt>URL</dt>
-  <dd>{{ref.url}}    </dd>
-  {% endif %}
-  <dt>Auteurs</dt>
-  <dd>{% if ref.auteur is not null %} {{ref.auteur}}    {% endif %}</dd>
-  {% if ref.doi is not null %} 
-  <dt>DOI</dt>
-  <dd>{{ref.doi}} </dd>
-   {% endif %}
-</dl>
+        {% for ref in entity.reference %}
+            <hr/>
+            <h3 style="font-size: 16px">Référence : <a href="{{ ref.url }}"> {{ ref.titre }}</a></h3>
+            <dl class="dl-horizontal">
+                {% if ref.contenu is not null %}
+                    <dt>Contenu</dt>
+                    <dd>{{ ref.contenu }}    </dd>
+                {% endif %}
+                {% if ref.url is not null %}
+                    <dt>URL</dt>
+                    <dd>{{ ref.url }}    </dd>
+                {% endif %}
+                <dt>Auteurs</dt>
+                <dd>{% if ref.auteur is not null %} {{ ref.auteur }}    {% endif %}</dd>
+                {% if ref.doi is not null %}
+                    <dt>DOI</dt>
+                    <dd>{{ ref.doi }} </dd>
+                {% endif %}
+            </dl>
+
+        {% endfor %}
+    {% endif %}
+
+    {% if entity.videos is not null %}
+        {% for video in entity.videos %}
+            <hr/>
+            <h3 style="font-size: 16px">Video : <a href=""> {{ video.getTitleIn(app.request.locale) }}</a></h3>
+
+            <video width="100%" height="100%" controls="controls">
+
+                {% for source in video.getSourcesInLanguage(app.request.locale) %}
+                    <source src="{{ asset(source.path) }}"
+                            type="video/{{ source.type }}"/>
+                {% endfor %}
+                Video du document
+            </video>
+
+            {% for source in video.getSourcesInLanguage(app.request.locale) %}
+                {{ source.id }} - {{ source.type }} - {{ source.path }} = {{ asset(source.path) }}<br>
+
 
             {% endfor %}
-            {% endif %}
-
- {% if entity.videos is not null %}
-{% for video in entity.videos %}
-<hr/>
-<h3 style="font-size: 16px">Video : <a href=""> {{video.getTitleIn(app.request.locale)}}</a></h3>
-
-<video width="100%" height="100%" controls="controls">
-    
-    {% for source in video.getSourcesInLanguage(app.request.locale) %}
-    <source src="{{ asset(source.path) }}"
-            type="video/{{source.type}}" />
-    {% endfor %}
-    Video du document
-</video>
-
-{% for source in video.getSourcesInLanguage(app.request.locale) %}
-    {{source.id}} - {{source.type}} - {{source.path}} = {{ asset(source.path) }}<br>
-    
- 
-    {% endfor %}
-{% endfor %}
-{% endif %}
+        {% endfor %}
+    {% endif %}
 
 
-<hr/>
-<div class="visible-desktop">
-    <div class="entry-content">
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- HAF millieu horizonal -->
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:728px;height:90px"
-             data-ad-client="ca-pub-7964103522268425"
-             data-ad-slot="6556155577"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-    </div>
     <hr/>
-</div>
-<div class="hidden-desktop">
-    <div class="entry-content">
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- HAF millieu horizonal mobile tablet -->
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:320px;height:50px"
-             data-ad-client="ca-pub-7964103522268425"
-             data-ad-slot="9509621979"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+    <div class="visible-desktop">
+        <div class="entry-content">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- HAF millieu horizonal -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-7964103522268425"
+                 data-ad-slot="6556155577"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <hr/>
     </div>
-    <hr/>
-</div>
+    <div class="hidden-desktop">
+        <div class="entry-content">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- HAF millieu horizonal mobile tablet -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:320px;height:50px"
+                 data-ad-client="ca-pub-7964103522268425"
+                 data-ad-slot="9509621979"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <hr/>
+    </div>
 
 
 

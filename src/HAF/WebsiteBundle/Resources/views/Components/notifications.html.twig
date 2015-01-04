@@ -1,0 +1,14 @@
+{% if app.session.flashBag.peekAll|length > 0 %}
+    {% for type in ['error', 'danger', 'warning', 'info', 'success'] %}
+
+        {% for flashMessage in app.session.flashbag.get(type) %}
+
+
+            {% include '@HAFWebsite/Components/notification_content.html.twig'
+            with {'notification':flashMessage, 'type':type} %}
+            {#{{ alert.alert((type == 'error' ? 'danger' : type), flashMessage, true, '', false, true) }}#}
+
+
+        {% endfor %}
+    {% endfor %}
+{% endif %}

@@ -1,15 +1,10 @@
 {% set current_page_name = 'article' %}
 {% extends 'WalvaHafBundle:Article:public/layout.html.twig' %}
 
-
-
 {% block breadcrumb %}
 {{ parent() }}
 <li class="active">Article list</li>
 {% endblock %}
-
-
-
 
 {% block main_content -%}
 <h1>{{'Nos derniers articles et nouvelles' | trans}}</h1>

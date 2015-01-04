@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Walva\HafBundle\Entity\Tag;
+use Walva\HafBundle\Entity\TagRepository;
 use Walva\HafBundle\Form\TagType;
 
 /**
@@ -23,7 +24,10 @@ class TagController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('WalvaHafBundle:Tag')->findAll();
+        /** @var TagRepository $repository */
+        $repository = $em->getRepository('WalvaHafBundle:Tag');
+        $entities = $repository->findAllOrderByLanguage();
+
 
         return $this->render('WalvaHafBundle:Tag:index.html.twig', array(
             'entities' => $entities,

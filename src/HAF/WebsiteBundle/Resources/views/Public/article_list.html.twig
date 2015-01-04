@@ -1,0 +1,94 @@
+{% set current_page_name = 'article' %}
+{% extends 'WalvaHafBundle:Article:public/layout.html.twig' %}
+
+{% block breadcrumb %}
+    {{ parent() }}
+    <li class="active">Article list</li>
+{% endblock %}
+
+{% block main_content -%}
+    <h1>{{'Nos derniers articles et nouvelles' | trans}}</h1>
+    <hr/>
+
+    {% for entity in entities %}
+
+        {% if loop.index == 4 %}
+            <div class="visible-desktop">
+                <div class="entry-content">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- HAF millieu horizonal -->
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:728px;height:90px"
+                         data-ad-client="ca-pub-7964103522268425"
+                         data-ad-slot="6556155577"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+                <hr/>
+            </div>
+            <div class="hidden-desktop">
+                <div class="entry-content">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- HAF millieu horizonal mobile tablet -->
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:320px;height:50px"
+                         data-ad-client="ca-pub-7964103522268425"
+                         data-ad-slot="9509621979"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+                <hr/>
+            </div>
+        {% endif %}
+
+
+        <div class="entry-content">
+
+            <div id="cat-11" class="post-91 type-post status-publish format-standard hentry category-gastrologie ui-tabs-hide entry ui-tabs-panel ui-widget-content ui-corner-bottom"
+                 aria-labelledby="ui-id-1"
+                 role="tabpanel"
+                 aria-expanded="true"
+                 aria-hidden="false"
+                 style="display: block;">
+                {% if entity.image is not null %}
+                <div  class="alignleft" style="max-width: 200px; margin-right: 20px"/>
+                <img src="{{ asset(entity.image.webPath) }}"
+                     alt="{{ entity.image.alt }}" />
+
+            </div>
+            {% endif %}
+
+            <h2><a href="{{ path('article_public_show', { 'id': entity.id }) }}" title="{{ entity.titre }}">
+                    {{ entity.titre }}</a>
+            </h2>
+            <p class="byline ">
+                <span class="date published " title="">{{ entity.dateCreation|date("d/m/Y", "Europe/Paris") }}</span> <!--  par <span class="author vcard">
+            <span class="fn"><a href="http://physiciansfolia.com/?author=1" class="fn n" title="admin" rel="author"> {{ entity.auteur }}</a>-->
+                </span>
+                </span>
+                <br>
+                <span class="label label-inverse">{% if entity.categorie is not null %}{{ entity.categorie.content(app.request.locale) }}{%endif%}</span>
+                {% if entity.tag is not null %}
+                    {% for tag in entity.tag %}
+                        <a href="{{ path('HAF_website_public_tag_show_article_by_tag', {'name':tag.content(app.request.locale)} ) }}">
+                            <span class="label label-success">{{ tag.content(app.request.locale) }}</span>
+                        </a>
+                    {% endfor %}
+
+                {% endif %}
+            </p>
+
+            <p>{{ entity.resume}}
+                <a href="{{ path('article_public_show', { 'id': entity.id }) }}" class="more-link">[{{'En savoir plus...' | trans}}]</a></p></div>
+
+        </div>
+        <hr/>
+    {% endfor %}
+
+    {% include '@HAFWebsite/Components/pagination.html.twig'  %}
+
+{% endblock %}
+
+

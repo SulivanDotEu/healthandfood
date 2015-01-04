@@ -12,7 +12,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tag
 {
-    
+
+    const LANGUAGE_FR = 'fr';
+    const LANGUAGE_NL = 'nl';
+
     public function __toString() {
         return $this->getContenuFr();
     }

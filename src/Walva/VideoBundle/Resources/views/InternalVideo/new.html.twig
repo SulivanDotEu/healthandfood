@@ -1,15 +1,8 @@
 {% extends  "WalvaCrudAdminBundle:Crud:new.html.twig" %}
 
-{% block body -%}
-    <h1>InternalVideo creation</h1>
+{% form_theme form ':Form:bootstrap_3_horizontal_layout.html.twig' %}
 
+{% block content  -%}
     {{ form(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('internalvideo') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
 {% endblock %}

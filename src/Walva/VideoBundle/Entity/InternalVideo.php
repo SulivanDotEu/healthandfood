@@ -27,9 +27,12 @@ class InternalVideo extends AbstractVideo
     public function getSourcesInLanguage($lang){
         $array = array();
         foreach ($this->getSources() as $source) {
-            if($source->getAudioLanguage() == $lang){
+            if(strtolower($source->getAudioLanguage()) == strtolower($lang)){
                 $array[] = $source;
             }
+        }
+        if(count($array) == 0 AND $lang != 'EN') {
+            $array = $this->getSourcesInLanguage("EN");
         }
         return $array;
     }

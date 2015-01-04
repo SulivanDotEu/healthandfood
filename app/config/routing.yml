@@ -1,3 +1,4 @@
+
 walva_adsite_advertiser:
     resource: "@WalvaAdSiteBundle/Resources/config/routing/advertiser.yml"
     prefix:   /advertiser/
@@ -5,6 +6,7 @@ walva_adsite_advertiser:
 walva_adsite:
     resource: "@WalvaAdSiteBundle/Resources/config/routing.yml"
     prefix:   /admin/adsite
+
 
 walva_crud_admin:
     resource: "@WalvaCrudAdminBundle/Resources/config/routing.yml"
@@ -36,7 +38,7 @@ w_haf_article:
         
 w_haf_article_public:
         resource: "@WalvaHafBundle/Resources/config/routing/article_public.yml"
-        prefix:   /article
+        prefix:   /
 
 w_haf_reference:
         resource: "@WalvaHafBundle/Resources/config/routing/reference.yml"
@@ -89,3 +91,8 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+
+haf_website:
+    resource: "@HAFWebsiteBundle/Controller/"
+    type:     annotation
+    prefix:   /

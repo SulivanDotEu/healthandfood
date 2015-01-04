@@ -2,6 +2,8 @@
 
 namespace Walva\HafBundle\Controller;
 
+use Doctrine\ORM\Tools\Pagination\Paginator;
+use HAF\WebsiteBundle\Helper\PaginationHelper;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Walva\HafBundle\Entity\Article;
@@ -14,11 +16,13 @@ use Walva\HafBundle\Entity\Tag;
  * Article controller.
  *
  */
-class PublicArticleController extends Controller {
+class PublicArticleController extends Controller
+{
 
     public $nombreArticleParPage = 10;
 
-    public function searchFormAction($value = null) {
+    public function searchFormAction($value = null)
+    {
         $form = $this->createFormBuilder();
         $form->add('value', 'text');
         $form->add('find', 'submit');
@@ -33,40 +37,43 @@ class PublicArticleController extends Controller {
 
 
         return $this->render('WalvaHafBundle:Article:components\search_form.html.twig', array(
-                    'form' => $form->createView()
+            'form' => $form->createView()
         ));
     }
 
-    public function switchLocaleAction($locale = "fr") {
+    public function switchLocaleAction($locale = "fr")
+    {
 //$request = $this->getRequest();
         $this->getRequest()->getSession()->set('_locale', $locale);
 //var_dump($request->getLocale());
         return $this->redirect($this->generateUrl('article_public'));
     }
 
-    public function bigListAction() {
+    public function bigListAction()
+    {
         $repositoryCat = $this->getDoctrine()->getManager()->getRepository('WalvaHafBundle:Categorie');
         $repositoryTag = $this->getDoctrine()->getManager()->getRepository('WalvaHafBundle:Tag');
 
-        $tags = $repositoryTag->findAll();
+        $tags = $repositoryTag->findAllOrderByLanguage($this->get('request_stack')->getCurrentRequest()->getLocale());
         $categories = $repositoryCat->findAll();
 
         return $this->render('WalvaHafBundle:Article:public\big_list.html.twig', array(
-                    'tags' => $tags,
-                    'categories' => $categories
+            'tags' => $tags,
+            'categories' => $categories,
         ));
     }
 
-    public function menuAction($nombre) {
+    public function menuAction($nombre)
+    {
         $repository = $this->getDoctrine()->getManager()->getRepository('WalvaHafBundle:Article');
         $entities = $repository->findBy(
-                array("langue" => $this->getRequest()->getLocale()), // Pas de critÃ¨re
-                array('dateCreation' => 'desc'), // On tri par date dÃ©croissante
-                $nombre, // On sÃ©lectionne $nombre articles
-                0 // A partir du premier
+            array("langue" => $this->getRequest()->getLocale()), // Pas de critÃ¨re
+            array('dateCreation' => 'desc'), // On tri par date dÃ©croissante
+            $nombre, // On sÃ©lectionne $nombre articles
+            0 // A partir du premier
         );
         return $this->render('WalvaHafBundle:Article:public\menu.html.twig', array(
-                    'entities' => $entities
+            'entities' => $entities,
         ));
     }
 
@@ -74,74 +81,64 @@ class PublicArticleController extends Controller {
      * Lists all Article entities.
      *
      */
-    public function indexAction($page = 1, $nombre = 0, Categorie $categorie = null, $search = null) {
-
-        if ($nombre == 0)
-            $nombre = $this->nombreArticleParPage;
-
+    public function indexAction(Request $request, $page = 1, Categorie $categorie = null, $search = null)
+    {
+        $locale = $request->getLocale();
         $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository('WalvaHafBundle:Article');
 
-        $request = $this->getRequest();
-        $locale = $request->getLocale();
-        $entities = $em->getRepository('WalvaHafBundle:Article')->findByLangue($locale, array('dateCreation' => 'DESC'), $nombre, $nombre * ($page - 1 ));
-//$entities = $em->getRepository('WalvaHafBundle:Article')->findBy(array(), array('dateCreation' => 'DESC'), $nombre, $nombre * ($page - 1 ));
+        $query = $repository->createQueryBuilder("article")
+            ->where("article.langue = :language")
+            ->setParameter("language", $locale)
+            ->orderBy("article.dateCreation", "DESC")
+            ->setFirstResult(($page -1) * $this->nombreArticleParPage)
+            ->setMaxResults($this->nombreArticleParPage)
+            ->getQuery();
 
-        $qb = $repository->createQueryBuilder('a');
-        $qb->select('count(a.id)');
-//$qb->from('WalvaHafBundle:Article', 'a');
-        $qb->where($qb->expr()->eq('a.langue', "'" . $locale . "'"));
+        $entities = new Paginator($query);
 
-        $pageCount = ceil($qb->getQuery()->getSingleScalarResult() / $nombre);
+        $paginationViewVars = PaginationHelper::createPaginatorViewVars(
+            $entities, $page, "walva_haf_homepage", 10
+        );
+
+        return $this->render("@HAFWebsite/Public/article_list.html.twig", [
+            'entities' => $entities,
+            'pagination' => $paginationViewVars
+        ]);
 
 
-
-
-        if (($page + 1) > $pageCount)
-            $next = false;
-        else
-            $next = true;
-
-        return $this->render('WalvaHafBundle:Article:public/index.html.twig', array(
-                    'entities' => $entities,
-                    'page' => $page,
-                    'next' => $next,
-        ));
     }
 
-    public function listByCategorieAction($page = 1, $nombre = 0, Categorie $categorie = null) {
-        if ($nombre == 0)
-            $nombre = $this->nombreArticleParPage;
+    public function listByCategorieAction(Request $request, $page = 1, Categorie $categorie = null)
+    {
+        $locale = $request->getLocale();
         $em = $this->getDoctrine()->getManager();
-//$lm = $this->container->get('walva_haf.langue');
-        $request = $this->getRequest();
-        $locale = $request->getLocale();
-        $entities = $em->getRepository('WalvaHafBundle:Article')->findBy(
-                array('categorie' => $categorie,
-            'langue' => $locale), array('dateCreation' => 'DESC'), $nombre, $nombre * ($page - 1 ));
+        $repository = $em->getRepository('WalvaHafBundle:Article');
 
+        $query = $repository->createQueryBuilder("article")
+            ->where("article.langue = :language")
+            ->andWhere("article.categorie = :categorie")
+            ->orderBy("article.dateCreation", "DESC")
+            ->setParameter("language", $locale)
+            ->setParameter("categorie", $categorie->getId())
+            ->setFirstResult(($page -1) * $this->nombreArticleParPage)
+            ->setMaxResults($this->nombreArticleParPage)
+            ->getQuery();
 
-        $count = count($em->getRepository('WalvaHafBundle:Article')->findBy(array('categorie' => $categorie)));
+        $entities = new Paginator($query);
 
-        $pageCount = ceil($count / $nombre);
+        $paginationViewVars = PaginationHelper::createPaginatorViewVars(
+            $entities, $page, "walva_haf_homepage", 10
+        );
 
-
-
-
-        if (($page + 1) > $pageCount)
-            $next = false;
-        else
-            $next = true;
-
-        return $this->render('WalvaHafBundle:Article:public/index.html.twig', array(
-                    'entities' => $entities,
-                    'categorie' => $categorie,
-                    'page' => $page,
-                    'next' => $next,
-        ));
+        return $this->render("@HAFWebsite/Public/article_list.html.twig", [
+            'entities' => $entities,
+            'pagination' => $paginationViewVars
+        ]);
     }
 
-    public function listByTagAction($page = 1, $nombre = 0, Tag $tag = null) {
+    public function listByTagAction($page = 1, $nombre = 0, Tag $tag = null)
+    {
         if ($nombre == 0)
             $nombre = $this->nombreArticleParPage;
 
@@ -150,7 +147,7 @@ class PublicArticleController extends Controller {
 //$lm = $this->container->get('walva_haf.langue');
 
         $entities = $repository->findBy(
-                array('tag' => $tag), array('dateCreation' => 'DESC'), $nombre, $nombre * ($page - 1 ));
+            array('tag' => $tag), array('dateCreation' => 'DESC'), $nombre, $nombre * ($page - 1));
 
 //$em=$this->getDoctrine()->getEntityManager()->getR
 
@@ -159,18 +156,16 @@ class PublicArticleController extends Controller {
         $pageCount = ceil($count / $nombre);
 
 
-
-
         if (($page + 1) > $pageCount)
             $next = false;
         else
             $next = true;
 
         return $this->render('WalvaHafBundle:Article:public/index.html.twig', array(
-                    'entities' => $entities,
-                    'tag' => $tag,
-                    'page' => $page,
-                    'next' => $next,
+            'entities' => $entities,
+            'tag' => $tag,
+            'page' => $page,
+            'next' => $next,
         ));
     }
 
@@ -178,7 +173,8 @@ class PublicArticleController extends Controller {
      * Creates a new Article entity.
      *
      */
-    public function createAction(Request $request) {
+    public function createAction(Request $request)
+    {
         $entity = new Article();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -192,8 +188,8 @@ class PublicArticleController extends Controller {
         }
 
         return $this->render('WalvaHafBundle:Article:new.html.twig', array(
-                    'entity' => $entity,
-                    'form' => $form->createView(),
+            'entity' => $entity,
+            'form' => $form->createView(),
         ));
     }
 
@@ -204,7 +200,8 @@ class PublicArticleController extends Controller {
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Article $entity) {
+    private function createCreateForm(Article $entity)
+    {
         $form = $this->createForm(new ArticleType(), $entity, array(
             'action' => $this->generateUrl('article_create'),
             'method' => 'POST',
@@ -219,7 +216,8 @@ class PublicArticleController extends Controller {
      * Finds and displays a Article entity.
      *
      */
-    public function showAction($id) {
+    public function showAction($id)
+    {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('WalvaHafBundle:Article')->find($id);
@@ -229,7 +227,7 @@ class PublicArticleController extends Controller {
         }
 
         return $this->render('WalvaHafBundle:Article:public/show.html.twig', array(
-                    'entity' => $entity,));
+            'entity' => $entity,));
     }
 
 }

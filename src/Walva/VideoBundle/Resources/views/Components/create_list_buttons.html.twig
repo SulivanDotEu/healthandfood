@@ -1,0 +1,26 @@
+<div class="pull-right">
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-plus"></span> Create a new entry <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="{{ path('internalvideo_new') }}">Internal Video</a></li>
+            <li class="disabled"><a href="#">Youtube Video</a></li>
+            <li class="disabled"><a href="#">Daylimotion Video</a></li>
+        </ul>
+    </div>
+</div>
+<div class="pull-left">
+    <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-list"></span> List by type <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="{{ path('abstract_video') }}">All types</a></li>
+            <li><a href="{{ path('internalvideo') }}">Internal Video</a></li>
+            <li class="disabled"><a href="#">Youtube Video</a></li>
+            <li class="disabled"><a href="#">Daylimotion Video</a></li>
+        </ul>
+    </div>
+</div>

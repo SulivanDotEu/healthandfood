@@ -1,44 +1,51 @@
 {% extends  'WalvaCrudAdminBundle:Crud:index.html.twig' %}
 
 
-{% block crud_table_row_content %}
-<td><a href="{{ path(routeShow, { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-<td>{{ entity.internalName }}</td>
-{% endblock %}
 
-
-{% block actions %}
-<div class="btn-group">
-    <a href="{{ path(routeShow, { 'id': entity.id }) }}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-new-window"></span> Show</a>
-    <a href="{{ path(routeEdit, { 'id': entity.id }) }}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
-</div>
-{% endblock %}
-
+{% block body %}
     {% block crud_add_button %}
-<div class="pull-right">
+        {% include '@WalvaVideo/Components/create_list_buttons.html.twig' %}
+    {% endblock %}
 
-    <div class="btn-group">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-            <span class="glyphicon glyphicon-plus"></span> Create a new entry <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <li><a href="{{ path('internalvideo_new') }}">Internal Video</a></li>
-            <li class="disabled"><a href="#">Youtube Video</a></li>
-            <li class="disabled"><a href="#">Daylimotion Video</a></li>
-        </ul>
-    </div>
-</div>
+    <table class="table table-list">
+        <thead>
+        <tr>
+            {% block crud_table_header %}
+                {% for column in columns %}
+                    <th>{{ column }}</th>
+                {% endfor %}
+                <th>Action</th>
+            {% endblock %}
+        </tr>
+        </thead>
+        <tbody>
+        {% block crud_table_body %}
+            {% for entity in entities %}
+                {% block crud_table_row %}
+                    <tr>
+                        {% block crud_table_row_content %}
+                            <td><a href="{{ path(routeShow, { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                            <td>{{ entity.internalName }}</td>
+                        {% endblock %}
+                        <td>
+                            {% block actions %}
+                                <div class="btn-group">
+                                    <a href="{{ path(routeShow, { 'id': entity.id }) }}" class="btn btn-default btn-xs"><span
+                                                class="glyphicon glyphicon-new-window"></span> Show</a>
+                                    <a href="{{ path(routeEdit, { 'id': entity.id }) }}" class="btn btn-default btn-xs"><span
+                                                class="glyphicon glyphicon-pencil"></span> Edit</a>
+                                </div>
+                            {% endblock %}
 
-<div class="pull-left">
-        <div class="btn-group">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-            <span class="glyphicon glyphicon-list"></span> List by type <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <li><a href="{{ path('internalvideo') }}">Internal Video</a></li>
-            <li class="disabled"><a href="#">Youtube Video</a></li>
-            <li class="disabled"><a href="#">Daylimotion Video</a></li>
-        </ul>
-    </div>
-</div>
+                        </td>
+                    </tr>
+                {% endblock %}
+            {% endfor %}
+        {% endblock %}
+        </tbody>
+    </table>
+
+    {% include '@WalvaVideo/Components/tutorial.html.twig' %}
+
+
 {% endblock %}

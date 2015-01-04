@@ -83,13 +83,14 @@ fos_user:
     firewall_name: main
     user_class: Walva\UserBundle\Entity\User
 
-braincrafted_bootstrap:
-    output_dir:
-    assets_dir: %kernel.root_dir%/../vendor/twbs/bootstrap
-    jquery_path: %kernel.root_dir%/../vendor/jquery/jquery/jquery-1.10.2.js
-    less_filter: less # "less", "lessphp", "sass" or "none"
-    auto_configure:
-        assetic: true
-        twig: true
-        knp_menu: true
-        knp_paginator: true
+#braincrafted_bootstrap:
+#    output_dir:
+#    assets_dir: %kernel.root_dir%/../vendor/twbs/bootstrap
+#    jquery_path: %kernel.root_dir%/../vendor/jquery/jquery/jquery-1.10.2.js
+#    less_filter: less # "less", "lessphp", "sass" or "none"
+#    auto_configure:
+#        assetic: true
+#        twig: true
+#        knp_menu: true
+#        knp_paginator: true
+

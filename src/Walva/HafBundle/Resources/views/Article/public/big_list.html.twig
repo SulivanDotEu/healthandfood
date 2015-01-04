@@ -4,55 +4,63 @@
 
 
 {% block breadcrumb %}
-{{ parent() }}
-<li class="active">Article list</li>
+    {{ parent() }}
+    <li class="active">Article list</li>
 {% endblock %}
 
 
 
 
 {% block main_content -%}
-<h1>{{'Nos articles et nouvelles'|trans}}</h1>
-<ul class="bigList">
+    <h1>{{ 'Nos articles et nouvelles'|trans }}</h1>
+    <ul class="bigList">
 
         <li>
-            <a href="{{path('article_public')}}">
-{{'Toutes nos publications'|trans}}</a>
+            <a href="{{ path('article_public') }}">
+                {{ 'Toutes nos publications'|trans }}</a>
+        </li>
+
+
+    </ul>
+    <hr/>
+    <h2>{{ 'La liste de nos catégories'|trans }}</h2>
+
+    <ul class="bigList">
+        {% for categorie in categories %}
+            <li>
+                <a href="{{ path('article_public_list_categorie',
+                {'id':categorie.id}) }}">
+                    {% if app.request.locale == "nl" %}
+                        {{ categorie.nomNl }}
+                    {% else %}
+                        {{ categorie.nomFr }}
+                    {% endif %}
+                </a>
             </li>
 
-            
-</ul>
-<hr/>
-<h2>{{'La liste de nos catégories'|trans}}</h2>
+        {% endfor %}
 
-<ul class="bigList">
-{% for categorie in categories %}
-        <li>
-            <a href="{{path('article_public_list_categorie',
-{'id':categorie.id})}}">
+    </ul>
+    <hr/>
+    <h2>{{ 'La liste de nos tags'|trans }}</h2>
+
+    <ul class="bigList">
+        {% for tag in tags %}
+            <li>
                 {% if app.request.locale == "nl" %}
-                    {{categorie.nomNl}}
+                    <a href="{{ path('HAF_website_public_tag_show_article_by_tag', {'name':tag.contenuNl}) }}">
+                        {{ tag.contenuNl }}
+                    </a>
                 {% else %}
-                    {{categorie.nomFr}}
+                    <a href="{{ path('HAF_website_public_tag_show_article_by_tag', {'name':tag.contenuFr}) }}">
+                        {{ tag.contenuFr }}
+                    </a>
                 {% endif %}
-  </a>
             </li>
 
-{% endfor %}
-            
-</ul>
-<hr/>
-<h2>{{'La liste de nos tags'|trans}}</h2>
-
-<ul class="bigList">
-{% for tag in tags %}
-    <li>
-        {{tag.contenuFr}}
-    </li>
-
-{% endfor %}
-</ul>
-<br><br>
+        {% endfor %}
+    </ul>
+    <br><br>
 
 
 

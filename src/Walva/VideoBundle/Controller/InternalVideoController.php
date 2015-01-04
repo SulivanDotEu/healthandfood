@@ -31,6 +31,7 @@ class InternalVideoController extends CrudController
         $this->setIndexPath("WalvaVideoBundle:InternalVideo:index.html.twig");
         $this->setShowPath("WalvaVideoBundle:InternalVideo:show.html.twig");
         $this->setEditPath("WalvaVideoBundle:InternalVideo:edit.html.twig");
+        $this->setNewPath("WalvaVideoBundle:InternalVideo:new.html.twig");
 
         $this->setColumnsHeader(array(
             "Id",

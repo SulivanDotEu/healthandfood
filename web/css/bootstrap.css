@@ -231,7 +231,8 @@ body {
 }
 
 a {
-  color: #0088cc;
+  /*color: #0088cc;*/
+    color: #00D222;
   text-decoration: none;
 }
 

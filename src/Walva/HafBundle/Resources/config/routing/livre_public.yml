@@ -1,10 +1,11 @@
 livre_public:
-    pattern:  /
-    defaults: { _controller: "WalvaHafBundle:PublicLivre:index" }
+    pattern:  /{page}
+    defaults: { _controller: "WalvaHafBundle:PublicLivre:index", "page":1 }
 
-livre_public_list:
-    pattern:  /page/{page}
-    defaults: { _controller: "WalvaHafBundle:PublicLivre:index" }
+#
+#livre_public_list:
+#    pattern:  /page/{page}
+#    defaults: { _controller: "WalvaHafBundle:PublicLivre:index" }
 
 livre_public_show:
     pattern:  /{id}/show

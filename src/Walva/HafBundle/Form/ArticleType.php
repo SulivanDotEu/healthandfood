@@ -5,6 +5,7 @@ namespace Walva\HafBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Walva\HafBundle\Entity\Article;
 use Walva\HafBundle\Entity\Image;
 
 class ArticleType extends AbstractType {
@@ -20,8 +21,8 @@ class ArticleType extends AbstractType {
                 ))
                 ->add('langue', 'choice', array(
                     'choices' => array(
-                        'fr' => 'français',
-                        'nl' => 'néerlandais'
+                        Article::LANGUAGE_FR => 'français',
+                        Article::LANGUAGE_NL => 'néerlandais'
                     )
                 ))
                 ->add('titre')

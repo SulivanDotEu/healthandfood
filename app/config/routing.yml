@@ -35,10 +35,6 @@ w_haf_static:
 w_haf_article:
         resource: "@WalvaHafBundle/Resources/config/routing/article.yml"
         prefix:   /admin/article
-        
-w_haf_article_public:
-        resource: "@WalvaHafBundle/Resources/config/routing/article_public.yml"
-        prefix:   /
 
 w_haf_reference:
         resource: "@WalvaHafBundle/Resources/config/routing/reference.yml"
@@ -95,4 +91,8 @@ fos_user_change_password:
 haf_website:
     resource: "@HAFWebsiteBundle/Controller/"
     type:     annotation
+    prefix:   /
+
+w_haf_article_public:
+    resource: "@WalvaHafBundle/Resources/config/routing/article_public.yml"
     prefix:   /

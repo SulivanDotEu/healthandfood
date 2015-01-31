@@ -12,14 +12,21 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @ORM\Entity(repositoryClass="Walva\HafBundle\Entity\ArticleRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class Article {
+class Article
+{
 
-    function __construct() {
+    const LANGUAGE_FR = 'fr';
+    const LANGUAGE_NL = 'nl';
+
+
+    function __construct()
+    {
         $this->dateCreation = new \DateTime('NOW');
     }
 
     /** @ORM\PreUpdate */
-    public function processUpdate() {
+    public function processUpdate()
+    {
         $this->dateModification = new \DateTime('NOW');
     }
 
@@ -108,18 +115,25 @@ class Article {
      * @ORM\Column(length=128, unique=false)
      */
     private $slug;
-    
+
     /**
      * @ORM\ManyToMany(targetEntity="Walva\VideoBundle\Entity\AbstractVideo")
      */
     private $videos;
 
+    function __toString()
+    {
+        return 'Article #'.$this->getId().' : '.substr($this->getTitre(), 0, 50);
+    }
+
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -129,7 +143,8 @@ class Article {
      * @param string $langue
      * @return Article
      */
-    public function setLangue($langue) {
+    public function setLangue($langue)
+    {
         $this->langue = $langue;
 
         return $this;
@@ -138,9 +153,10 @@ class Article {
     /**
      * Get langue
      *
-     * @return string 
+     * @return string
      */
-    public function getLangue() {
+    public function getLangue()
+    {
         return $this->langue;
     }
 
@@ -150,7 +166,8 @@ class Article {
      * @param string $contenu
      * @return Article
      */
-    public function setContenu($contenu) {
+    public function setContenu($contenu)
+    {
         $this->contenu = $contenu;
 
         return $this;
@@ -159,9 +176,10 @@ class Article {
     /**
      * Get contenu
      *
-     * @return string 
+     * @return string
      */
-    public function getContenu() {
+    public function getContenu()
+    {
         return $this->contenu;
     }
 
@@ -171,7 +189,8 @@ class Article {
      * @param string $description
      * @return Article
      */
-    public function setDescription($description) {
+    public function setDescription($description)
+    {
         $this->description = $description;
 
         return $this;
@@ -180,9 +199,10 @@ class Article {
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return $this->description;
     }
 
@@ -192,7 +212,8 @@ class Article {
      * @param \stdClass $auteur
      * @return Article
      */
-    public function setAuteur($auteur) {
+    public function setAuteur($auteur)
+    {
         $this->auteur = $auteur;
 
         return $this;
@@ -201,9 +222,10 @@ class Article {
     /**
      * Get auteur
      *
-     * @return \stdClass 
+     * @return \stdClass
      */
-    public function getAuteur() {
+    public function getAuteur()
+    {
         return $this->auteur;
     }
 
@@ -213,7 +235,8 @@ class Article {
      * @param string $titre
      * @return Article
      */
-    public function setTitre($titre) {
+    public function setTitre($titre)
+    {
         $this->titre = $titre;
 
         return $this;
@@ -222,9 +245,10 @@ class Article {
     /**
      * Get titre
      *
-     * @return string 
+     * @return string
      */
-    public function getTitre() {
+    public function getTitre()
+    {
         return $this->titre;
     }
 
@@ -234,7 +258,8 @@ class Article {
      * @param string $resume
      * @return Article
      */
-    public function setResume($resume) {
+    public function setResume($resume)
+    {
         $this->resume = $resume;
 
         return $this;
@@ -243,9 +268,10 @@ class Article {
     /**
      * Get resume
      *
-     * @return string 
+     * @return string
      */
-    public function getResume() {
+    public function getResume()
+    {
         return $this->resume;
     }
 
@@ -255,7 +281,8 @@ class Article {
      * @param \DateTime $dateCreation
      * @return Article
      */
-    public function setDateCreation($dateCreation) {
+    public function setDateCreation($dateCreation)
+    {
         $this->dateCreation = $dateCreation;
 
         return $this;
@@ -264,9 +291,10 @@ class Article {
     /**
      * Get dateCreation
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
-    public function getDateCreation() {
+    public function getDateCreation()
+    {
         return $this->dateCreation;
     }
 
@@ -276,7 +304,8 @@ class Article {
      * @param \DateTime $dateModification
      * @return Article
      */
-    public function setDateModification($dateModification) {
+    public function setDateModification($dateModification)
+    {
         $this->dateModification = $dateModification;
 
         return $this;
@@ -285,9 +314,10 @@ class Article {
     /**
      * Get dateModification
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
-    public function getDateModification() {
+    public function getDateModification()
+    {
         return $this->dateModification;
     }
 
@@ -297,7 +327,8 @@ class Article {
      * @param \Walva\HafBundle\Entity\Reference $reference
      * @return Article
      */
-    public function setReference(\Walva\HafBundle\Entity\Reference $reference = null) {
+    public function setReference(\Walva\HafBundle\Entity\Reference $reference = null)
+    {
         $this->reference = $reference;
 
         return $this;
@@ -306,9 +337,10 @@ class Article {
     /**
      * Get reference
      *
-     * @return \Walva\HafBundle\Entity\Reference 
+     * @return \Walva\HafBundle\Entity\Reference
      */
-    public function getReference() {
+    public function getReference()
+    {
         return $this->reference;
     }
 
@@ -318,7 +350,8 @@ class Article {
      * @param \Walva\HafBundle\Entity\Tag $tag
      * @return Article
      */
-    public function setTag(\Walva\HafBundle\Entity\Tag $tag = null) {
+    public function setTag(\Walva\HafBundle\Entity\Tag $tag = null)
+    {
         $this->tag = $tag;
 
         return $this;
@@ -327,9 +360,10 @@ class Article {
     /**
      * Get tag
      *
-     * @return \Walva\HafBundle\Entity\Tag 
+     * @return \Walva\HafBundle\Entity\Tag
      */
-    public function getTag() {
+    public function getTag()
+    {
         return $this->tag;
     }
 
@@ -339,7 +373,8 @@ class Article {
      * @param \Walva\HafBundle\Entity\Tag $tag
      * @return Article
      */
-    public function addTag(\Walva\HafBundle\Entity\Tag $tag) {
+    public function addTag(\Walva\HafBundle\Entity\Tag $tag)
+    {
         $this->tag[] = $tag;
 
         return $this;
@@ -350,7 +385,8 @@ class Article {
      *
      * @param \Walva\HafBundle\Entity\Tag $tag
      */
-    public function removeTag(\Walva\HafBundle\Entity\Tag $tag) {
+    public function removeTag(\Walva\HafBundle\Entity\Tag $tag)
+    {
         $this->tag->removeElement($tag);
     }
 
@@ -360,7 +396,8 @@ class Article {
      * @param \Walva\HafBundle\Entity\Reference $reference
      * @return Article
      */
-    public function addReference(\Walva\HafBundle\Entity\Reference $reference) {
+    public function addReference(\Walva\HafBundle\Entity\Reference $reference)
+    {
         $this->reference[] = $reference;
 
         return $this;
@@ -371,7 +408,8 @@ class Article {
      *
      * @param \Walva\HafBundle\Entity\Reference $reference
      */
-    public function removeReference(\Walva\HafBundle\Entity\Reference $reference) {
+    public function removeReference(\Walva\HafBundle\Entity\Reference $reference)
+    {
         $this->reference->removeElement($reference);
     }
 
@@ -381,7 +419,8 @@ class Article {
      * @param \Walva\HafBundle\Entity\Image $image
      * @return Article
      */
-    public function setImage(\Walva\HafBundle\Entity\Image $image = null) {
+    public function setImage(\Walva\HafBundle\Entity\Image $image = null)
+    {
         $this->image = $image;
 
         return $this;
@@ -390,9 +429,10 @@ class Article {
     /**
      * Get image
      *
-     * @return \Walva\HafBundle\Entity\Image 
+     * @return \Walva\HafBundle\Entity\Image
      */
-    public function getImage() {
+    public function getImage()
+    {
         return $this->image;
     }
 
@@ -402,7 +442,8 @@ class Article {
      * @param \Walva\HafBundle\Entity\Categorie $categorie
      * @return Article
      */
-    public function setCategorie(\Walva\HafBundle\Entity\Categorie $categorie = null) {
+    public function setCategorie(\Walva\HafBundle\Entity\Categorie $categorie = null)
+    {
         $this->categorie = $categorie;
 
         return $this;
@@ -411,21 +452,23 @@ class Article {
     /**
      * Get categorie
      *
-     * @return \Walva\HafBundle\Entity\Categorie 
+     * @return \Walva\HafBundle\Entity\Categorie
      */
-    public function getCategorie() {
+    public function getCategorie()
+    {
         return $this->categorie;
     }
 
-    public function getSlug() {
+    public function getSlug()
+    {
         return $this->slug;
     }
 
-    public function setSlug($slug) {
+    public function setSlug($slug)
+    {
         $this->slug = $slug;
         return $this;
     }
-
 
 
     /**
@@ -437,7 +480,7 @@ class Article {
     public function addVideo(\Walva\VideoBundle\Entity\AbstractVideo $videos)
     {
         $this->videos[] = $videos;
-    
+
         return $this;
     }
 
@@ -454,7 +497,7 @@ class Article {
     /**
      * Get videos
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getVideos()
     {

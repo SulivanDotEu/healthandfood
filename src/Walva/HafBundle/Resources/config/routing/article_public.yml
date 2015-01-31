@@ -6,24 +6,24 @@ article_public_list:
 
 
 
-article_public_list_tag:
-    pattern:  /tag/{id}
-    defaults: { _controller: "WalvaHafBundle:PublicArticle:listByTag" }
+#article_public_list_tag:
+#    pattern:  /tag/{id}
+#    defaults: { _controller: "WalvaHafBundle:PublicArticle:listByTag" }
 
-article_public_list_tag_and_page:
-    pattern:  /tag/{id}/page/{page}
-    defaults: { _controller: "WalvaHafBundle:PublicArticle:listByTag" }
+#article_public_list_tag_and_page:
+#    pattern:  /tag/{id}/page/{page}
+#    defaults: { _controller: "WalvaHafBundle:PublicArticle:listByTag" }
 
 article_public_list_categorie:
-    pattern:  /category/{id}
-    defaults: { _controller: "WalvaHafBundle:PublicArticle:listByCategorie" }
+    pattern:  /category/{id}/{page}
+    defaults: { _controller: "WalvaHafBundle:PublicArticle:listByCategorie", page:1 }
 
 article_public_list_categorie_and_page:
     pattern:  /cat/{id}/page/{page}
     defaults: { _controller: "WalvaHafBundle:PublicArticle:listByCategorie" }
 
 article_public_show:
-    pattern:  /{id}/show
+    pattern:  /article/{id}/show
     defaults: { _controller: "WalvaHafBundle:PublicArticle:show" }
 
 article_public_list_search:

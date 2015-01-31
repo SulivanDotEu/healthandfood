@@ -14,30 +14,8 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
 class ArticleRepository extends EntityRepository
 {
 
-//    public function queryFindByLanguage($locale, $returnQuery = false)
-//    {
-//        $queryBuilder = $this->getEntityManager()->createQueryBuilder();
-//
-//    }
-
     public function searchWith($langue, $page, $countByPage, $value)
     {
-        //$repository = $this->getRepository('WalvaHafBundle:Article');
-        /*
-          $query = $this->getEntityManager()->createQueryBuilder('Article a');
-          $query
-          //->where('a.titre LIKE %:value%')
-          //->where('a.langue = :langue')
-          ->where($query->expr()->orX(
-          $query->expr()->eq('a.langue', ':langue'),
-          $query->expr()->like('a.titre', '%:value%')))
-          ->setParameter('value', $value)
-          ->setParameter('langue', $langue)
-          ->orderBy('a.dateCreation', 'DESC')
-          ->getQuery();
-
-         */
-
         $query = $this->getEntityManager()->createQuery('SELECT a
             FROM WalvaHafBundle:Article a
             WHERE a.titre LIKE :value
@@ -54,7 +32,6 @@ class ArticleRepository extends EntityRepository
 
     public function getArticleByTag($tagId, $locale, $returnQuery = false)
     {
-
         $queryBuilder = $this->getEntityManager()->createQueryBuilder();
         $queryBuilder
             ->select('article')

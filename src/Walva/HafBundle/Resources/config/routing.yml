@@ -9,3 +9,8 @@ static_articles_et_nouvelles:
 switchlocale:
    pattern: /locale/{locale}
    defaults: { _controller: WalvaHafBundle:PublicArticle:switchlocale }
+
+walva_haf_spotlight:
+    resource: "@WalvaHafBundle/Controller/SpotlightController.php"
+    type:     annotation
+    prefix: /admin

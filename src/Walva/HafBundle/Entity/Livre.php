@@ -31,6 +31,13 @@ class Livre {
      * @ORM\Column(name="titre", type="string", length=255)
      */
     private $titre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="langue", type="string", length=3)
+     */
+    private $langue;
     
     /**
      * @var string
@@ -312,4 +319,21 @@ class Livre {
     {
         return $this->dateCreation;
     }
+
+    /**
+     * @return string
+     */
+    public function getLangue()
+    {
+        return $this->langue;
+    }
+
+    /**
+     * @param string $langue
+     */
+    public function setLangue($langue)
+    {
+        $this->langue = $langue;
+    }
+
 }

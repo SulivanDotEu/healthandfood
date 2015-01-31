@@ -3,6 +3,7 @@
 namespace Walva\HafBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * LivreRepository
@@ -12,4 +13,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class LivreRepository extends EntityRepository
 {
+
+    public function findByLanguagePagined($locale = "fr", $page = 1, $itemPerPage = 10)
+    {
+        $query = $this->getEntityManager()->createQueryBuilder()
+            ->select("livre")
+            ->from("WalvaHafBundle:Livre", "livre")
+            ->where("livre.langue = :language")
+            ->orderBy("livre.dateCreation", "DESC")
+            ->setFirstResult(($page -1) * $itemPerPage)
+            ->setMaxResults($itemPerPage)
+            ->setParameter("language", $locale)
+            ->getQuery();
+
+        return new Paginator($query);
+    }
+
+
 }

@@ -10,12 +10,10 @@ namespace HAF\WebsiteBundle\Controller;
 
 
 use Doctrine\ORM\EntityNotFoundException;
-use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use HAF\WebsiteBundle\Helper\PaginationHelper;
 use HAF\WebsiteBundle\WebsiteNotification;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Walva\HafBundle\Entity\Article;
 use Symfony\Component\HttpFoundation\Session\Session;

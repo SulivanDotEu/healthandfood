@@ -5,6 +5,7 @@ namespace Walva\HafBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Walva\HafBundle\Entity\Article;
 
 class LivreType extends AbstractType {
 
@@ -15,7 +16,14 @@ class LivreType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
                 ->add('titre')
-                ->add('auteur')
+            ->add('langue', 'choice', array(
+                'choices' => array(
+                    Article::LANGUAGE_FR => 'français',
+                    Article::LANGUAGE_NL => 'néerlandais'
+                )
+            ))
+
+            ->add('auteur')
                 ->add('nombrePages')
                 ->add('iSBN')
                 ->add('edition')

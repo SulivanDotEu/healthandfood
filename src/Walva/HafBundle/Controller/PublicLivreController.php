@@ -2,9 +2,11 @@
 
 namespace Walva\HafBundle\Controller;
 
+use HAF\WebsiteBundle\Helper\PaginationHelper;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Walva\HafBundle\Entity\Livre;
+use Walva\HafBundle\Entity\LivreRepository;
 use Walva\HafBundle\Form\LivreType;
 
 /**
@@ -29,28 +31,23 @@ class PublicLivreController extends Controller {
     * Lists all Livre entities.
     *
     */
-   public function indexAction($page = 1, $nombre = 10) {
-      $em = $this->getDoctrine()->getManager();
+   public function indexAction(Request $request, $page = 1, $itemPerPage = 10)
+   {
+       $locale = $request->getLocale();
+       $repository = $this->getDoctrine()->getManager()->getRepository('WalvaHafBundle:Livre');
+       /** @var LivreRepository $repository */
+       $entities = $repository->findByLanguagePagined($locale, $page, $itemPerPage);
 
-      $entities = $em->getRepository('WalvaHafBundle:Livre')->findAll();
+//        $entities = $em->getRepository('WalvaHafBundle:Livre')->findAll();
+       $paginationViewVars = PaginationHelper::createPaginatorViewVars(
+           $entities, $page, "livre_public", $itemPerPage
+       );
 
-      $em = $this->getDoctrine()->getManager();
+       return $this->render('WalvaHafBundle:Livre:public\index.html.twig', array(
+           'entities' => $entities,
+           'pagination' => $paginationViewVars
 
-      $qb = $em->createQueryBuilder();
-      $qb->select('count(a.id)');
-      $qb->from('WalvaHafBundle:Livre', 'a');
-
-      $pageCount = ceil($qb->getQuery()->getSingleScalarResult() / $nombre);
-      if (($page + 1) > $pageCount)
-         $next = false;
-      else
-         $next = true;
-
-      return $this->render('WalvaHafBundle:Livre:public/index.html.twig', array(
-                  'entities' => $entities,
-                  'page' => $page,
-                  'next' => $next,
-              ));
+       ));
    }
 
    /**

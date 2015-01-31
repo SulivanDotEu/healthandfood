@@ -1,0 +1,15 @@
+{% extends  "WalvaHafBundle::layout.html.twig" %}
+
+{% block breadcrumb %}
+    {{ parent() }}
+    <li class="">Spotlight</li>
+{% endblock %}
+
+{% block header_title %}
+    <span class="glyphicon glyphicon glyphicon-certificate"></span> Spotlight
+{% endblock %}
+
+{% block content %}
+    <h1>Hello {{ name }}!</h1>
+    <hr>
+{% endblock %}

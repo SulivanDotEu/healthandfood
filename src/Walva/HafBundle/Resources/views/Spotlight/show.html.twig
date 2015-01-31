@@ -1,0 +1,16 @@
+{% extends  'WalvaCrudAdminBundle:Crud:show.html.twig' %}
+
+{% block crud_table_body -%}
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Until</th>
+                <td>{{ entity.until|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Article</th>
+                <td>{{ entity.article }}</td>
+            </tr>
+{% endblock %}

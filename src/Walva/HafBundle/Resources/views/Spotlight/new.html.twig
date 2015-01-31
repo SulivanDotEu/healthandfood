@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+{% form_theme form ':Form:bootstrap_3_horizontal_layout.html.twig' %}
+
+
+{% block body -%}
+    <h1>Spotlight creation</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('spotlight') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

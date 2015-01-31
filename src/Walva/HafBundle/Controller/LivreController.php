@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Walva\HafBundle\Entity\Livre;
+use Walva\HafBundle\Entity\LivreRepository;
 use Walva\HafBundle\Form\LivreType;
 
 /**
@@ -19,11 +20,14 @@ class LivreController extends Controller
      * Lists all Livre entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request, $page = 1)
     {
-        $em = $this->getDoctrine()->getManager();
+        $locale = $request->getLocale();
+        $repository = $this->getDoctrine()->getManager("WalvaHafBundle:Livre");
+        /** @var LivreRepository $repository */
+        $entities = $repository->findByLanguagePagined($locale, $page);
 
-        $entities = $em->getRepository('WalvaHafBundle:Livre')->findAll();
+//        $entities = $em->getRepository('WalvaHafBundle:Livre')->findAll();
 
         return $this->render('WalvaHafBundle:Livre:index.html.twig', array(
             'entities' => $entities,

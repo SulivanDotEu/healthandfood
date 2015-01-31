@@ -1,5 +1,5 @@
 {% extends 'WalvaHafBundle:Livre:admin.html.twig' %}
-
+{# entity \Walva\HafBundle\Entity\Livre #}
 
 {% block breadcrumb %}
 {{ parent() }}
@@ -14,6 +14,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Langue</th>
                 <th>Titre</th>
                 <th>Auteur</th>
                 <th>Nombrepages</th>
@@ -27,6 +28,7 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('livre_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.langue }}</td>
                 <td>{{ entity.titre }}</td>
                 <td>{{ entity.auteur }}</td>
                 <td>{{ entity.nombrePages }}</td>

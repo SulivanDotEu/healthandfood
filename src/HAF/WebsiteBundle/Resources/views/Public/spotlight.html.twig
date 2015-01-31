@@ -1,0 +1,13 @@
+{% if entities|length != 0 %}
+
+    <h4>{{'Spotlight'|trans}}</h4>
+    <ul>
+        {% for entity in entities %}
+            <li class="sousMenuDroite">
+                <i class="icon-chevron-right"></i> <a href="{{ path('article_public_show', { 'id': entity.id }) }}"
+                                                      title="{{ entity.titre }}">
+                    {{ entity.titre }}  </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}

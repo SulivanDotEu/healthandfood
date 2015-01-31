@@ -128,7 +128,7 @@ class PublicArticleController extends Controller
         $entities = new Paginator($query);
 
         $paginationViewVars = PaginationHelper::createPaginatorViewVars(
-            $entities, $page, "walva_haf_homepage", 10
+            $entities, $page, "article_public_list_categorie", 10
         );
 
         return $this->render("@HAFWebsite/Public/article_list.html.twig", [

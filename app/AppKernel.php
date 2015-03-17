@@ -25,6 +25,7 @@ class AppKernel extends Kernel {
             new Walva\AdSiteBundle\WalvaAdSiteBundle(),
 //            new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new HAF\WebsiteBundle\HAFWebsiteBundle(),
+            new HAF\CalendarBundle\HAFCalendarBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

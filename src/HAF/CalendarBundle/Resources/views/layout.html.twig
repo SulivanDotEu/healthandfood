@@ -1,0 +1,10 @@
+{% extends  "::crud_admin.html.twig" %}
+
+{% block breadcrumb %}
+{{ parent() }}
+<li class=""><a href="{{ path('abstract_video') }}">Calendar</a></li>
+{% endblock %}
+
+{% block header_title %}
+<span class="glyphicon glyphicon-calendar"></span> Calendar
+{% endblock %}

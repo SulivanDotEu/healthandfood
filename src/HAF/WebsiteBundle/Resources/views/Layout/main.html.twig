@@ -195,6 +195,11 @@
 
                 <div class="span4 " style="padding-top: 20px; padding-right: 0px;" >
                     <div style="">
+                        <a href="http://nutriphyto.be/">
+                            <img src="{{ asset('img/nutri-fyto-'~app.request.locale~'.PNG') }}" class="img-responsive" alt="http://nutriphyto.be/" style="margin-left: -15px">
+                        </a>
+                        <br/>
+                        <br/>
                         <h4>{{'Recherche'|trans}}</h4>
                         {{ render(controller("WalvaHafBundle:PublicArticle:searchForm")) }}
 

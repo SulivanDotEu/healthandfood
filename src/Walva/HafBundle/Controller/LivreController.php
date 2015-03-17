@@ -23,7 +23,7 @@ class LivreController extends Controller
     public function indexAction(Request $request, $page = 1)
     {
         $locale = $request->getLocale();
-        $repository = $this->getDoctrine()->getManager("WalvaHafBundle:Livre");
+        $repository = $this->getDoctrine()->getManager()->getRepository("WalvaHafBundle:Livre");
         /** @var LivreRepository $repository */
         $entities = $repository->findByLanguagePagined($locale, $page);
 

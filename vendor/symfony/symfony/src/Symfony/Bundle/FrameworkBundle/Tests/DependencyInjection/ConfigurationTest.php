@@ -19,7 +19,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     public function testDefaultConfig()
     {
         $processor = new Processor();
-        $config = $processor->processConfiguration(new Configuration(), array(array('secret' => 's3cr3t')));
+        $config = $processor->processConfiguration(new Configuration(true), array(array('secret' => 's3cr3t')));
 
         $this->assertEquals(
             array_merge(array('secret' => 's3cr3t', 'trusted_hosts' => array()), self::getBundleDefaultConfig()),
@@ -33,7 +33,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     public function testValidTrustedProxies($trustedProxies, $processedProxies)
     {
         $processor = new Processor();
-        $configuration = new Configuration();
+        $configuration = new Configuration(true);
         $config = $processor->processConfiguration($configuration, array(array(
             'secret' => 's3cr3t',
             'trusted_proxies' => $trustedProxies,
@@ -62,7 +62,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     public function testInvalidTypeTrustedProxies()
     {
         $processor = new Processor();
-        $configuration = new Configuration();
+        $configuration = new Configuration(true);
         $processor->processConfiguration($configuration, array(
             array(
                 'secret' => 's3cr3t',
@@ -77,7 +77,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     public function testInvalidValueTrustedProxies()
     {
         $processor = new Processor();
-        $configuration = new Configuration();
+        $configuration = new Configuration(true);
         $processor->processConfiguration($configuration, array(
             array(
                 'secret' => 's3cr3t',
@@ -105,6 +105,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                 'field_name' => '_token',
             ),
             'esi' => array('enabled' => false),
+            'ssi' => array('enabled' => false),
             'fragments' => array(
                 'enabled' => false,
                 'path' => '/_fragment',
@@ -121,7 +122,8 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
             ),
             'translator' => array(
                 'enabled' => false,
-                'fallback' => 'en',
+                'fallbacks' => array('en'),
+                'logging' => true,
             ),
             'validation' => array(
                 'enabled' => false,
@@ -129,7 +131,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                 'static_method' => array('loadValidatorMetadata'),
                 'translation_domain' => 'validators',
                 'strict_email' => false,
-                'api' => version_compare(PHP_VERSION, '5.3.9', '<') ? '2.4' : '2.5-bc',
+                'api' => PHP_VERSION_ID < 50309 ? '2.4' : '2.5-bc',
             ),
             'annotations' => array(
                 'cache' => 'file',
@@ -138,6 +140,10 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
             ),
             'serializer' => array(
                 'enabled' => false,
+            ),
+            'property_access' => array(
+                'magic_call' => false,
+                'throw_exception_on_invalid_index' => false,
             ),
         );
     }

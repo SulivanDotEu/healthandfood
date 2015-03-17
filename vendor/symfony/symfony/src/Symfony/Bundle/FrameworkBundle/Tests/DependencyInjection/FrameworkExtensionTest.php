@@ -34,6 +34,23 @@ abstract class FrameworkExtensionTest extends TestCase
         $this->assertEquals('%form.type_extension.csrf.field_name%', $def->getArgument(2));
     }
 
+    public function testPropertyAccessWithDefaultValue()
+    {
+        $container = $this->createContainerFromFile('full');
+
+        $def = $container->getDefinition('property_accessor');
+        $this->assertFalse($def->getArgument(0));
+        $this->assertFalse($def->getArgument(1));
+    }
+
+    public function testPropertyAccessWithOverriddenValues()
+    {
+        $container = $this->createContainerFromFile('property_accessor');
+        $def = $container->getDefinition('property_accessor');
+        $this->assertTrue($def->getArgument(0));
+        $this->assertTrue($def->getArgument(1));
+    }
+
     /**
      * @expectedException \LogicException
      * @expectedExceptionMessage CSRF protection needs sessions to be enabled.
@@ -169,8 +186,6 @@ abstract class FrameworkExtensionTest extends TestCase
 
         $this->assertTrue($container->hasDefinition('templating.name_parser'), '->registerTemplatingConfiguration() loads templating.xml');
 
-        $this->assertEquals('request', $container->getDefinition('templating.helper.assets')->getScope(), '->registerTemplatingConfiguration() sets request scope on assets helper if one or more packages are request-scoped');
-
         // default package should have one HTTP base URL and path package SSL URL
         $this->assertTrue($container->hasDefinition('templating.asset.default_package.http'));
         $package = $container->getDefinition('templating.asset.default_package.http');
@@ -246,6 +261,14 @@ abstract class FrameworkExtensionTest extends TestCase
         $this->assertEquals(array('fr'), $calls[0][1][0]);
     }
 
+    public function testTranslatorMultipleFullback()
+    {
+        $container = $this->createContainerFromFile('translator_fallbacks');
+
+        $calls = $container->getDefinition('translator.default')->getMethodCalls();
+        $this->assertEquals(array('en', 'fr'), $calls[0][1][0]);
+    }
+
     /**
      * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
@@ -280,7 +303,7 @@ abstract class FrameworkExtensionTest extends TestCase
         $this->assertEquals(array(new Reference('validator.mapping.cache.apc')), $calls[5][1]);
         $this->assertSame('setApiVersion', $calls[6][0]);
 
-        if (version_compare(PHP_VERSION, '5.3.9', '<')) {
+        if (PHP_VERSION_ID < 50309) {
             $this->assertEquals(array(Validation::API_VERSION_2_4), $calls[6][1]);
         } else {
             $this->assertEquals(array(Validation::API_VERSION_2_5_BC), $calls[6][1]);
@@ -433,7 +456,7 @@ abstract class FrameworkExtensionTest extends TestCase
         $this->assertSame('setApiVersion', $calls[5][0]);
         // no cache, no annotations
 
-        if (version_compare(PHP_VERSION, '5.3.9', '<')) {
+        if (PHP_VERSION_ID < 50309) {
             $this->assertSame(array(Validation::API_VERSION_2_4), $calls[5][1]);
         } else {
             $this->assertSame(array(Validation::API_VERSION_2_5_BC), $calls[5][1]);
@@ -457,7 +480,7 @@ abstract class FrameworkExtensionTest extends TestCase
         $this->assertSame('setApiVersion', $calls[5][0]);
         // no cache, no annotations
 
-        if (version_compare(PHP_VERSION, '5.3.9', '<')) {
+        if (PHP_VERSION_ID < 50309) {
             $this->assertSame(array(Validation::API_VERSION_2_4), $calls[5][1]);
         } else {
             $this->assertSame(array(Validation::API_VERSION_2_5_BC), $calls[5][1]);
@@ -485,6 +508,25 @@ abstract class FrameworkExtensionTest extends TestCase
 
         $this->assertTrue($container->getParameter('form.type_extension.csrf.enabled'));
         $this->assertEquals('_custom_form', $container->getParameter('form.type_extension.csrf.field_name'));
+    }
+
+    public function testStopwatchEnabledWithDebugModeEnabled()
+    {
+        $container = $this->createContainerFromFile('default_config', array(
+            'kernel.container_class' => 'foo',
+            'kernel.debug' => true,
+        ));
+
+        $this->assertTrue($container->has('debug.stopwatch'));
+    }
+
+    public function testStopwatchEnabledWithDebugModeDisabled()
+    {
+        $container = $this->createContainerFromFile('default_config', array(
+            'kernel.container_class' => 'foo',
+        ));
+
+        $this->assertTrue($container->has('debug.stopwatch'));
     }
 
     protected function createContainer(array $data = array())

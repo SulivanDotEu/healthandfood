@@ -31,7 +31,7 @@ class Event
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateEnd", type="datetime")
+     * @ORM\Column(name="dateEnd", type="datetime", nullable=true)
      */
     private $dateEnd;
 
@@ -49,16 +49,10 @@ class Event
      */
     private $descriptions;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="contact", type="string", length=255)
-     */
-    private $contact;
 
     /**
      * @var Category
-     * @ORM\ManyToOne(targetEntity="HAF\CalendarBundle\Entity\Category")
+     * @ORM\ManyToMany(targetEntity="HAF\CalendarBundle\Entity\Category")
      */
     private $category;
 
@@ -69,6 +63,26 @@ class Event
     public function __construct()
     {
         $this->descriptions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    function __toString()
+    {
+        return $this->getInternalName();
+    }
+
+    /**
+     * @param $locale
+     * @return EventDescription
+     */
+    public function getDescriptionByLocale($locale)
+    {
+        foreach($this->getDescriptions() as $desc){
+            /** @var $desc EventDescription */
+            if($desc->getLanguage() == $locale)
+            {
+                return $desc;
+            }
+        }
     }
 
     /**
@@ -172,30 +186,6 @@ class Event
     {
         return $this->descriptions;
     }
-
-    /**
-     * Set contact
-     *
-     * @param string $contact
-     * @return Event
-     */
-    public function setContact($contact)
-    {
-        $this->contact = $contact;
-
-        return $this;
-    }
-
-    /**
-     * Get contact
-     *
-     * @return string 
-     */
-    public function getContact()
-    {
-        return $this->contact;
-    }
-
 
     /**
      * Add descriptions

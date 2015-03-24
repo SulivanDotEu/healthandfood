@@ -1,0 +1,28 @@
+{% extends  'WalvaCrudAdminBundle:Crud:index.html.twig' %}
+{% import 'macro/boostrap_label.html.twig' as label %}
+
+{% block crud_table_header %}
+    <th>Id</th>
+    <th>Category</th>
+    <th>Language</th>
+    <th>Translation</th>
+    <th>Action</th>
+{% endblock %}
+    
+{% block crud_table_row_content %}
+    {# @var entity \HAF\CalendarBundle\Entity\CategoryDescription #}
+    <td><a href="{{ path(routeShow, { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+    <td>{{ label.label(entity.category.color, entity.category.internalName) }}</td>
+    <td>{{ entity.language }}</td>
+    <td>{{ entity.title }}</td>
+
+{% endblock %}
+
+
+{% block actions %}
+<div class="btn-group">
+    <a href="{{ path(routeShow, { 'id': entity.id }) }}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-new-window"></span> Show</a>
+    <a href="{{ path(routeEdit, { 'id': entity.id }) }}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+</div>
+{% endblock %}
+

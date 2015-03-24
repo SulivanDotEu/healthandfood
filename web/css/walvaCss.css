@@ -6,6 +6,9 @@
         Purpose of the stylesheet follows.
 */
 
+a.label{
+    color:white;
+}
 
 .myContent{
     border-left: 1px solid #d5d5d5;

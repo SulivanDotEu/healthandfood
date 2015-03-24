@@ -45,3 +45,13 @@ Subscribe: Registreer
 'Health and Food est une publication de Sciences Today': 'Health and Food est une publication de Sciences Today'
 Search!: zoek
 Recherche: Zoeken
+notification:
+    success:  "Succès"
+    danger:   "Danger"
+    error:    "Erreur"
+    warning:  "Avertissement"
+    info:     "Information"
+tag:
+    not_found:  "Le tag \"%s\" n'a pu etre trouver."
+Spotlight: "Sous les projecteurs"
+Events: evenementen

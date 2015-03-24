@@ -51,6 +51,33 @@ class Category
         $this->descriptions = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    function __toString()
+    {
+        return $this->getInternalName();
+    }
+
+    public function getTitleForLocale($locale)
+    {
+        $desc = $this->getDescriptionByLocale($locale);
+        if(!$desc)
+        {
+            return $this->getInternalName();
+        }
+        return $desc->getTitle();
+    }
+
+    public function getDescriptionByLocale($locale)
+    {
+        foreach($this->getDescriptions() as $desc){
+            /** @var $desc CategoryDescription */
+            if($desc->getLanguage() == $locale)
+            {
+                return $desc;
+            }
+            return $this->getInternalName();
+        }
+    }
+
     /**
      * Get id
      *

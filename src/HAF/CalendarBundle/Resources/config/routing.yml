@@ -1,0 +1,4 @@
+haf_calendar:
+    resource: "@HAFCalendarBundle/Controller/"
+    type:     annotation
+    prefix:   /calendar

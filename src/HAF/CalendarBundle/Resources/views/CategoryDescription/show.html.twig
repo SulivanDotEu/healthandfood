@@ -1,0 +1,16 @@
+{% extends  'WalvaCrudAdminBundle:Crud:show.html.twig' %}
+
+{% block crud_table_body -%}
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Language</th>
+                <td>{{ entity.language }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ entity.title }}</td>
+            </tr>
+{% endblock %}

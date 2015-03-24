@@ -48,6 +48,11 @@ class EventDescription
      */
     private $event;
 
+    /**
+     * @var string
+     * @ORM\Column(name="contact", type="text")
+     */
+    private $contact;
 
     /**
      * Get id
@@ -149,5 +154,28 @@ class EventDescription
     public function getEvent()
     {
         return $this->event;
+    }
+
+    /**
+     * Set contact
+     *
+     * @param string $contact
+     * @return EventDescription
+     */
+    public function setContact($contact)
+    {
+        $this->contact = $contact;
+
+        return $this;
+    }
+
+    /**
+     * Get contact
+     *
+     * @return string 
+     */
+    public function getContact()
+    {
+        return $this->contact;
     }
 }

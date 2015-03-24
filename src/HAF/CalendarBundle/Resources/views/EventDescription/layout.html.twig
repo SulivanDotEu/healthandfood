@@ -1,0 +1,10 @@
+{% extends  "HAFCalendarBundle:Event:layout.html.twig" %}
+
+{% block breadcrumb %}
+{{ parent() }}
+<li class=""><a href="{{ path('calendar_event_description') }}">Description</a></li>
+{% endblock %}
+
+{% block header_title %}
+<span class="glyphicon glyphicon-calendar"></span> Event Description
+{% endblock %}

@@ -1,19 +1,24 @@
 {% extends  'WalvaCrudAdminBundle:Crud:show.html.twig' %}
 
 {% block crud_table_body -%}
-    <tr>
-        <th>Id</th>
-        <td>{{ entity.id }}</td>
-    </tr>
-    <tr>
-        <th>Internalname</th>
-        <td>{{ entity.internalName }}</td>
-    </tr>
-    <tr>
-        <th>Color</th>
-        <td>{{ entity.color }}</td>
-    </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Datestart</th>
+                <td>{{ entity.dateStart|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Dateend</th>
+                <td>{{ entity.dateEnd|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Internalname</th>
+                <td>{{ entity.internalName }}</td>
+            </tr>
 {% endblock %}
+
 
 {% block body %}
     {{ parent() }}
@@ -31,16 +36,16 @@
             {# @var description \HAF\CalendarBundle\Entity\CategoryDescription #}
 
             <tr>
-                <td><a href="{{ path('calendar_category_description_show', { 'id': description.id }) }}">
+                <td><a href="{{ path('calendar_event_description_show', { 'id': description.id }) }}">
                         {{ description.id }}</a>
                 </td>
                 <td>{{ description.language }}</td>
                 <td>{{ description.title }}</td>
                 <td>
                     <div class="btn-group">
-                        <a href="{{ path('calendar_category_description_show', { 'id': description.id }) }}" class="btn btn-default btn-xs"><span
+                        <a href="{{ path('calendar_event_description_show', { 'id': description.id }) }}" class="btn btn-default btn-xs"><span
                                     class="glyphicon glyphicon-new-window"></span> Show</a>
-                        <a href="{{ path('calendar_category_description_edit', { 'id': description.id }) }}" class="btn btn-default btn-xs"><span
+                        <a href="{{ path('calendar_event_description_edit', { 'id': description.id }) }}" class="btn btn-default btn-xs"><span
                                     class="glyphicon glyphicon-pencil"></span> Edit</a>
                     </div>
                 </td>

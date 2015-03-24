@@ -34,11 +34,11 @@
             <ul class="dropdown-menu">
                 <li><a href="{{ path("article") }}">
                         <i class="glyphicon glyphicon-th-list pull-right"></i>
-                         Article</a>
+                        Article</a>
                 </li>
                 <li class="divider"></li>
                 <li><a href="{{ path("tag") }}">
-                        <i class="glyphicon glyphicon-tags pull-right" ></i>
+                        <i class="glyphicon glyphicon-tags pull-right"></i>
                         Tag</a>
                 </li>
                 <li><a href="{{ path("reference") }}">
@@ -69,13 +69,44 @@
                 <span class="glyphicon glyphicon-bullhorn"></span> Régie
             </a>
         </li>
+        <li class="dropdown">
 
 
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="glyphicon glyphicon-calendar"></i> Calendar <b class="caret"></b>
+            </a>
+
+            <ul class="dropdown-menu">
+                <li role="presentation" class="dropdown-header">Category section</li>
+                <li>
+                    <a href="{{ path("calendar_category") }}">
+                        <span class="glyphicon glyphicon-calendar"></span> Category
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path("calendar_category_description") }}">
+                        <span class="glyphicon glyphicon-calendar"></span> Description
+                    </a>
+                </li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation" class="dropdown-header">Event section</li>
+                <li>
+                    <a href="{{ path("calendar_event") }}">
+                        <span class="glyphicon glyphicon-calendar"></span> Event
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path("calendar_event_description") }}">
+                        <span class="glyphicon glyphicon-calendar"></span> Event Description
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
 
 
-
-
-
+    </li>
 
 
     </ul>

@@ -20,7 +20,6 @@ use Walva\HafBundle\Entity\SpotlightRepository;
  */
 class SpotlightController extends Controller{
 
-
     public function getSpotlightItemsAction(Request $request){
 //        return new Response("aa");
         $locale = $request->getLocale();
@@ -33,3 +32,4 @@ class SpotlightController extends Controller{
         ));
     }
 }
+

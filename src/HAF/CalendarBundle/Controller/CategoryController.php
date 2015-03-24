@@ -23,7 +23,7 @@ class CategoryController extends Controller
         $this->setRoutes(array(
             self::$ROUTE_INDEX_ADD => 'calendar_category_new',
             self::$ROUTE_INDEX_INDEX => 'calendar_category',
-            self::$ROUTE_INDEX_DELETE => 'calendar_category_show',
+            self::$ROUTE_INDEX_DELETE => 'calendar_category_delete',
             self::$ROUTE_INDEX_EDIT => 'calendar_category_edit',
             self::$ROUTE_INDEX_SHOW => 'calendar_category_show',
         ));
@@ -188,7 +188,7 @@ class CategoryController extends Controller
     public function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('category_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('calendar_category_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm();

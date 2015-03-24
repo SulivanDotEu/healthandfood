@@ -1,0 +1,64 @@
+{% set current_page_name = 'article' %}
+{% extends 'WalvaHafBundle:Article:public/layout.html.twig' %}
+{% import 'macro/boostrap2_label.html.twig' as label %}
+
+
+{% block breadcrumb %}
+    {{ parent() }}
+    <li class="active">Article list</li>
+{% endblock %}
+
+{% block main_content -%}
+<h1>{{ 'Nos derniers articles et nouvelles' | trans }}</h1>
+<hr/>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>{{ 'Categories'|trans }}</th>
+        <th>{{ 'Nom'|trans }}</th>
+        <th>{{ 'Date'|trans }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+    {# @var entity \HAF\CalendarBundle\Entity\Event #}
+    {% set description = entity.descriptionByLocale(app.request.locale) %}
+    {# @var description \HAF\CalendarBundle\Entity\EventDescription #}
+    <tr>
+        <td>
+            {% for category in entity.category %}
+                {% set categoryDesc = category.descriptionByLocale(app.request.locale) %}
+                {# @var categoryDesc \HAF\CalendarBundle\Entity\CategoryDescription #}
+                {# @var category \HAF\CalendarBundle\Entity\Category #}
+
+
+                {#{% include '@HAFCalendar/Components/category_label.html.twig' with {'category':category} %}#}
+                {% set myUrl = path('calendar_category_show', {id:category.id}) %}
+                {{ label.label(category.color, category.titleForLocale(app.request.locale), myUrl) }}
+                {#{{ label.label(category.color, category.internalName) }}#}
+            {% endfor %}
+        </td>
+        <td>{{ description.title }}</td>
+        <td>
+            {{ entity.dateStart|date('d/m/Y') }}
+            {% if entity.dateEnd is not null %}
+            {{ entity.dateEnd|date('d/m/Y')  }}
+            {% endif %}
+
+
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% for entity in entities %}
+
+
+    {% endfor %}
+
+    {% include '@HAFWebsite/Components/pagination.html.twig' %}
+
+{% endblock %}
+
+

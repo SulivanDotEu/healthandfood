@@ -1,7 +1,6 @@
 haf_calendar:
-    resource: "@HAFCalendarBundle/Controller/"
-    type:     annotation
-    prefix:   /calendar
+    resource: "@HAFCalendarBundle/Resources/config/routing.yml"
+    prefix:   /admin
 
 
 walva_adsite_advertiser:

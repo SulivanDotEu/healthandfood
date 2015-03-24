@@ -1,0 +1,8 @@
+{% macro label(color, value, href) %}
+    {% if href is  null %}
+        <span class="label label-{{ color }}">{{ value }}</span>
+    {% else %}
+        <a href="{{ href }}" class="label label-{{ color }}">{{ value }}</a>
+    {% endif %}
+
+{% endmacro %}

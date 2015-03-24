@@ -1,16 +1,34 @@
 {% extends  'WalvaCrudAdminBundle:Crud:index.html.twig' %}
-
 {% import 'macro/boostrap_label.html.twig' as label %}
+
+
 
 {% block crud_table_header %}
     <th>Id</th>
+    <th>Category</th>
     <th>Internal Name</th>
+    <th>Date</th>
     <th>Action</th>
 {% endblock %}
-    
+
 {% block crud_table_row_content %}
+    {# @var entity \HAF\CalendarBundle\Entity\Event #}
     <td><a href="{{ path(routeShow, { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-    <td>{{ label.label(entity.color, entity.internalName) }}</td>
+    <td>
+        {% for category in entity.category %}
+            {#{% include '@HAFCalendar/Components/category_label.html.twig' with {'category':category} %}#}
+            {% set lolol = path('calendar_category_show', {id:category.id}) %}
+            {{ label.label(category.color, category.internalName, lolol) }}
+            {#{{ label.label(category.color, category.internalName) }}#}
+        {% endfor %}
+    </td>
+    <td>{{ entity.internalName }}</td>
+    <td>
+        {{ entity.dateStart|date('Y-m-d') }}
+        {% if entity.dateEnd %}
+            {{ entity.dateEnd|date('Y-m-d') }}
+        {% endif %}
+    </td>
 {% endblock %}
 
 

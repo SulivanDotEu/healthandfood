@@ -1,0 +1,52 @@
+<ul id="menu-menu-principal" class="menu genesis-nav-menu menu-primary superfish">
+    <li id="menu-item-61" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-61">
+        <a href="{{ path('article_public')}}">
+            {{'Acceuil' | trans}}</a>
+    </li>
+
+    <li id="menu-item-10" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10 {% if current_page_name == 'article' %} current-menu-item {% endif %}">
+        <a href="{{ path('tags_and_categories')}}">
+            {{'Articles et nouvelles' | trans}}</a>
+        <ul class="sub-menu">
+            {{ render(controller("WalvaHafBundle:PublicCategorie:menu")) }}
+        </ul>
+    </li>
+
+
+    <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11">
+        <a title="Les articles de la rédaction" href="{{ path('tags_and_categories')}}">
+            {{'Dossiers' | trans}}</a>
+        {# empty Twig template #}
+        {% if app.request.locale == 'fr' %}
+            {% include 'WalvaHafBundle:Static:menu/submenu_dossiers_fr.html.twig'%}
+        {% elseif app.request.locale == 'nl' %}
+            {% include 'WalvaHafBundle:Static:menu/submenu_dossiers_nl.html.twig'%}
+        {% endif %}
+
+
+    </li>
+
+    <li id="menu-item-14" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14 {% if current_page_name == 'livre' %} current-menu-item {% endif %}">
+        <a href="{{ path('livre_public')}}">
+            {{'Livres' | trans}}</a>
+    </li>
+    <li id="menu-item-14" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14 {% if current_page_name == 'event' %} current-menu-item {% endif %}">
+        <a href="{{ path('public_event')}}">
+            {{'Events' | trans}}</a>
+    </li>
+
+
+    <li id="menu-item-113" class="menu-item menu-item-type-custom menu-item-object-custo {% if current_page_name == 'contact' %} current-menu-item {% endif %} ">
+        <a href="{{ path('haf_contact', {'langue':'fr'}) }}">
+            {{'Contact' | trans}}</a>
+    </li>
+
+    <li class="right date">
+        {{ "now"|date("d/m/Y", "Europe/Paris") }}
+    </li>
+
+
+
+    {% include 'WalvaHafBundle:Static:menu/bouton_langue.html.twig'%}
+
+</ul>

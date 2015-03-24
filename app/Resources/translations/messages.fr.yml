@@ -56,3 +56,4 @@ notification:
 tag:
     not_found:  "Le tag \"%s\" n'a pu etre trouver."
 Spotlight: "Sous les projecteurs"
+Events: événements

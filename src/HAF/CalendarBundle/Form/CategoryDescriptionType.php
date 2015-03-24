@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class CategoryType extends AbstractType
+class CategoryDescriptionType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,27 +15,19 @@ class CategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('internalName')
-            ->add('color', 'choice', [
-                "choices" => [
-                    "default" => "gray",
-                    "primary" => "blue",
-                    "info"    => "light blue",
-                    "warning" => " orange",
-                    "danger"  => "red",
-                    "success" => "green",
-                ]
-
-            ]);
+            ->add('language', 'language')
+            ->add('title')
+            ->add('category')
+        ;
     }
-
+    
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'HAF\CalendarBundle\Entity\Category'
+            'data_class' => 'HAF\CalendarBundle\Entity\CategoryDescription'
         ));
     }
 
@@ -44,6 +36,6 @@ class CategoryType extends AbstractType
      */
     public function getName()
     {
-        return 'haf_calendarbundle_category';
+        return 'haf_calendarbundle_categorydescription';
     }
 }

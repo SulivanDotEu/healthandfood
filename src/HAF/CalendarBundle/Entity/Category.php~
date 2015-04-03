@@ -1,0 +1,46 @@
+<?php
+
+namespace HAF\CalendarBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Category
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="HAF\CalendarBundle\Repository\CategoryRepository")
+ */
+class Category
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="internalName", type="string", length=255)
+     */
+    private $internalName;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="HAF\CalendarBundle\Entity\CategoryDescription", mappedBy="category", cascade={"all"})
+     */
+    private $descriptions;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="color", type="string", length=255)
+     */
+    private $color;
+
+}

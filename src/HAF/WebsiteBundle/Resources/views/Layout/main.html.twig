@@ -31,7 +31,7 @@
 
 </head>
 
-<body class="page page-id-111 page-template-default  header-image full-width-content" style="min-height: 100%">
+<body class="page page-template-default  header-image full-width-content" style="min-height: 100%">
 <div class="container header" >
 <div class="row" style="">
     <div id="subnav">
@@ -128,17 +128,10 @@
                             {% include '@HAFWebsite/Components/notifications.html.twig' %}
                         {% endblock %}
 
-
-
                         {% block main_content %}
 
                         {% endblock %}
 
-
-                        <!-- end .entry-content -->
-
-
-                        <!-- end .postclass -->
                     </div>
                 </div>
 
@@ -151,7 +144,6 @@
                         <br/>
                         <h4>{{'Recherche'|trans}}</h4>
                         {{ render(controller("WalvaHafBundle:PublicArticle:searchForm")) }}
-
                         {{ render(controller("HAFWebsiteBundle:Spotlight:getSpotlightItems")) }}
                         <br/>
                         <br/>
@@ -159,9 +151,6 @@
                         {{ render(controller("WalvaHafBundle:PublicArticle:menu", {nombre :3})) }}
                         <br/>
                         {{ render(controller("WalvaHafBundle:PublicLivre:menu", {nombre :3})) }}
-
-
-
                         <br>
 
                         {% if app.request.locale == 'fr' %}

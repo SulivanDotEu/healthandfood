@@ -28,7 +28,7 @@
                 <hr/>
             </div>
             <div class="hidden-desktop">
-                <div class="entry-content">
+                <div class="">
                     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                     <!-- HAF millieu horizonal mobile tablet -->
                     <ins class="adsbygoogle"
@@ -44,24 +44,19 @@
         {% endif %}
 
 
-        <div class="entry-content">
+        <div class="">
 
-            <div id="cat-11" class="post-91 type-post status-publish format-standard hentry category-gastrologie ui-tabs-hide entry ui-tabs-panel ui-widget-content ui-corner-bottom"
-                 aria-labelledby="ui-id-1"
-                 role="tabpanel"
-                 aria-expanded="true"
-                 aria-hidden="false"
-                 style="display: block;">
+            <div style="display: block;">
                 {% if entity.image is not null %}
                 <div  class="alignleft" style="max-width: 200px; margin-right: 20px"/>
-                <img src="{{ asset(entity.image.webPath) }}"
-                     alt="{{ entity.image.alt }}" />
-
+                <img src="{{ asset(entity.image.webPath) }}" alt="{{ entity.image.alt }}" />
             </div>
             {% endif %}
 
-            <h2><a href="{{ path('article_public_show', { 'id': entity.id }) }}" title="{{ entity.titre }}">
-                    {{ entity.titre }}</a>
+            <h2>
+            <a href="{{ path('article_public_show', { 'id': entity.id }) }}" title="{{ entity.titre }}"  >
+            {{ entity.titre }}
+            </a>
             </h2>
             <p class="byline ">
                 <span class="date published " title="">{{ entity.dateCreation|date("d/m/Y", "Europe/Paris") }}</span> <!--  par <span class="author vcard">
